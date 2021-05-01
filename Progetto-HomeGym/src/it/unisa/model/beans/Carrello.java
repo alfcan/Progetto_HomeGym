@@ -1,38 +1,55 @@
 package it.unisa.model.beans;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
+
+import it.unisa.model.DAOS.ProductModelDM;
 
 public class Carrello {
 	
 	private ArrayList<ProductBean> products;
-	private double totale;
 	
 	public Carrello() {
 		products = new ArrayList<ProductBean>();
-		totale = 0;
 	}
 	
-	public double getTotale() {
-		return totale;
+	public ArrayList<ProductBean> getProducts() {
+		return products;
 	}
 
-	public void setTotale(double totale) {
-		this.totale = totale;
-	}
-
-	public void addProduct(ProductBean product) {
-		products.add(product);
-	}
-	
-	public void deleteProduct(String codice) {
+	public synchronized void addProduct(String codice) throws SQLException {
 		int i = 0;
 		for(ProductBean product : products) {
 			if(codice.equals(product.getCodice())) {
-				double incremento = product.getQtaCarello() * product.getPrezzo();
-				double newTotale = getTotale() - incremento;
-				setTotale(newTotale);
-				products.remove(i);
+				product.setQtaCarello(product.getQtaCarello()+1);
+				products.set(i, product);
 			}
+			i++;
+		}
+		ProductModelDM prodottoDAO = new ProductModelDM();
+		ProductBean product = prodottoDAO.doRetrieveByKey(codice);
+		products.add(product);
+	}
+	
+	public synchronized void removeProduct(String codice) {
+		int i = 0;
+		for(ProductBean product : products) {
+			if(codice.equals(product.getCodice())) {
+				int newQtaCarello = product.getQtaCarello() - 1;
+				if(newQtaCarello <= 0)
+					products.remove(i);
+				else
+					product.setQtaCarello(newQtaCarello);
+			}
+			i++;
+		}
+	}
+	
+	public synchronized void deleteProduct(String codice) {
+		int i = 0;
+		for(ProductBean product : products) {
+			if(codice.equals(product.getCodice()))
+				products.remove(i);
 			i++;
 		}
 	}

@@ -6,8 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Collection;
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class ProductModelDM implements ProductModel {
 
@@ -151,11 +150,11 @@ public class ProductModelDM implements ProductModel {
 	}
 
 	@Override
-	public synchronized Collection<ProductBean> doRetrieveAll(String order) throws SQLException {
+	public synchronized ArrayList<ProductBean> doRetrieveAll(String order) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		Collection<ProductBean> products = new LinkedList<ProductBean>();
+		ArrayList<ProductBean> products = new ArrayList<ProductBean>();
 
 		String selectSQL = "SELECT * FROM " + ProductModelDM.TABLE_NAME;
 

@@ -1,7 +1,7 @@
 package it.unisa.model.DAOS;
 
 import java.sql.SQLException;
-import java.util.Collection;
+import java.util.ArrayList;
 
 import it.unisa.model.beans.ProductBean;
 
@@ -14,5 +14,5 @@ public interface ProductModel {
 
 	public ProductBean doRetrieveByKey(String codice) throws SQLException;
 	
-	public Collection<ProductBean> doRetrieveAll(String order) throws SQLException;
+	public ArrayList<ProductBean> doRetrieveAll(String order) throws SQLException;
 }
