@@ -35,7 +35,7 @@
 				<th><%=product.getIva()%></th>
 				<th>
 					<a href="ProductControl?action=ViewProdotto&codice=<%=product.getCodice()%>">Dettagli</a><br>
-					<a href="ProductControll?action=AddToCarrello&codice=<%=prodotto.getCodice()%>">Aggiungi al carello</a>
+					<a href="ProductControll?action=AddToCarrello&codice=<%=product.getCodice()%>">Aggiungi al carello</a>
 				</th>
 			<tr>
 			<%
