@@ -15,8 +15,12 @@
 	</head>
 	<body>
 		<%@ include file="../fragments/header.jsp" %>
-		<%@ include file="../fragments/menu.jsp" %>
+		<h1>Catalgo</h1>
 		<table>
+			<%
+				if(products != null && products.size() != 0){
+					for(ProductBean product : products){
+			%>
 			<tr>
 				<th>Codice</th>
 				<th>Nome</th>
@@ -24,10 +28,6 @@
 				<th>Iva</th>
 				<th>Azioni</th>
 			</tr>
-			<%
-				if(products != null && products.size() != 0){
-					for(ProductBean product : products){
-			%>
 			<tr>
 				<th><%=product.getCodice()%></th>
 				<th><%=product.getNome()%></th>
@@ -35,14 +35,14 @@
 				<th><%=product.getIva()%></th>
 				<th>
 					<a href="ProductControl?action=ViewProdotto&codice=<%=product.getCodice()%>">Dettagli</a><br>
-					<a href="ProductControll?action=AddToCarrello&codice=<%=product.getCodice()%>">Aggiungi al carello</a>
+					<a href="ProductControl?action=AddToCarrello&codice=<%=product.getCodice()%>">Aggiungi al carello</a>
 				</th>
 			<tr>
 			<%
 					}
 				}else{
 			%>
-			<tr>Non ci sono prodotti</tr>
+			<tr>Non ci sono prodotti nel catalgo</tr>
 			<%
 				}
 			%>

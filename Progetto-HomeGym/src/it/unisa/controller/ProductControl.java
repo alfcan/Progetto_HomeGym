@@ -29,7 +29,7 @@ public class ProductControl extends HttpServlet {
 			request.getSession().setAttribute("carrello", carrello);
 		}
 		//FINE CARRELLO
-		
+				
 		String action = request.getParameter("action");
 		
 		if(action != null) {
@@ -38,52 +38,47 @@ public class ProductControl extends HttpServlet {
 				try {
 					prodotti = model.doRetrieveAll(null);
 				} catch (SQLException e) {
-					System.out.println("Errore ProductControll doRetrieveAll");
+					System.out.println("Errore ProductControl doRetrieveAll");
 					e.printStackTrace();
 				}
 				request.setAttribute("prodotti", prodotti);
-				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/viewProdotti.jsp");
-				dispatcher.forward(request, response);
 			}
 			
-			if(action.equals("ViewProdotti")) {
+			if(action.equals("ViewProdotto")) {
 				ProductBean prodotto = null;
 				try {
 					prodotto = model.doRetrieveByKey(request.getParameter("codice"));
 				} catch (SQLException e) {
-					System.out.println("Errore ProductControll doRetrieveAll");
 					e.printStackTrace();
 				}
 				request.setAttribute("prodotto", prodotto);
-				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/prodotto.jsp");
-				dispatcher.forward(request, response);
+				response.sendRedirect("/pages/prodotto.jsp");
 			}
 			
 			if(action.equals("AddToCarrello")) {
-				carrello = (Carrello) request.getSession().getAttribute("carrello");
 				try {
 					carrello.addProduct(request.getParameter("codice"));
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-				request.getSession().setAttribute("carrello", carrello);
+				response.sendRedirect("/pages/carrello.jsp");
 			}
 			
 			if(action.equals("RemoveToCarrello")) {
-				carrello = (Carrello) request.getSession().getAttribute("carrello");
 				carrello.removeProduct(request.getParameter("codice"));
-				request.getSession().setAttribute("carrello", carrello);
-				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/carrello.jsp");
-				dispatcher.forward(request, response);
+				response.sendRedirect("/pages/carrello.jsp");
 			}
 			
 			if(action.equals("DeleteToCarrello")) {
-				carrello = (Carrello) request.getSession().getAttribute("carrello");
 				carrello.deleteProduct(request.getParameter("codice"));
-				request.getSession().setAttribute("carrello", carrello);
-				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/Carrello.jsp");
-				dispatcher.forward(request, response);				
+				response.sendRedirect("/pages/carrello.jsp");
 			}
+			
+			request.getSession().setAttribute("carrello", carrello);
+			request.setAttribute("carrello", carrello);
+			
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/viewProdotti.jsp");
+			dispatcher.include(request, response);
 		}
 	}
 

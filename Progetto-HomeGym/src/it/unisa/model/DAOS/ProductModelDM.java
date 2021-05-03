@@ -72,7 +72,6 @@ public class ProductModelDM implements ProductModel {
 			
 			preparedStatement.executeUpdate();
 
-			connection.commit();
 		} finally {
 			try {
 				if (preparedStatement != null)
@@ -90,7 +89,7 @@ public class ProductModelDM implements ProductModel {
 
 		ProductBean bean = new ProductBean();
 
-		String selectSQL = "SELECT * FROM " + ProductModelDM.TABLE_NAME + " WHERE CODE = ?";
+		String selectSQL = "SELECT * FROM " + ProductModelDM.TABLE_NAME + " WHERE codice = ?";
 
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
@@ -129,7 +128,7 @@ public class ProductModelDM implements ProductModel {
 
 		int result = 0;
 
-		String deleteSQL = "DELETE FROM " + ProductModelDM.TABLE_NAME + " WHERE CODE = ?";
+		String deleteSQL = "DELETE FROM " + ProductModelDM.TABLE_NAME + " WHERE codice = ?";
 
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
