@@ -42,6 +42,8 @@ public class ProductControl extends HttpServlet {
 					e.printStackTrace();
 				}
 				request.setAttribute("prodotti", prodotti);
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/viewProdotti.jsp");
+				dispatcher.forward(request, response);
 			}
 			
 			if(action.equals("ViewProdotto")) {
@@ -52,7 +54,8 @@ public class ProductControl extends HttpServlet {
 					e.printStackTrace();
 				}
 				request.setAttribute("prodotto", prodotto);
-				response.sendRedirect("/pages/prodotto.jsp");
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/prodotto.jsp");
+				dispatcher.forward(request, response);
 			}
 			
 			if(action.equals("AddToCarrello")) {
@@ -61,24 +64,29 @@ public class ProductControl extends HttpServlet {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-				response.sendRedirect("/pages/carrello.jsp");
+				request.getSession().setAttribute("carrello", carrello);
+				request.setAttribute("carrello", carrello);
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/carrello.jsp");
+				dispatcher.forward(request, response);
 			}
 			
 			if(action.equals("RemoveToCarrello")) {
 				carrello.removeProduct(request.getParameter("codice"));
-				response.sendRedirect("/pages/carrello.jsp");
+				request.getSession().setAttribute("carrello", carrello);
+				request.setAttribute("carrello", carrello);
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/carrello.jsp");
+				dispatcher.forward(request, response);
 			}
 			
 			if(action.equals("DeleteToCarrello")) {
 				carrello.deleteProduct(request.getParameter("codice"));
-				response.sendRedirect("/pages/carrello.jsp");
+				request.getSession().setAttribute("carrello", carrello);
+				request.setAttribute("carrello", carrello);
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/carrello.jsp");
+				dispatcher.forward(request, response);
 			}
 			
-			request.getSession().setAttribute("carrello", carrello);
-			request.setAttribute("carrello", carrello);
 			
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/viewProdotti.jsp");
-			dispatcher.include(request, response);
 		}
 	}
 

@@ -29,6 +29,7 @@
 				<th>Nome</th>
 				<th>Prezzo</th>
 				<th>Iva</th>
+				<th>Quantità</th>
 				<th>Azioni</th>
 			</tr>
 			<tr>
@@ -36,10 +37,11 @@
 				<th><%=product.getNome()%></th>
 				<th><%=product.getPrezzo()%></th>
 				<th><%=product.getIva()%></th>
+				<th><%=product.getQtaCarello()%></th>
 				<th>
-					<a href="ProductControl?action=AddToCarrello&codice=<%=product.getCodice()%>">Aggiungi un elemento</a>
-					<a href="ProductControl?action=RemoveToCarrello&codice=<%=product.getCodice()%>">Rimuovi un elemento</a>
-					<a href="ProductControl?action=DeleteToCarrello&codice=<%=product.getCodice()%>">Elimina elemento</a>
+					<a href="ProductControl?action=AddToCarrello&codice=<%=product.getCodice()%>">Aggiungi un elemento</a><br>
+					<a href="ProductControl?action=RemoveToCarrello&codice=<%=product.getCodice()%>">Rimuovi un elemento</a><br>
+					<a href="ProductControl?action=DeleteToCarrello&codice=<%=product.getCodice()%>">Elimina elemento</a><br>
 				</th>
 			<tr>
 			<%

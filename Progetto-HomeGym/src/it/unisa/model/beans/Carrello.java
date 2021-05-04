@@ -19,16 +19,20 @@ public class Carrello {
 
 	public synchronized void addProduct(String codice) throws SQLException {
 		int i = 0;
+		boolean flag = false;
 		for(ProductBean product : products) {
 			if(codice.equals(product.getCodice())) {
+				flag = true;
 				product.setQtaCarello(product.getQtaCarello()+1);
 				products.set(i, product);
 			}
 			i++;
 		}
-		ProductModelDM prodottoDAO = new ProductModelDM();
-		ProductBean product = prodottoDAO.doRetrieveByKey(codice);
-		products.add(product);
+		if(!flag) {
+			ProductModelDM prodottoDAO = new ProductModelDM();
+			ProductBean product = prodottoDAO.doRetrieveByKey(codice);
+			products.add(product);
+		}
 	}
 	
 	public synchronized void removeProduct(String codice) {
@@ -46,11 +50,10 @@ public class Carrello {
 	}
 	
 	public synchronized void deleteProduct(String codice) {
-		int i = 0;
-		for(ProductBean product : products) {
-			if(codice.equals(product.getCodice()))
+		for(int i = 0; i < products.size(); i++) {
+			ProductBean product = products.get(i);
+			if(product.getCodice().equals(codice))
 				products.remove(i);
-			i++;
 		}
 	}
 
