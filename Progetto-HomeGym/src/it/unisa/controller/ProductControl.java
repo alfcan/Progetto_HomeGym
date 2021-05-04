@@ -65,7 +65,6 @@ public class ProductControl extends HttpServlet {
 					e.printStackTrace();
 				}
 				request.getSession().setAttribute("carrello", carrello);
-				request.setAttribute("carrello", carrello);
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/carrello.jsp");
 				dispatcher.forward(request, response);
 			}
@@ -73,7 +72,6 @@ public class ProductControl extends HttpServlet {
 			if(action.equals("RemoveToCarrello")) {
 				carrello.removeProduct(request.getParameter("codice"));
 				request.getSession().setAttribute("carrello", carrello);
-				request.setAttribute("carrello", carrello);
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/carrello.jsp");
 				dispatcher.forward(request, response);
 			}
@@ -81,11 +79,17 @@ public class ProductControl extends HttpServlet {
 			if(action.equals("DeleteToCarrello")) {
 				carrello.deleteProduct(request.getParameter("codice"));
 				request.getSession().setAttribute("carrello", carrello);
-				request.setAttribute("carrello", carrello);
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/carrello.jsp");
 				dispatcher.forward(request, response);
 			}
 			
+			if(action.equals("checkout")) {
+				//GESTIONE ORDINE ---> IMPLEMENTAZIONE DA FARE
+				carrello = new Carrello();
+				request.getSession().setAttribute("carrello", carrello);
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/carrello.jsp");
+				dispatcher.forward(request, response);
+			}
 			
 		}
 	}

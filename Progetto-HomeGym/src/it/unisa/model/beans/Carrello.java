@@ -31,6 +31,7 @@ public class Carrello {
 		if(!flag) {
 			ProductModelDM prodottoDAO = new ProductModelDM();
 			ProductBean product = prodottoDAO.doRetrieveByKey(codice);
+			product.setQtaCarello(1);
 			products.add(product);
 		}
 	}
@@ -55,6 +56,14 @@ public class Carrello {
 			if(product.getCodice().equals(codice))
 				products.remove(i);
 		}
+	}
+	
+	public synchronized double getTotale() {
+		double totale = 0;
+		for(ProductBean product : products) {
+			totale = totale + (product.getPrezzo()*product.getQtaCarello());
+		}
+		return totale;
 	}
 
 }

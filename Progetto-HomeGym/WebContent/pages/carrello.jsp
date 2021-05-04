@@ -18,6 +18,7 @@
 	</head>
 	<body>
 		<%@ include file="../fragments/header.jsp" %>
+		<%@ include file="../fragments/menu.jsp" %>
 		<h1>Carrello</h1>
 		<table>
 			<%
@@ -53,6 +54,9 @@
 				}
 			%>
 		</table>
+		
+		<h3>Totale: <%=carrello.getTotale()%></h3><br>
+		<a href="ProductControl?action=checkout">CheckOut</a>
 		
 		<%@ include file="../fragments/footer.jsp" %>	
 	</body>

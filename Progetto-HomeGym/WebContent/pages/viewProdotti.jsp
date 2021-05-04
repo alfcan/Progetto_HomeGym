@@ -15,6 +15,7 @@
 	</head>
 	<body>
 		<%@ include file="../fragments/header.jsp" %>
+		<%@ include file="../fragments/menu.jsp" %>
 		<h1>Catalgo</h1>
 		<table>
 			<%
