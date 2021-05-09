@@ -7,7 +7,7 @@ import it.unisa.model.beans.PersonaFisicaBean;
 
 public interface PersonaFisica 
 {
-public void doSave(PersonaFisicaBean personaFisica) throws SQLException;
+	public void doSave(PersonaFisicaBean personaFisica) throws SQLException;
 	
 	public void doUpdate(PersonaFisicaBean personaFisica) throws SQLException;
 	
