@@ -101,7 +101,7 @@ public class UtenteDM implements Utente{
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		UtenteBean bean = new UtenteBean();
+		UtenteBean bean = null;
 
 		String selectSQL = "SELECT * FROM " + UtenteDM.TABLE_NAME + " WHERE email = ? and password = ?";
 
@@ -109,11 +109,12 @@ public class UtenteDM implements Utente{
 			connection = DriverManagerConnectionPool.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setString(1, email);
-			preparedStatement.setString(1, password);
+			preparedStatement.setString(2, password);
 
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
+				bean = new UtenteBean();
 				bean.setEmail(rs.getString("email"));
 				bean.setPassword(rs.getString("password"));
 				bean.setDatiPagamento(rs.getString("dati_pagamento"));

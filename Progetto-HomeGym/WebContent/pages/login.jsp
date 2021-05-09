@@ -6,11 +6,14 @@
 		<title>HomeGym - Login</title>
 	</head>
 	<body>
-		<form action="Login" method="post">
+		<%@ include file="../fragments/header.jsp" %>
+		<%@ include file="../fragments/menu.jsp" %>
+		
+		<form action="../Login" method="post">
 			<fieldset>
 			     <legend>Login</legend>
-			     <label for="username">Login</label>
-			     <input id="username" type="text" name="username" placeholder="Nome Utente"> 
+			     <label for="email">Email</label>
+			     <input id="email" type="text" name="email" placeholder="Email"> 
 			     <br>   
 			     <label for="password">Password</label>
 			     <input id="password" type="password" name="password" placeholder="Password"> 
@@ -19,5 +22,7 @@
 			     <input type="reset" value="Reset"/>
 			</fieldset>
 		</form> 
+		
+		<%@ include file="../fragments/footer.jsp" %>
 	</body>
 </html>
