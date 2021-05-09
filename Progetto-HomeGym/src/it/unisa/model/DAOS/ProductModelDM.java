@@ -53,13 +53,13 @@ public class ProductModelDM implements ProductModel {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		String insertSQL = "UPDATE " + ProductModelDM.TABLE_NAME
+		String updateSQL = "UPDATE " + ProductModelDM.TABLE_NAME
 				+ " SET nome = ?, descrizione = ?, prezzo = ?, iva = ?, sconto = ?, sottocategoria = ?, id_categoria = ?, url_immagine = ?"
 				+ " WHERE codice = ?";
 
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
-			preparedStatement = connection.prepareStatement(insertSQL);
+			preparedStatement = connection.prepareStatement(updateSQL);
 			preparedStatement.setString(1, product.getNome());
 			preparedStatement.setString(2, product.getDescrizione());
 			preparedStatement.setDouble(3, product.getPrezzo());

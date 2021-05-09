@@ -6,6 +6,9 @@
 
 <%
 	ArrayList<ProductBean> products = (ArrayList<ProductBean>) request.getAttribute("prodotti");
+	if(products == null){
+		response.sendRedirect("ProductControl?action=ViewProdotti");
+	}
 %>
 <!DOCTYPE html>
 <html>
