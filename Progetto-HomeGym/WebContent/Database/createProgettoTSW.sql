@@ -16,27 +16,29 @@ foreign key(dati_pagamento) references dati_pagamento(numero_carta)
 ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-create table dati_anagrafici_azienda(
+create table azienda(
 ragione_sociale varchar(30) not null,
 partita_iva char(11) primary key,
 citta varchar(30) not null,
 indirizzo_sede_legale varchar(50) not null,
 cap char(5) not null,
 numero_telefono varchar(30) not null,
-email varchar(30) not null,
+email varchar(30) not null unique,
 foreign key(email) references utente(email)
 ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-create table dati_anagrafici_persona_fisica(
-codice_fiscale varchar(16) primary key,
+create table persona_fisica(
+ID integer primary key,
 cognome varchar(30) not null,
 nome varchar(30) not null,
+data_nascita date not null,
+genere varchar(20) not null,
 citta varchar(30) not null,
 indirizzo varchar(50) not null,
 cap char(5) not null,
 numero_telefono varchar(30) not null,
-email varchar(30) not null,
+email varchar(30) not null unique,
 foreign key(email) references utente(email)
 ON UPDATE CASCADE ON DELETE CASCADE
 );
