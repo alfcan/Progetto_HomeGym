@@ -25,10 +25,11 @@ public class ComposizioneDM implements Composizione
 			connection = DriverManagerConnectionPool.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement.setInt(1, composizione.getID());
-			preparedStatement.setString(2, composizione.getProdotto() );
-			preparedStatement.setInt(3, composizione.getQuantita());
-			preparedStatement.setInt(4, composizione.getPrezzoAcquisto() );
-			preparedStatement.setInt(5, composizione.getIvaAcquisto());
+			preparedStatement.setInt(2, composizione.getOrdine());
+			preparedStatement.setString(3, composizione.getProdotto() );
+			preparedStatement.setInt(4, composizione.getQuantita());
+			preparedStatement.setInt(5, composizione.getPrezzoAcquisto() );
+			preparedStatement.setInt(6, composizione.getIvaAcquisto());
 			
 			
 			preparedStatement.executeUpdate();
@@ -55,13 +56,11 @@ public class ComposizioneDM implements Composizione
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
 			preparedStatement = connection.prepareStatement(updateSQL);
-			preparedStatement.setString(1, composizione.getOrdine());
+			preparedStatement.setInt(1, composizione.getOrdine());
 			preparedStatement.setString(2, composizione.getProdotto());
-			preparedStatement.setString(3, composizione.getQuantita());
+			preparedStatement.setInt(3, composizione.getQuantita());
 			preparedStatement.setString(4, composizione.getProdotto());
-			preparedStatement.setString(5, composizione.getIvaAcquisto());
-			preparedStatement.setString(6, composizione.getID());
-			
+			preparedStatement.setInt(5, composizione.getIvaAcquisto());			
 			
 			preparedStatement.executeUpdate();
 			connection.commit();
@@ -103,7 +102,7 @@ public class ComposizioneDM implements Composizione
 	}
 
 	@Override
-	public synchronized ComposizioneBean doRetrieveByKe(int ID) throws SQLException {
+	public synchronized ComposizioneBean doRetrieveByKey(int ID) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
@@ -120,6 +119,7 @@ public class ComposizioneDM implements Composizione
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
+				bean.setID(ID);
 				bean.setOrdine(rs.getInt("ordine"));
 				bean.setProdotto(rs.getString("prodotto"));
 				bean.setQuantita(rs.getInt("quantita"));

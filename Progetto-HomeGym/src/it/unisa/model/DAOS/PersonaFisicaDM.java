@@ -18,19 +18,18 @@ public class PersonaFisicaDM implements PersonaFisica
 		PreparedStatement preparedStatement = null;
 		
 		String insertSQL = "INSERT INTO " + PersonaFisicaDM.TABLE_NAME
-						 + " (codice_fiscale, cognome, nome, citta, indirizzo, cap, numero_telefono, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+						 + " (cognome, nome, dataNascita, genere, numero_telefono, email) VALUES (?, ?, ?, ?, ?, ?)";
 		
 		try {
+			java.sql.Date dataNascita = new java.sql.Date(personaFisica.getDataNascita().getTime());
 			connection = DriverManagerConnectionPool.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setString(1, personaFisica.getCodiceFiscale());
-			preparedStatement.setString(2, personaFisica.getCognome());
-			preparedStatement.setString(3, personaFisica.getNome() );
-			preparedStatement.setString(4, personaFisica.getCitta());
-			preparedStatement.setString(5, personaFisica.getIndirizzo());
-			preparedStatement.setString(6, personaFisica.getCap());
-			preparedStatement.setString(7, personaFisica.getNumeroTelefono() );
-			preparedStatement.setString(8, personaFisica.getEmail());
+			preparedStatement.setString(1, personaFisica.getCognome());
+			preparedStatement.setString(2, personaFisica.getNome() );
+			preparedStatement.setDate(3, dataNascita);
+			preparedStatement.setString(4, personaFisica.getGenere());
+			preparedStatement.setString(5, personaFisica.getNumeroTelefono() );
+			preparedStatement.setString(6, personaFisica.getEmail());
 			
 			preparedStatement.executeUpdate();
 			connection.commit();
@@ -50,20 +49,20 @@ public class PersonaFisicaDM implements PersonaFisica
 		PreparedStatement preparedStatement = null;
 		
 		String updateSQL = "UPDATE " + PersonaFisicaDM.TABLE_NAME
-						 + " SET cognome= ?, nome= ?, citta= ?, indirizzo= ?,cap= ?,  numero_telefono= ?, email= ?)"
-						 + " WHERE codice_fiscale = ?";
+						 + " SET cognome= ?, nome= ?, dataNascita= ?, genere= ?,  numero_telefono= ?, email= ?)"
+						 + " WHERE id = ?";
 		
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
 			preparedStatement = connection.prepareStatement(updateSQL);
+			java.sql.Date dataNascita = new java.sql.Date(personaFisica.getDataNascita().getTime());
 			preparedStatement.setString(1, personaFisica.getCognome());
-			preparedStatement.setString(2, personaFisica.getNome());
-			preparedStatement.setString(3, personaFisica.getCitta());
-			preparedStatement.setString(4, personaFisica.getIndirizzo());
-			preparedStatement.setString(5, personaFisica.getCap());
-			preparedStatement.setString(6, personaFisica.getNumeroTelefono());
-			preparedStatement.setString(7, personaFisica.getEmail());
-			preparedStatement.setString(8, personaFisica.getCodiceFiscale());
+			preparedStatement.setString(2, personaFisica.getNome() );
+			preparedStatement.setDate(3, dataNascita);
+			preparedStatement.setString(4, personaFisica.getGenere());
+			preparedStatement.setString(5, personaFisica.getNumeroTelefono() );
+			preparedStatement.setString(6, personaFisica.getEmail());
+			preparedStatement.setInt(7, personaFisica.getID());
 			
 			preparedStatement.executeUpdate();
 			connection.commit();
@@ -84,7 +83,7 @@ public class PersonaFisicaDM implements PersonaFisica
 
 		int result = 0;
 
-		String deleteSQL = "DELETE FROM " + PersonaFisicaDM.TABLE_NAME + " WHERE codiceFiscale = ?";
+		String deleteSQL = "DELETE FROM " + PersonaFisicaDM.TABLE_NAME + " WHERE id = ?";
 
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
@@ -111,7 +110,7 @@ public class PersonaFisicaDM implements PersonaFisica
 
 		PersonaFisicaBean bean = new PersonaFisicaBean();
 
-		String selectSQL = "SELECT * FROM " + PersonaFisicaDM.TABLE_NAME + " WHERE codice_fiscale = ?";
+		String selectSQL = "SELECT * FROM " + PersonaFisicaDM.TABLE_NAME + " WHERE id = ?";
 
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
@@ -122,11 +121,11 @@ public class PersonaFisicaDM implements PersonaFisica
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
+				bean.setID(rs.getInt("id"));
 				bean.setCognome(rs.getString("cognome"));
 				bean.setNome(rs.getString("nome"));
-				bean.setCitta(rs.getString("citta"));
-				bean.setIndirizzo(rs.getString("indirizzo"));
-				bean.setCap(rs.getString("cap"));
+				bean.setDataNascita(rs.getDate("dataNascita"));
+				bean.setGenere(rs.getString("genere"));
 				bean.setNumeroTelefono(rs.getString("numero_telefono"));
 				bean.setEmail(rs.getString("email"));
 			}
@@ -142,6 +141,44 @@ public class PersonaFisicaDM implements PersonaFisica
 		return bean;
 	}
 
+	@Override
+	public synchronized PersonaFisicaBean doRetrieveByEmail(String email) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		PersonaFisicaBean bean = new PersonaFisicaBean();
+
+		String selectSQL = "SELECT * FROM " + PersonaFisicaDM.TABLE_NAME + " WHERE email = ?";
+
+		try {
+			connection = DriverManagerConnectionPool.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, email);
+			
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				bean.setID(rs.getInt("id"));
+				bean.setCognome(rs.getString("cognome"));
+				bean.setNome(rs.getString("nome"));
+				bean.setDataNascita(rs.getDate("dataNascita"));
+				bean.setGenere(rs.getString("genere"));
+				bean.setNumeroTelefono(rs.getString("numero_telefono"));
+				bean.setEmail(rs.getString("email"));
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		return bean;
+	}
+	
 	@Override
 	public synchronized ArrayList<PersonaFisicaBean> doRetrieveAll(String order) throws SQLException {
 		Connection connection = null;
@@ -163,15 +200,13 @@ public class PersonaFisicaDM implements PersonaFisica
 
 			while (rs.next()) {
 				PersonaFisicaBean bean = new PersonaFisicaBean();
-				bean.setCodiceFiscale(rs.getString("codice_fiscale"));
+				bean.setID(rs.getInt("id"));
 				bean.setCognome(rs.getString("cognome"));
 				bean.setNome(rs.getString("nome"));
-				bean.setCitta(rs.getString("citta"));
-				bean.setIndirizzo(rs.getString("indirizzo"));
-				bean.setCap(rs.getString("cap"));
+				bean.setDataNascita(rs.getDate("dataNascita"));
+				bean.setGenere(rs.getString("genere"));
 				bean.setNumeroTelefono(rs.getString("numero_telefono"));
 				bean.setEmail(rs.getString("email"));
-				personaFisica.add(bean);
 			}
 
 		} finally {

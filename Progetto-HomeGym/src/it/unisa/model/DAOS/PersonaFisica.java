@@ -16,4 +16,6 @@ public interface PersonaFisica
 	public PersonaFisicaBean doRetrieveByKey(String codicaFiscale) throws SQLException;
 	
 	public ArrayList<PersonaFisicaBean> doRetrieveAll(String order) throws SQLException;
+
+	PersonaFisicaBean doRetrieveByEmail(String email) throws SQLException;
 }

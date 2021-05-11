@@ -3,7 +3,7 @@ use homegym;
 
 create table dati_pagamento(
 numero_carta char(16) primary key,
-cw integer not null,
+cvv integer not null,
 data_scadenza date not null
 );
 

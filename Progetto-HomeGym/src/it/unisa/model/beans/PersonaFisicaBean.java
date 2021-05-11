@@ -1,36 +1,48 @@
 package it.unisa.model.beans;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class PersonaFisicaBean implements Serializable
 {
 	private static final long serialVersionUID=1L;
-	private String codiceFiscale;
+	
+	private int ID;
 	private String cognome;
 	private String nome;
-	private String citta;
-	private String indirizzo;
-	private String cap;
+	private Date dataNascita;
+	private String genere;
 	private String numeroTelefono;
 	private String email;
 	
 	public PersonaFisicaBean()
 	 {
-		 codiceFiscale="";
-		 cognome="";
-		 nome="";
-		 citta="";
-		 indirizzo="";
-		 cap="";
-		 numeroTelefono="";
-		 email="";
+		ID = 0;
+		cognome="";
+		nome="";
+		dataNascita = null;
+		genere = "";
+		numeroTelefono="";
+		email="";
 	 }
 	
-	public String getCodiceFiscale() {
-		return codiceFiscale;
+	public int getID() {
+		return ID;
 	}
-	public void setCodiceFiscale(String codiceFiscale) {
-		this.codiceFiscale = codiceFiscale;
+	public void setID(int iD) {
+		ID = iD;
+	}
+	public Date getDataNascita() {
+		return dataNascita;
+	}
+	public void setDataNascita(Date dataNascita) {
+		this.dataNascita = dataNascita;
+	}
+	public String getGenere() {
+		return genere;
+	}
+	public void setGenere(String genere) {
+		this.genere = genere;
 	}
 	public String getCognome() {
 		return cognome;
@@ -44,18 +56,6 @@ public class PersonaFisicaBean implements Serializable
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getCitta() {
-		return citta;
-	}
-	public void setCitta(String citta) {
-		this.citta = citta;
-	}
-	public String getCap() {
-		return cap;
-	}
-	public void setCap(String cap) {
-		this.cap = cap;
-	}
 	public String getNumeroTelefono() {
 		return numeroTelefono;
 	}
@@ -68,13 +68,5 @@ public class PersonaFisicaBean implements Serializable
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getIndirizzo() {
-		return indirizzo;
-	}
-	public void setIndirizzo(String indirizzo) {
-		this.indirizzo = indirizzo;
-	}
-	
-	
 	
 }

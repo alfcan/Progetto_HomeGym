@@ -33,6 +33,7 @@ public class LoginControl extends HttpServlet {
 				response.sendRedirect("pages/areaUtente.jsp");
 			}
 			else {
+				request.setAttribute("isNotValidLogin", "NotValid");
 				response.sendRedirect("pages/login.jsp");
 			}
 		} catch (SQLException e) {

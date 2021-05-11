@@ -9,6 +9,15 @@
 		<%@ include file="../fragments/header.jsp" %>
 		<%@ include file="../fragments/menu.jsp" %>
 		
+		<%
+			String isNotValidLogin = (String) request.getAttribute("isNotValidLogin");
+			if(isNotValidLogin != null){
+		%>
+				<h5>Email o password non corretta</h1>
+		<%
+			}
+		%>
+		
 		<form action="../Login" method="post">
 			<fieldset>
 			     <legend>Login</legend>
@@ -21,7 +30,10 @@
 			     <input type="submit" value="Login"/>
 			     <input type="reset" value="Reset"/>
 			</fieldset>
-		</form> 
+		</form>
+		
+		<a href="registerPersonaFisica.jsp">Non hai un account? Registrati qui.</a> <br>
+		<a href="registerAzienda.jsp">Sei un'azienda e non sei ancora registrata? Registarti qui.</a>
 		
 		<%@ include file="../fragments/footer.jsp" %>
 	</body>
