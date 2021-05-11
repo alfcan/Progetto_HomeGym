@@ -11,7 +11,7 @@ create table utente(
 email varchar(30) primary key,
 tipo varchar(30) not null,
 password varchar(30) not null,
-dati_pagamento char(16) not null,
+dati_pagamento char(16),
 foreign key(dati_pagamento) references dati_pagamento(numero_carta)
 ON UPDATE CASCADE ON DELETE CASCADE
 );
