@@ -19,6 +19,7 @@ public class AziendaBean implements Serializable
 		 partitaIva="";
 		 citta="";
 		 indirizzoSedeLegale="";
+		 cap="";
 		 numeroTelefono="";
 		 email="";
 	 }

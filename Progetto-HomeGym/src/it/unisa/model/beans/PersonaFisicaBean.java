@@ -29,8 +29,8 @@ public class PersonaFisicaBean implements Serializable
 	public int getID() {
 		return ID;
 	}
-	public void setID(int iD) {
-		ID = iD;
+	public void setID(int ID) {
+		ID = ID;
 	}
 	public Date getDataNascita() {
 		return dataNascita;

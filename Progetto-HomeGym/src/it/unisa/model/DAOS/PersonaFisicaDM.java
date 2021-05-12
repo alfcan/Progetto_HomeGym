@@ -18,18 +18,19 @@ public class PersonaFisicaDM implements PersonaFisica
 		PreparedStatement preparedStatement = null;
 		
 		String insertSQL = "INSERT INTO " + PersonaFisicaDM.TABLE_NAME
-						 + " (cognome, nome, dataNascita, genere, numero_telefono, email) VALUES (?, ?, ?, ?, ?, ?)";
+						 + " (ID,cognome, nome, dataNascita, genere, numero_telefono, email) VALUES (?, ?, ?, ?, ?, ?,?)";
 		
 		try {
 			java.sql.Date dataNascita = new java.sql.Date(personaFisica.getDataNascita().getTime());
 			connection = DriverManagerConnectionPool.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setString(1, personaFisica.getCognome());
-			preparedStatement.setString(2, personaFisica.getNome() );
-			preparedStatement.setDate(3, dataNascita);
-			preparedStatement.setString(4, personaFisica.getGenere());
-			preparedStatement.setString(5, personaFisica.getNumeroTelefono() );
-			preparedStatement.setString(6, personaFisica.getEmail());
+			preparedStatement.setInt(1, personaFisica.getID());
+			preparedStatement.setString(2, personaFisica.getCognome());
+			preparedStatement.setString(3, personaFisica.getNome() );
+			preparedStatement.setDate(4, dataNascita);
+			preparedStatement.setString(5, personaFisica.getGenere());
+			preparedStatement.setString(6, personaFisica.getNumeroTelefono() );
+			preparedStatement.setString(7, personaFisica.getEmail());
 			
 			preparedStatement.executeUpdate();
 			connection.commit();
@@ -50,7 +51,7 @@ public class PersonaFisicaDM implements PersonaFisica
 		
 		String updateSQL = "UPDATE " + PersonaFisicaDM.TABLE_NAME
 						 + " SET cognome= ?, nome= ?, dataNascita= ?, genere= ?,  numero_telefono= ?, email= ?)"
-						 + " WHERE id = ?";
+						 + " WHERE ID = ?";
 		
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
@@ -83,7 +84,7 @@ public class PersonaFisicaDM implements PersonaFisica
 
 		int result = 0;
 
-		String deleteSQL = "DELETE FROM " + PersonaFisicaDM.TABLE_NAME + " WHERE id = ?";
+		String deleteSQL = "DELETE FROM " + PersonaFisicaDM.TABLE_NAME + " WHERE ID = ?";
 
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
@@ -110,7 +111,7 @@ public class PersonaFisicaDM implements PersonaFisica
 
 		PersonaFisicaBean bean = new PersonaFisicaBean();
 
-		String selectSQL = "SELECT * FROM " + PersonaFisicaDM.TABLE_NAME + " WHERE id = ?";
+		String selectSQL = "SELECT * FROM " + PersonaFisicaDM.TABLE_NAME + " WHERE ID = ?";
 
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
@@ -121,7 +122,7 @@ public class PersonaFisicaDM implements PersonaFisica
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
-				bean.setID(rs.getInt("id"));
+				bean.setID(rs.getInt("ID"));
 				bean.setCognome(rs.getString("cognome"));
 				bean.setNome(rs.getString("nome"));
 				bean.setDataNascita(new java.util.Date(rs.getDate("data_nascita").getTime()));
@@ -159,7 +160,7 @@ public class PersonaFisicaDM implements PersonaFisica
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
-				bean.setID(rs.getInt("id"));
+				bean.setID(rs.getInt("ID"));
 				bean.setCognome(rs.getString("cognome"));
 				bean.setNome(rs.getString("nome"));
 				bean.setDataNascita(new java.util.Date(rs.getDate("data_nascita").getTime()));
@@ -200,7 +201,7 @@ public class PersonaFisicaDM implements PersonaFisica
 
 			while (rs.next()) {
 				PersonaFisicaBean bean = new PersonaFisicaBean();
-				bean.setID(rs.getInt("id"));
+				bean.setID(rs.getInt("ID"));
 				bean.setCognome(rs.getString("cognome"));
 				bean.setNome(rs.getString("nome"));
 				bean.setDataNascita(new java.util.Date(rs.getDate("data_nascita").getTime()));
