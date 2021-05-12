@@ -19,7 +19,7 @@ public class ProductModelDM implements ProductModel {
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + ProductModelDM.TABLE_NAME
-				+ " (codice, nome, descrizione, prezzo, iva, sconto, sottocategoria, id_categoria, url_immagine) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ " (codice, nome, descrizione, prezzo, iva, sconto, sottocategoria, categoria, url_immagine) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
@@ -54,7 +54,7 @@ public class ProductModelDM implements ProductModel {
 		PreparedStatement preparedStatement = null;
 
 		String updateSQL = "UPDATE " + ProductModelDM.TABLE_NAME
-				+ " SET nome = ?, descrizione = ?, prezzo = ?, iva = ?, sconto = ?, sottocategoria = ?, id_categoria = ?, url_immagine = ?"
+				+ " SET nome = ?, descrizione = ?, prezzo = ?, iva = ?, sconto = ?, sottocategoria = ?, categoria = ?, url_immagine = ?"
 				+ " WHERE codice = ?";
 
 		try {
@@ -106,7 +106,7 @@ public class ProductModelDM implements ProductModel {
 				bean.setIva(rs.getInt("iva"));
 				bean.setSconto(rs.getInt("sconto"));
 				bean.setSottocategoria(rs.getString("sottocategoria"));
-				bean.setIdCategoria(rs.getInt("id_categoria"));
+				bean.setIdCategoria(rs.getInt("categoria"));
 				bean.setUrlImmagine(rs.getString("url_immagine"));
 			}
 
@@ -176,7 +176,7 @@ public class ProductModelDM implements ProductModel {
 				bean.setIva(rs.getInt("iva"));
 				bean.setSconto(rs.getInt("sconto"));
 				bean.setSottocategoria(rs.getString("sottocategoria"));
-				bean.setIdCategoria(rs.getInt("id_categoria"));
+				bean.setIdCategoria(rs.getInt("categoria"));
 				bean.setUrlImmagine(rs.getString("url_immagine"));
 				products.add(bean);
 			}

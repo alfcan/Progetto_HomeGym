@@ -124,7 +124,7 @@ public class PersonaFisicaDM implements PersonaFisica
 				bean.setID(rs.getInt("id"));
 				bean.setCognome(rs.getString("cognome"));
 				bean.setNome(rs.getString("nome"));
-				bean.setDataNascita(rs.getDate("dataNascita"));
+				bean.setDataNascita(new java.util.Date(rs.getDate("data_nascita").getTime()));
 				bean.setGenere(rs.getString("genere"));
 				bean.setNumeroTelefono(rs.getString("numero_telefono"));
 				bean.setEmail(rs.getString("email"));
@@ -162,7 +162,7 @@ public class PersonaFisicaDM implements PersonaFisica
 				bean.setID(rs.getInt("id"));
 				bean.setCognome(rs.getString("cognome"));
 				bean.setNome(rs.getString("nome"));
-				bean.setDataNascita(rs.getDate("dataNascita"));
+				bean.setDataNascita(new java.util.Date(rs.getDate("data_nascita").getTime()));
 				bean.setGenere(rs.getString("genere"));
 				bean.setNumeroTelefono(rs.getString("numero_telefono"));
 				bean.setEmail(rs.getString("email"));
@@ -203,7 +203,7 @@ public class PersonaFisicaDM implements PersonaFisica
 				bean.setID(rs.getInt("id"));
 				bean.setCognome(rs.getString("cognome"));
 				bean.setNome(rs.getString("nome"));
-				bean.setDataNascita(rs.getDate("dataNascita"));
+				bean.setDataNascita(new java.util.Date(rs.getDate("data_nascita").getTime()));
 				bean.setGenere(rs.getString("genere"));
 				bean.setNumeroTelefono(rs.getString("numero_telefono"));
 				bean.setEmail(rs.getString("email"));

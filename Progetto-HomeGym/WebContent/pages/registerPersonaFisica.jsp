@@ -7,6 +7,9 @@
 	<title>HomeGym - Registrazione</title>
 </head>
 	<body>
+		<%@ include file="../fragments/header.jsp" %>
+		<%@ include file="../fragments/menu.jsp" %>	
+	
 		<% request.setAttribute("tipo","Persona Fisica"); %>
 		<form action="../RegistrazioneControl" method="post">
 			<fieldset>
@@ -33,5 +36,7 @@
 			    <input type="reset" value="Reset"/>
 			</fieldset>
 		</form>
+		
+		<%@ include file="../fragments/footer.jsp" %>
 	</body>
 </html>

@@ -7,7 +7,11 @@
 		<title>HomeGym - Registrazione Azienda</title>
 	</head>
 	<body>
+		<%@ include file="../fragments/header.jsp" %>
+		<%@ include file="../fragments/menu.jsp" %>
+		
 		<% request.setAttribute("tipo","Azienda"); %>
+		
 		<form action="../RegistrazioneControl" method="post">
 			<fieldset>
 				<legend>Registrazione azienda</legend>
@@ -39,5 +43,7 @@
 			    <input type="reset" value="Reset"/>
 			</fieldset>
 		</form>
+		
+		<%@ include file="../fragments/footer.jsp" %>
 	</body>
 </html>
