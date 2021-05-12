@@ -9,7 +9,7 @@
 	<body>
 		<% request.setAttribute("tipo","Azienda"); %>
 		<form action="../RegistrazioneControl" method="post">
-			<fielset>
+			<fieldset>
 				<legend>Registrazione azienda</legend>
 				<label for="ragioneSociale">Ragione Sociale</label>
 			    <input id="ragioneSociale" type="text" name="ragioneSociale" placeholder="Ragione Sociale"> 
@@ -37,7 +37,7 @@
 			    <br>
 			    <input type="submit" value="Registrami"/>
 			    <input type="reset" value="Reset"/>
-			</fielset>
+			</fieldset>
 		</form>
 	</body>
 </html>

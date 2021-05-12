@@ -9,9 +9,9 @@ data_scadenza date not null
 
 create table utente(
 email varchar(30) primary key,
-tipo varchar(30) not null,
 password varchar(30) not null,
 dati_pagamento char(16),
+tipo varchar(30) not null,
 foreign key(dati_pagamento) references dati_pagamento(numero_carta)
 ON UPDATE CASCADE ON DELETE CASCADE
 );
@@ -29,15 +29,12 @@ ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 create table persona_fisica(
-ID integer primary key,
+ID integer primary key AUTO_INCREMENT,
 cognome varchar(30) not null,
 nome varchar(30) not null,
 data_nascita date not null,
 genere varchar(20) not null,
-citta varchar(30) not null,
-indirizzo varchar(50) not null,
-cap char(5) not null,
-numero_telefono varchar(30) not null,
+numero_telefono varchar(30) not null unique,
 email varchar(30) not null unique,
 foreign key(email) references utente(email)
 ON UPDATE CASCADE ON DELETE CASCADE
@@ -96,7 +93,6 @@ foreign key(prodotto) references prodotto(codice)
 );
 
 create table composizione(
-ID integer primary key,
 ordine integer not null,
 foreign key(ordine) references ordine(ID)
 ON UPDATE CASCADE ON DELETE CASCADE,
@@ -104,7 +100,8 @@ prodotto varchar(30) references prodotto(codice)
 ON UPDATE CASCADE ON DELETE CASCADE,
 quantita integer not null,
 prezzo_acquisto integer not null,
-prezzo_iva integer not null
+prezzo_iva integer not null,
+primary key (ordine,prodotto)
 );
 
 

@@ -9,7 +9,7 @@
 	<body>
 		<% request.setAttribute("tipo","Persona Fisica"); %>
 		<form action="../RegistrazioneControl" method="post">
-			<fielset>
+			<fieldset>
 				<legend>Registrazione</legend>
 				<label for="cognome">Cognome</label>
 			    <input id="cognome" type="text" name="cognome" placeholder="Cognome" required> 
@@ -31,7 +31,7 @@
 			    <br>
 			    <input type="submit" value="Registrami"/>
 			    <input type="reset" value="Reset"/>
-			</fielset>
+			</fieldset>
 		</form>
 	</body>
 </html>
