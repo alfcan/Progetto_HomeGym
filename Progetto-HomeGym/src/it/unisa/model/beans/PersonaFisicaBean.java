@@ -30,7 +30,7 @@ public class PersonaFisicaBean implements Serializable
 		return ID;
 	}
 	public void setID(int ID) {
-		ID = ID;
+		this.ID = ID;
 	}
 	public Date getDataNascita() {
 		return dataNascita;
