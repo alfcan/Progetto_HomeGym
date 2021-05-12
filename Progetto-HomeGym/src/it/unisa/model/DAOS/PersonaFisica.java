@@ -11,9 +11,9 @@ public interface PersonaFisica
 	
 	public void doUpdate(PersonaFisicaBean personaFisica) throws SQLException;
 	
-	public boolean doDelete(String codiceFiscale) throws SQLException;
+	public boolean doDelete(int ID) throws SQLException;
 
-	public PersonaFisicaBean doRetrieveByKey(String codicaFiscale) throws SQLException;
+	public PersonaFisicaBean doRetrieveByKey(int ID) throws SQLException;
 	
 	public ArrayList<PersonaFisicaBean> doRetrieveAll(String order) throws SQLException;
 

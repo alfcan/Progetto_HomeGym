@@ -77,7 +77,7 @@ public class PersonaFisicaDM implements PersonaFisica
 	}
 
 	@Override
-	public synchronized boolean doDelete(String codiceFiscale) throws SQLException {
+	public synchronized boolean doDelete(int ID) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
@@ -88,7 +88,7 @@ public class PersonaFisicaDM implements PersonaFisica
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
-			preparedStatement.setString(1, codiceFiscale);
+			preparedStatement.setInt(1, ID);
 
 			result = preparedStatement.executeUpdate();
 
@@ -104,7 +104,7 @@ public class PersonaFisicaDM implements PersonaFisica
 	}
 
 	@Override
-	public synchronized PersonaFisicaBean doRetrieveByKey(String codiceFiscale) throws SQLException {
+	public synchronized PersonaFisicaBean doRetrieveByKey(int ID) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
@@ -115,7 +115,7 @@ public class PersonaFisicaDM implements PersonaFisica
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
-			preparedStatement.setString(1, codiceFiscale);
+			preparedStatement.setInt(1, ID);
 			
 
 			ResultSet rs = preparedStatement.executeQuery();
