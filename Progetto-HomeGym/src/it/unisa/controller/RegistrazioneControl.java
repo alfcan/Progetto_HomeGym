@@ -36,6 +36,7 @@ public class RegistrazioneControl extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		
 		if(tipo.equals("Azienda")) {
 			AziendaBean azienda = new AziendaBean();
 			azienda.setRagioneSociale(request.getParameter("ragioneSociale"));

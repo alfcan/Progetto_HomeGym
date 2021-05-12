@@ -8,7 +8,7 @@
 	</head>
 	<body>
 		<% request.setAttribute("tipo","Azienda"); %>
-		<form action="../RegistrazioneControl" method="post">
+		<form action="/RegistrazioneControl" method="post">
 			<fieldset>
 				<legend>Registrazione azienda</legend>
 				<label for="ragioneSociale">Ragione Sociale</label>

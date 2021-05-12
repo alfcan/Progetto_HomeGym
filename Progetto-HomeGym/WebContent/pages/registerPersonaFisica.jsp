@@ -8,7 +8,7 @@
 </head>
 	<body>
 		<% request.setAttribute("tipo","Persona Fisica"); %>
-		<form action="../RegistrazioneControl" method="post">
+		<form action="/RegistrazioneControl" method="post">
 			<fieldset>
 				<legend>Registrazione</legend>
 				<label for="cognome">Cognome</label>
