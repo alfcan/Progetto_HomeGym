@@ -19,17 +19,16 @@ public class ComposizioneDM implements Composizione
 		PreparedStatement preparedStatement = null;
 		
 		String insertSQL = "INSERT INTO " + ComposizioneDM.TABLE_NAME
-						 + " (ID, ordine, prodotto, quantita, prezzo_acquisto, iva_acquisto) VALUES (?, ?, ?, ?, ?, ?)";
+						 + " (ordine, prodotto, quantita, prezzo_acquisto, iva_acquisto) VALUES (?, ?, ?, ?, ?)";
 		
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setInt(1, composizione.getID());
-			preparedStatement.setInt(2, composizione.getOrdine());
-			preparedStatement.setString(3, composizione.getProdotto() );
-			preparedStatement.setInt(4, composizione.getQuantita());
-			preparedStatement.setInt(5, composizione.getPrezzoAcquisto() );
-			preparedStatement.setInt(6, composizione.getIvaAcquisto());
+			preparedStatement.setInt(1, composizione.getOrdine());
+			preparedStatement.setString(2, composizione.getProdotto() );
+			preparedStatement.setInt(3, composizione.getQuantita());
+			preparedStatement.setInt(4, composizione.getPrezzoAcquisto() );
+			preparedStatement.setInt(5, composizione.getIvaAcquisto());
 			
 			
 			preparedStatement.executeUpdate();
@@ -50,17 +49,17 @@ public class ComposizioneDM implements Composizione
 		PreparedStatement preparedStatement = null;
 		
 		String updateSQL = "UPDATE " + ComposizioneDM.TABLE_NAME
-						 + " SET ordine= ?, prodotto= ?, quantita= ?, prezzo_acquisto= ?,iva_acquisto= ?)"
-						 + " WHERE ID = ?";
+						 + " SET quantita= ?, prezzo_acquisto= ?,iva_acquisto= ?)"
+						 + " WHERE ordine= ?, prodotto= ?";
 		
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
 			preparedStatement = connection.prepareStatement(updateSQL);
-			preparedStatement.setInt(1, composizione.getOrdine());
+			preparedStatement.setInt(1, composizione.getQuantita());
 			preparedStatement.setString(2, composizione.getProdotto());
-			preparedStatement.setInt(3, composizione.getQuantita());
-			preparedStatement.setString(4, composizione.getProdotto());
-			preparedStatement.setInt(5, composizione.getIvaAcquisto());			
+			preparedStatement.setInt(3, composizione.getIvaAcquisto());
+			preparedStatement.setInt(4, composizione.getOrdine());
+			preparedStatement.setString(5, composizione.getProdotto());
 			
 			preparedStatement.executeUpdate();
 			connection.commit();
@@ -75,18 +74,19 @@ public class ComposizioneDM implements Composizione
 	}
 
 	@Override
-	public synchronized boolean doDelete(int ID) throws SQLException {
+	public synchronized boolean doDelete(int ordine, String prodotto) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
 		int result = 0;
 
-		String deleteSQL = "DELETE FROM " + ComposizioneDM.TABLE_NAME + " WHERE ID = ?";
+		String deleteSQL = "DELETE FROM " + ComposizioneDM.TABLE_NAME + " WHERE ordine= ?, prodotto= ?";
 
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
-			preparedStatement.setInt(1, ID);
+			preparedStatement.setInt(1, ordine);
+			preparedStatement.setString(2, prodotto);
 
 			result = preparedStatement.executeUpdate();
 
@@ -102,24 +102,23 @@ public class ComposizioneDM implements Composizione
 	}
 
 	@Override
-	public synchronized ComposizioneBean doRetrieveByKey(int ID) throws SQLException {
+	public synchronized ComposizioneBean doRetrieveByKey(int ordine, String prodotto) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
 		ComposizioneBean bean = new ComposizioneBean();
 
-		String selectSQL = "SELECT * FROM " + ComposizioneDM.TABLE_NAME + " WHERE ID = ?";
+		String selectSQL = "SELECT * FROM " + ComposizioneDM.TABLE_NAME + " WHERE ordine= ?, prodotto= ?";
 
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
-			preparedStatement.setInt(1, ID);
-			
+			preparedStatement.setInt(1, ordine);
+			preparedStatement.setString(2, prodotto);
 
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
-				bean.setID(ID);
 				bean.setOrdine(rs.getInt("ordine"));
 				bean.setProdotto(rs.getString("prodotto"));
 				bean.setQuantita(rs.getInt("quantita"));
@@ -160,7 +159,6 @@ public class ComposizioneDM implements Composizione
 
 			while (rs.next()) {
 				ComposizioneBean bean = new ComposizioneBean();
-				bean.setID(rs.getInt("ID"));
 				bean.setOrdine(rs.getInt("ordine"));
 				bean.setProdotto(rs.getString("prodotto"));
 				bean.setQuantita(rs.getInt("quantita"));

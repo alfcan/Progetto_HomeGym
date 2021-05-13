@@ -83,15 +83,6 @@ public class ProductControl extends HttpServlet {
 				dispatcher.forward(request, response);
 			}
 			
-			if(action.equals("checkout")) {
-				//GESTIONE ORDINE ---> IMPLEMENTAZIONE DA FARE
-				//creazione dao ordine e inserimento in database
-				carrello = new Carrello();
-				request.getSession().setAttribute("carrello", carrello);
-				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/carrello.jsp");
-				dispatcher.forward(request, response);
-			}
-			
 		}
 	}
 

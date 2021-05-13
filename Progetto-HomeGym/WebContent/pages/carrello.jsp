@@ -56,7 +56,7 @@
 		</table>
 		
 		<h3>Totale: <%=carrello.getTotale()%></h3><br>
-		<a href="ProductControl?action=checkout">CheckOut</a>
+		<a href="OrdineControl?action=checkout">CheckOut</a>
 		
 		<%@ include file="../fragments/footer.jsp" %>	
 	</body>

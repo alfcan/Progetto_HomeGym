@@ -5,7 +5,6 @@ import java.io.Serializable;
 public class ComposizioneBean implements Serializable 
 {
 	private static final long serialVersionUID=1L;
-	private int ID;
 	private int ordine;
 	private String prodotto;
 	private int quantita;
@@ -14,7 +13,6 @@ public class ComposizioneBean implements Serializable
 	
 	public ComposizioneBean()
 	 {
-		 ID=0;
 		 ordine=0;
 		 prodotto="";
 		 quantita=0;
@@ -22,14 +20,6 @@ public class ComposizioneBean implements Serializable
 		 ivaAcquisto=0;
 		 
 	 }
-
-	public int getID() {
-		return ID;
-	}
-
-	public void setID(int iD) {
-		ID = iD;
-	}
 
 	public int getOrdine() {
 		return ordine;

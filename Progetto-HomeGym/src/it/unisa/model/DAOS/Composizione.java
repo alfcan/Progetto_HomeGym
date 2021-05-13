@@ -11,9 +11,9 @@ public interface Composizione
 	
 	public void doUpdate(ComposizioneBean composizione) throws SQLException;
 	
-	public boolean doDelete(int ID) throws SQLException;
+	public boolean doDelete(int ordine, String prodotto) throws SQLException;
 
-	public ComposizioneBean doRetrieveByKey(int ID) throws SQLException;
+	public ComposizioneBean doRetrieveByKey(int ordine, String prodotto) throws SQLException;
 	
 	public ArrayList<ComposizioneBean> doRetrieveAll(String order) throws SQLException;
 }

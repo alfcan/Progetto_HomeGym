@@ -14,13 +14,42 @@ public class OrdineDM implements Ordine{
 
 	private static final String TABLE_NAME = "Ordine";
 	
+	public synchronized int getIdCodice() throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		String selectSQL = "SELECT MAX(ID) AS MAXID FROM " + OrdineDM.TABLE_NAME;
+		int idMax = 0;
+		
+		try {
+			connection = DriverManagerConnectionPool.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+	
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				idMax = rs.getInt("MAXID");
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		return idMax;
+		
+	}
+	
 	@Override
 	public synchronized void doSave(OrdineBean ordine) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
 		String insertSQL = "INSERT INTO " + OrdineDM.TABLE_NAME
-						 + " (ID, stato, data, utente, indirizzo_spedizione) VALUES (?, ?, ?, ?, ?)";
+						 + " (id, stato, data, utente, indirizzo_spedizione) VALUES (?, ?, ?, ?, ?)";
 		
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
