@@ -49,7 +49,7 @@ public class OrdineDM implements Ordine{
 		PreparedStatement preparedStatement = null;
 		
 		String insertSQL = "INSERT INTO " + OrdineDM.TABLE_NAME
-						 + " (id, stato, data, utente, indirizzo_spedizione) VALUES (?, ?, ?, ?, ?)";
+						 + " (ID, stato, data, utente, indirizzo_spedizione, totale) VALUES (?, ?, ?, ?, ?, ?)";
 		
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
@@ -59,6 +59,7 @@ public class OrdineDM implements Ordine{
 			preparedStatement.setDate(3, new java.sql.Date(ordine.getData().getTime()));
 			preparedStatement.setString(4,ordine.getUtente());
 			preparedStatement.setString(5,ordine.getIndirizzoSpedizione());
+			preparedStatement.setInt(6,ordine.getTotale());
 			
 			preparedStatement.executeUpdate();
 			connection.commit();
@@ -78,7 +79,7 @@ public class OrdineDM implements Ordine{
 		PreparedStatement preparedStatement = null;
 		
 		String updateSQL = "UPDATE " + OrdineDM.TABLE_NAME
-						 + " SET stato = ?, data= ?, utente= ?, indirizzo_spedizione= ?)"
+						 + " SET stato = ?, data= ?, utente= ?, indirizzo_spedizione= ?, totale=?)"
 						 + " WHERE ID = ?";
 		
 		try {
@@ -89,6 +90,7 @@ public class OrdineDM implements Ordine{
 			preparedStatement.setString(3,ordine.getUtente());
 			preparedStatement.setString(4,ordine.getIndirizzoSpedizione());		
 			preparedStatement.setInt(5,ordine.getID());
+			preparedStatement.setInt(6,ordine.getTotale());
 			
 			preparedStatement.executeUpdate();
 			connection.commit();
@@ -151,7 +153,8 @@ public class OrdineDM implements Ordine{
 				bean.setStato(rs.getString("stato"));
 				bean.setData(new java.util.Date(rs.getDate("data").getTime()));
 				bean.setUtente(rs.getString("utente"));
-				bean.setIndirizzoSpedizione(rs.getString("indirizzo_spedizione"));	
+				bean.setIndirizzoSpedizione(rs.getString("indirizzo_spedizione"));
+				bean.setTotale(rs.getInt("totale"));
 			}
 
 		} finally {
@@ -184,11 +187,12 @@ public class OrdineDM implements Ordine{
 
 			while (rs.next()) {
 				OrdineBean bean = new OrdineBean();
-				bean.setID(rs.getInt("id"));
+				bean.setID(rs.getInt("ID"));
 				bean.setStato(rs.getString("stato"));
 				bean.setData(new java.util.Date(rs.getDate("data").getTime()));
 				bean.setUtente(rs.getString("utente"));
 				bean.setIndirizzoSpedizione(rs.getString("indirizzo_spedizione"));
+				bean.setTotale(rs.getInt("totale"));
 				ordini.add(bean);
 			}
 
@@ -224,11 +228,12 @@ public class OrdineDM implements Ordine{
 
 			while (rs.next()) {
 				OrdineBean bean = new OrdineBean();
-				bean.setID(rs.getInt("id"));
+				bean.setID(rs.getInt("iD"));
 				bean.setStato(rs.getString("stato"));
 				bean.setData(new java.util.Date(rs.getDate("data").getTime()));
 				bean.setUtente(rs.getString("utente"));
 				bean.setIndirizzoSpedizione(rs.getString("indirizzo_spedizione"));
+				bean.setTotale(rs.getInt("totale"));
 				ordini.add(bean);
 			}
 

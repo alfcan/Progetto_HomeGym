@@ -9,12 +9,14 @@ public class OrdineBean {
 	private Date data;
 	private String utente;
 	private String indirizzoSpedizione;
+	private int totale;
 	
 	public OrdineBean() {
 		ID = 0;
 		stato = "";
 		utente = "";
 		indirizzoSpedizione = "";
+		totale=0;
 	}
 
 	public int getID() {
@@ -56,6 +58,16 @@ public class OrdineBean {
 	public void setData(Date data) {
 		this.data = data;
 	}
+
+	public int getTotale() {
+		return totale;
+	}
+
+	public void setTotale(int totale) {
+		this.totale = totale;
+	}
+	
+	
 
 	
 }

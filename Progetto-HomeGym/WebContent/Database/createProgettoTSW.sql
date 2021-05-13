@@ -59,7 +59,8 @@ foreign key(utente) references utente(email)
 ON UPDATE CASCADE ON DELETE CASCADE,
 indirizzo_spedizione integer not null,
 foreign key(indirizzo_spedizione) references indirizzo_spedizione(ID)
-ON UPDATE CASCADE ON DELETE CASCADE
+ON UPDATE CASCADE ON DELETE CASCADE,
+totale integer DEFAULT 0
 );
 
 create table categoria(
