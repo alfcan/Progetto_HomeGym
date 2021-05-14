@@ -11,12 +11,8 @@
 		<%@ include file="../fragments/menu.jsp" %>
 		
 		<% request.setAttribute("tipo","Azienda"); %>
-<<<<<<< HEAD
-		
-		<form action="../RegistrazioneControl" method="post">
-=======
 		<form action="/RegistrazioneControl" method="post">
->>>>>>> branch 'master' of https://github.com/alfcan/Progetto_HomeGym.git
+
 			<fieldset>
 				<legend>Registrazione azienda</legend>
 				<label for="ragioneSociale">Ragione Sociale</label>

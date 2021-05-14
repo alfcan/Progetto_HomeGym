@@ -23,7 +23,7 @@ public class RegistrazioneControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String tipo = (String) request.getAttribute("tipo");
+		String tipo = (String) request.getParameter("tipo");
 		
 		UtenteBean utente = new UtenteBean();
 		utente.setEmail(request.getParameter("email"));
