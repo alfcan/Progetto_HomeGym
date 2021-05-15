@@ -72,7 +72,7 @@ create table prodotto(
 codice varchar(30) primary key,
 nome varchar(30) not null,
 descrizione varchar(400) not null,
-prezzo integer not null,
+prezzo float not null,
 iva integer not null,
 sconto integer,
 sottocategoria varchar(30) not null,
@@ -100,7 +100,7 @@ ON UPDATE CASCADE ON DELETE CASCADE,
 prodotto varchar(30) references prodotto(codice)
 ON UPDATE CASCADE ON DELETE CASCADE,
 quantita integer not null,
-prezzo_acquisto integer not null,
+prezzo_acquisto float not null,
 prezzo_iva integer not null,
 primary key (ordine,prodotto)
 );
