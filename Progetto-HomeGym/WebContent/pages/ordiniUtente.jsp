@@ -31,7 +31,6 @@
 					<th><%=ordine.getID()%></th>
 					<th><%=ordine.getStato()%></th>
 					<th><%=ordine.getIndirizzoSpedizione()%></th>
-					<th>da fare il totale</th>
 					<th>
 						<a href="OrdineControl?action=dettagliOrdine&id=<%=ordine.getID()%>">Dettagli</a>
 					</th>

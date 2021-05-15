@@ -11,10 +11,11 @@
 		<%@ include file="../fragments/menu.jsp" %>
 		
 		<% request.setAttribute("tipo","Azienda"); %>
-		<form action="/RegistrazioneControl" method="post">
+		<form action="/Progetto-HomeGym/RegistrazioneControl" method="post">
 
 			<fieldset>
 				<legend>Registrazione azienda</legend>
+				<input type="hidden" name="tipo" value="Persona Fisica">
 				<label for="ragioneSociale">Ragione Sociale</label>
 			    <input id="ragioneSociale" type="text" name="ragioneSociale" placeholder="Ragione Sociale"> 
 			    <br>

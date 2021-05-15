@@ -18,15 +18,14 @@ public class UtenteDM implements Utente{
 		PreparedStatement preparedStatement = null;
 		
 		String insertSQL = "INSERT INTO " + UtenteDM.TABLE_NAME
-						 + " (email, password, dati_pagamento,tipo) VALUES (?, ?, ?, ?)";
+						 + " (email, password, tipo) VALUES (?, ?, ?)";
 		
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement.setString(1, utente.getEmail());
 			preparedStatement.setString(2, utente.getPassword());
-			preparedStatement.setString(3, utente.getDatiPagamento());
-			preparedStatement.setString(4, utente.getTipo());
+			preparedStatement.setString(3, utente.getTipo());
 			
 			preparedStatement.executeUpdate();
 			connection.commit();

@@ -16,10 +16,12 @@
 	<body>
 		<%@ include file="../fragments/header.jsp" %>
 		<%@ include file="../fragments/menu.jsp" %>
+		
 		<h1><%=prodotto.getNome()%></h1>
 		<h1>Prezzo: <%=prodotto.getPrezzo()%></h1>
 		<p><%=prodotto.getDescrizione()%></p>
 		<a href="ProductControl?action=AddToCarrello&codice=<%=prodotto.getCodice()%>">Aggiungi al carrello</a>
+		
 		<%@ include file="../fragments/footer.jsp" %>	
 	</body>
 </html>

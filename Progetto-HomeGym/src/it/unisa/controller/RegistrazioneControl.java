@@ -23,22 +23,19 @@ public class RegistrazioneControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String tipo = (String) request.getParameter("tipo");
-		
 		UtenteBean utente = new UtenteBean();
 		utente.setEmail(request.getParameter("email"));
 		utente.setPassword(request.getParameter("password"));
-		utente.setTipo(tipo);
+		utente.setTipo(request.getParameter("tipo"));
 		
 		UtenteDM utenteDAO = new UtenteDM();
 		try {
 			utenteDAO.doSave(utente);
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		
-		
-		if(tipo.equals("Azienda")) {
+		}	
+	
+		if(request.getParameter("tipo").equals("Azienda")) {
 			AziendaBean azienda = new AziendaBean();
 			azienda.setRagioneSociale(request.getParameter("ragioneSociale"));
 			azienda.setPartitaIva(request.getParameter("partitaIva"));
@@ -58,7 +55,7 @@ public class RegistrazioneControl extends HttpServlet {
 			PersonaFisicaBean persona = new PersonaFisicaBean();
 			persona.setCognome(request.getParameter("cognome"));
 			persona.setNome(request.getParameter("nome"));
-			persona.setDataNascita(new Date(request.getParameter("dataNascita")));
+			persona.setGenere(request.getParameter("genere"));
 			persona.setNumeroTelefono(request.getParameter("telefono"));
 			persona.setEmail(request.getParameter("email"));
 			
@@ -71,7 +68,7 @@ public class RegistrazioneControl extends HttpServlet {
 			}
 		}
 		
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/areaUtente.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(request.getContextPath() + "/pages/areaUtente.jsp");
 		dispatcher.forward(request, response);
 	}
 

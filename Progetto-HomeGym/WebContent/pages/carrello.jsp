@@ -40,9 +40,9 @@
 				<th><%=product.getIva()%></th>
 				<th><%=product.getQtaCarello()%></th>
 				<th>
-					<a href="ProductControl?action=AddToCarrello&codice=<%=product.getCodice()%>">Aggiungi un elemento</a><br>
-					<a href="ProductControl?action=RemoveToCarrello&codice=<%=product.getCodice()%>">Rimuovi un elemento</a><br>
-					<a href="ProductControl?action=DeleteToCarrello&codice=<%=product.getCodice()%>">Elimina elemento</a><br>
+					<a href="/Progetto-HomeGym/ProductControl?action=AddToCarrello&codice=<%=product.getCodice()%>">Aggiungi un elemento</a><br>
+					<a href="/Progetto-HomeGym/ProductControl?action=RemoveToCarrello&codice=<%=product.getCodice()%>">Rimuovi un elemento</a><br>
+					<a href="/Progetto-HomeGym/ProductControl?action=DeleteToCarrello&codice=<%=product.getCodice()%>">Elimina elemento</a><br>
 				</th>
 			<tr>
 			<%
@@ -55,8 +55,10 @@
 			%>
 		</table>
 		
-		<h3>Totale: <%=carrello.getTotale()%></h3><br>
-		<a href="OrdineControl?action=checkout">CheckOut</a>
+		<%if(carrello != null){ %>
+			<h3>Totale: <%=carrello.getTotale()%></h3><br>
+		<%}%>
+		<a href="/Progetto-HomeGym/OrdineControl?action=checkout">CheckOut</a>
 		
 		<%@ include file="../fragments/footer.jsp" %>	
 	</body>

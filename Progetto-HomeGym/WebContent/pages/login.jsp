@@ -18,7 +18,7 @@
 			}
 		%>
 		
-		<form action="../Login" method="post">
+		<form action="/Progetto-HomeGym/Login" method="post">
 			<fieldset>
 			     <legend>Login</legend>
 			     <label for="email">Email</label>

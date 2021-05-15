@@ -59,7 +59,7 @@ public class OrdineDM implements Ordine{
 			preparedStatement.setDate(3, new java.sql.Date(ordine.getData().getTime()));
 			preparedStatement.setString(4,ordine.getUtente());
 			preparedStatement.setString(5,ordine.getIndirizzoSpedizione());
-			preparedStatement.setInt(6,ordine.getTotale());
+			preparedStatement.setDouble(6,ordine.getTotale());
 			
 			preparedStatement.executeUpdate();
 			connection.commit();
@@ -90,7 +90,7 @@ public class OrdineDM implements Ordine{
 			preparedStatement.setString(3,ordine.getUtente());
 			preparedStatement.setString(4,ordine.getIndirizzoSpedizione());		
 			preparedStatement.setInt(5,ordine.getID());
-			preparedStatement.setInt(6,ordine.getTotale());
+			preparedStatement.setDouble(6,ordine.getTotale());
 			
 			preparedStatement.executeUpdate();
 			connection.commit();

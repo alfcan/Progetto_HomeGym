@@ -10,18 +10,21 @@
 		<%@ include file="../fragments/header.jsp" %>
 		<%@ include file="../fragments/menu.jsp" %>	
 	
-		<% request.setAttribute("tipo","Persona Fisica"); %>
-		<form action="/RegistrazioneControl" method="post">
+		<form action="/Progetto-HomeGym/RegistrazioneControl" method="post">
 			<fieldset>
 				<legend>Registrazione</legend>
+				<input type="hidden" name="tipo" value="Persona Fisica">
 				<label for="cognome">Cognome</label>
 			    <input id="cognome" type="text" name="cognome" placeholder="Cognome" required> 
 			    <br>
 			    <label for="nome">Nome</label>
 			    <input id="nome" type="text" name="nome" placeholder="Nome" required> 
 			    <br>
-			    <label for="dataNascita">Data di Nascita</label>
-			    <input id="dataNascita" type="date" name="dataNascita" required> 
+			    <label>Genere</label><br>
+			    <label for="uomo">Uomo</label>
+			    <input id="uomo" type="radio" name="genere" value="Uomo"><br>
+			    <label for="donna">Donna</label>
+				<input type="radio" id="donna" name="genere" value="Donna"><br>
 			    <br>
 			    <label for="telefono">Recapito Telefonico</label>
 			    <input id="telefono" type="text" name="telefono" placeholder="Recapito Telefonico" required> 

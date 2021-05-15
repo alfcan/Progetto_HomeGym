@@ -11,28 +11,26 @@ import it.unisa.model.beans.PersonaFisicaBean;
 
 public class PersonaFisicaDM implements PersonaFisica
 {
-	private static final String TABLE_NAME = "personaFisica";
+	private static final String TABLE_NAME = "persona_fisica";
 	
 	public synchronized void doSave(PersonaFisicaBean personaFisica) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
 		String insertSQL = "INSERT INTO " + PersonaFisicaDM.TABLE_NAME
-						 + " (ID,cognome, nome, dataNascita, genere, numero_telefono, email) VALUES (?, ?, ?, ?, ?, ?,?)";
+						 + " (ID,cognome, nome, genere, numero_telefono, email) VALUES (?, ?, ?, ?, ?,?)";
 		
 		try {
-			java.sql.Date dataNascita = new java.sql.Date(personaFisica.getDataNascita().getTime());
 			connection = DriverManagerConnectionPool.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement.setInt(1, personaFisica.getID());
 			preparedStatement.setString(2, personaFisica.getCognome());
-			preparedStatement.setString(3, personaFisica.getNome() );
-			preparedStatement.setDate(4, dataNascita);
-			preparedStatement.setString(5, personaFisica.getGenere());
-			preparedStatement.setString(6, personaFisica.getNumeroTelefono() );
-			preparedStatement.setString(7, personaFisica.getEmail());
+			preparedStatement.setString(3, personaFisica.getNome() );;
+			preparedStatement.setString(4, personaFisica.getGenere());
+			preparedStatement.setString(5, personaFisica.getNumeroTelefono() );
+			preparedStatement.setString(6, personaFisica.getEmail());
 			
-			preparedStatement.executeUpdate();
+			preparedStatement.execute();
 			connection.commit();
 		} finally {
 			try {
@@ -50,20 +48,18 @@ public class PersonaFisicaDM implements PersonaFisica
 		PreparedStatement preparedStatement = null;
 		
 		String updateSQL = "UPDATE " + PersonaFisicaDM.TABLE_NAME
-						 + " SET cognome= ?, nome= ?, dataNascita= ?, genere= ?,  numero_telefono= ?, email= ?)"
+						 + " SET cognome= ?, nome= ?, genere= ?,  numero_telefono= ?, email= ?)"
 						 + " WHERE ID = ?";
 		
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
 			preparedStatement = connection.prepareStatement(updateSQL);
-			java.sql.Date dataNascita = new java.sql.Date(personaFisica.getDataNascita().getTime());
 			preparedStatement.setString(1, personaFisica.getCognome());
 			preparedStatement.setString(2, personaFisica.getNome() );
-			preparedStatement.setDate(3, dataNascita);
-			preparedStatement.setString(4, personaFisica.getGenere());
-			preparedStatement.setString(5, personaFisica.getNumeroTelefono() );
-			preparedStatement.setString(6, personaFisica.getEmail());
-			preparedStatement.setInt(7, personaFisica.getID());
+			preparedStatement.setString(3, personaFisica.getGenere());
+			preparedStatement.setString(4, personaFisica.getNumeroTelefono() );
+			preparedStatement.setString(5, personaFisica.getEmail());
+			preparedStatement.setInt(6, personaFisica.getID());
 			
 			preparedStatement.executeUpdate();
 			connection.commit();
@@ -125,7 +121,6 @@ public class PersonaFisicaDM implements PersonaFisica
 				bean.setID(rs.getInt("ID"));
 				bean.setCognome(rs.getString("cognome"));
 				bean.setNome(rs.getString("nome"));
-				bean.setDataNascita(new java.util.Date(rs.getDate("data_nascita").getTime()));
 				bean.setGenere(rs.getString("genere"));
 				bean.setNumeroTelefono(rs.getString("numero_telefono"));
 				bean.setEmail(rs.getString("email"));
@@ -163,7 +158,6 @@ public class PersonaFisicaDM implements PersonaFisica
 				bean.setID(rs.getInt("ID"));
 				bean.setCognome(rs.getString("cognome"));
 				bean.setNome(rs.getString("nome"));
-				bean.setDataNascita(new java.util.Date(rs.getDate("data_nascita").getTime()));
 				bean.setGenere(rs.getString("genere"));
 				bean.setNumeroTelefono(rs.getString("numero_telefono"));
 				bean.setEmail(rs.getString("email"));
@@ -204,7 +198,6 @@ public class PersonaFisicaDM implements PersonaFisica
 				bean.setID(rs.getInt("ID"));
 				bean.setCognome(rs.getString("cognome"));
 				bean.setNome(rs.getString("nome"));
-				bean.setDataNascita(new java.util.Date(rs.getDate("data_nascita").getTime()));
 				bean.setGenere(rs.getString("genere"));
 				bean.setNumeroTelefono(rs.getString("numero_telefono"));
 				bean.setEmail(rs.getString("email"));

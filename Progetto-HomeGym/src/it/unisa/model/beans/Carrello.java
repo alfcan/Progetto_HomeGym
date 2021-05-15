@@ -65,5 +65,5 @@ public class Carrello {
 		}
 		return totale;
 	}
-
+	
 }

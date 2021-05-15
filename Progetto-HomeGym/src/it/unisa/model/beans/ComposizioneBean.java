@@ -8,7 +8,7 @@ public class ComposizioneBean implements Serializable
 	private int ordine;
 	private String prodotto;
 	private int quantita;
-	private int prezzoAcquisto;
+	private double prezzoAcquisto;
 	private int ivaAcquisto;
 	
 	public ComposizioneBean()
@@ -45,12 +45,12 @@ public class ComposizioneBean implements Serializable
 		this.quantita = quantita;
 	}
 
-	public int getPrezzoAcquisto() {
+	public double getPrezzoAcquisto() {
 		return prezzoAcquisto;
 	}
 
-	public void setPrezzoAcquisto(int prezzoAcquisto) {
-		this.prezzoAcquisto = prezzoAcquisto;
+	public void setPrezzoAcquisto(double d) {
+		this.prezzoAcquisto = d;
 	}
 
 	public int getIvaAcquisto() {

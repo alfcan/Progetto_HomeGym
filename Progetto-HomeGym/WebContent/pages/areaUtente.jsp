@@ -22,7 +22,7 @@
 		}else{
 		%>
 			<ul>
-				<li><a href="../OrdineControl?action=viewOrdini">I miei ordini</a></li>
+				<li><a href="/Progetto-HomeGym/OrdineControl?action=viewOrdini">I miei ordini</a></li>
 			</ul>
 		<%
 		}

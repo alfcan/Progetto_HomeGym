@@ -10,7 +10,6 @@ public class PersonaFisicaBean implements Serializable
 	private int ID;
 	private String cognome;
 	private String nome;
-	private Date dataNascita;
 	private String genere;
 	private String numeroTelefono;
 	private String email;
@@ -20,7 +19,6 @@ public class PersonaFisicaBean implements Serializable
 		ID = 0;
 		cognome="";
 		nome="";
-		dataNascita = null;
 		genere = "";
 		numeroTelefono="";
 		email="";
@@ -31,12 +29,6 @@ public class PersonaFisicaBean implements Serializable
 	}
 	public void setID(int ID) {
 		this.ID = ID;
-	}
-	public Date getDataNascita() {
-		return dataNascita;
-	}
-	public void setDataNascita(Date dataNascita) {
-		this.dataNascita = dataNascita;
 	}
 	public String getGenere() {
 		return genere;

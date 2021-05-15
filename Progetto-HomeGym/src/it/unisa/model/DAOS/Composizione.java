@@ -16,4 +16,6 @@ public interface Composizione
 	public ComposizioneBean doRetrieveByKey(int ordine, String prodotto) throws SQLException;
 	
 	public ArrayList<ComposizioneBean> doRetrieveAll(String order) throws SQLException;
+	
+	public ArrayList<ComposizioneBean> doRetrieveByOrdine(int id) throws SQLException;
 }

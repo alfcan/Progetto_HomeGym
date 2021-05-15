@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import it.unisa.database.DriverManagerConnectionPool;
 import it.unisa.model.beans.ComposizioneBean;
+import it.unisa.model.beans.ProductBean;
 
 
 public class ComposizioneDM implements Composizione
@@ -27,7 +28,7 @@ public class ComposizioneDM implements Composizione
 			preparedStatement.setInt(1, composizione.getOrdine());
 			preparedStatement.setString(2, composizione.getProdotto() );
 			preparedStatement.setInt(3, composizione.getQuantita());
-			preparedStatement.setInt(4, composizione.getPrezzoAcquisto() );
+			preparedStatement.setDouble(4, composizione.getPrezzoAcquisto() );
 			preparedStatement.setInt(5, composizione.getIvaAcquisto());
 			
 			
@@ -56,7 +57,7 @@ public class ComposizioneDM implements Composizione
 			connection = DriverManagerConnectionPool.getConnection();
 			preparedStatement = connection.prepareStatement(updateSQL);
 			preparedStatement.setInt(1, composizione.getQuantita());
-			preparedStatement.setString(2, composizione.getProdotto());
+			preparedStatement.setDouble(2, composizione.getPrezzoAcquisto());
 			preparedStatement.setInt(3, composizione.getIvaAcquisto());
 			preparedStatement.setInt(4, composizione.getOrdine());
 			preparedStatement.setString(5, composizione.getProdotto());
@@ -122,7 +123,7 @@ public class ComposizioneDM implements Composizione
 				bean.setOrdine(rs.getInt("ordine"));
 				bean.setProdotto(rs.getString("prodotto"));
 				bean.setQuantita(rs.getInt("quantita"));
-				bean.setPrezzoAcquisto(rs.getInt("prezzo_acquisto"));
+				bean.setPrezzoAcquisto(rs.getDouble("prezzo_acquisto"));
 				bean.setIvaAcquisto(rs.getInt("iva_acquisto"));
 				
 			}
@@ -162,7 +163,43 @@ public class ComposizioneDM implements Composizione
 				bean.setOrdine(rs.getInt("ordine"));
 				bean.setProdotto(rs.getString("prodotto"));
 				bean.setQuantita(rs.getInt("quantita"));
-				bean.setPrezzoAcquisto(rs.getInt("prezzo_acquisto"));
+				bean.setPrezzoAcquisto(rs.getDouble("prezzo_acquisto"));
+				bean.setIvaAcquisto(rs.getInt("iva_acquisto"));
+				composizione.add(bean);
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		return composizione;
+	}
+	
+	public synchronized ArrayList<ComposizioneBean> doRetrieveByOrdine(int id) throws SQLException{
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		ArrayList<ComposizioneBean> composizione = new ArrayList<ComposizioneBean>();
+
+		String selectSQL = "SELECT * FROM " + ComposizioneDM.TABLE_NAME
+						  +" WHERE ordine = ?";
+
+		try {
+			connection = DriverManagerConnectionPool.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				ComposizioneBean bean = new ComposizioneBean();
+				bean.setOrdine(rs.getInt("ordine"));
+				bean.setProdotto(rs.getString("prodotto"));
+				bean.setQuantita(rs.getInt("quantita"));
+				bean.setPrezzoAcquisto(rs.getDouble("prezzo_acquisto"));
 				bean.setIvaAcquisto(rs.getInt("iva_acquisto"));
 				composizione.add(bean);
 			}

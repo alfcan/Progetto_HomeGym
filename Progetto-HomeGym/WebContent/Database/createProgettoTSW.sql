@@ -32,7 +32,6 @@ create table persona_fisica(
 ID integer primary key AUTO_INCREMENT,
 cognome varchar(30) not null,
 nome varchar(30) not null,
-data_nascita date not null,
 genere varchar(20) not null,
 numero_telefono varchar(30) not null unique,
 email varchar(30) not null unique,
