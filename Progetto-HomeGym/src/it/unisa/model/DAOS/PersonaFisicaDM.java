@@ -50,7 +50,7 @@ public class PersonaFisicaDM implements PersonaFisica
 		PreparedStatement preparedStatement = null;
 		
 		String updateSQL = "UPDATE " + PersonaFisicaDM.TABLE_NAME
-						 + " SET cognome= ?, nome= ?, dataNascita= ?, genere= ?,  numero_telefono= ?, email= ?)"
+						 + " SET cognome= ?, nome= ?, dataNascita= ?, genere= ?,  numero_telefono= ?, email= ?"
 						 + " WHERE ID = ?";
 		
 		try {

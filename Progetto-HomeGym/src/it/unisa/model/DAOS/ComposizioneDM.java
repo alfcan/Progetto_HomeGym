@@ -49,7 +49,7 @@ public class ComposizioneDM implements Composizione
 		PreparedStatement preparedStatement = null;
 		
 		String updateSQL = "UPDATE " + ComposizioneDM.TABLE_NAME
-						 + " SET quantita= ?, prezzo_acquisto= ?,iva_acquisto= ?)"
+						 + " SET quantita= ?, prezzo_acquisto= ?,iva_acquisto= ?"
 						 + " WHERE ordine= ?, prodotto= ?";
 		
 		try {

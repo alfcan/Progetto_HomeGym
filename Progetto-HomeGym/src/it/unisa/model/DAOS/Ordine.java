@@ -7,7 +7,7 @@ import it.unisa.model.beans.OrdineBean;
 
 public interface Ordine {
 
-public void doSave(OrdineBean ordine) throws SQLException;
+	public void doSave(OrdineBean ordine) throws SQLException;
 	
 	public void doUpdate(OrdineBean ordine) throws SQLException;
 	

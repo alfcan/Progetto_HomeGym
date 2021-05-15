@@ -79,7 +79,7 @@ public class OrdineDM implements Ordine{
 		PreparedStatement preparedStatement = null;
 		
 		String updateSQL = "UPDATE " + OrdineDM.TABLE_NAME
-						 + " SET stato = ?, data= ?, utente= ?, indirizzo_spedizione= ?, totale=?)"
+						 + " SET stato = ?, data= ?, utente= ?, indirizzo_spedizione= ?, totale=?"
 						 + " WHERE ID = ?";
 		
 		try {
