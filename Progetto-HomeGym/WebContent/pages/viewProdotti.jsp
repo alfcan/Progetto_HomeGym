@@ -23,7 +23,6 @@
 		<table>
 			<%
 				if(products != null && products.size() != 0){
-					for(ProductBean product : products){
 			%>
 			<tr>
 				<th>Codice</th>
@@ -32,6 +31,9 @@
 				<th>Iva</th>
 				<th>Azioni</th>
 			</tr>
+			<%
+					for(ProductBean product : products){
+			%>
 			<tr>
 				<th><%=product.getCodice()%></th>
 				<th><%=product.getNome()%></th>

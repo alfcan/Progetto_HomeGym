@@ -192,6 +192,7 @@ public class ComposizioneDM implements Composizione
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setInt(1, id);
 
 			ResultSet rs = preparedStatement.executeQuery();
 

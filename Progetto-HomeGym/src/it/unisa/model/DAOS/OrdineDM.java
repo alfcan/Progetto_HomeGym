@@ -39,7 +39,7 @@ public class OrdineDM implements Ordine{
 				DriverManagerConnectionPool.releaseConnection(connection);
 			}
 		}
-		return idMax;
+		return idMax+1;
 		
 	}
 	

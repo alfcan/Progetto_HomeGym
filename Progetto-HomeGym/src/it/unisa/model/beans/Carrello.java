@@ -38,15 +38,19 @@ public class Carrello {
 	
 	public synchronized void removeProduct(String codice) {
 		int i = 0;
-		for(ProductBean product : products) {
-			if(codice.equals(product.getCodice())) {
-				int newQtaCarello = product.getQtaCarello() - 1;
-				if(newQtaCarello <= 0)
-					products.remove(i);
-				else
-					product.setQtaCarello(newQtaCarello);
+		if(products.size() == 1 && products.get(0).getQtaCarello() == 1) {
+			products = new ArrayList<ProductBean>();
+		} else {
+			for(ProductBean product : products) {
+				if(codice.equals(product.getCodice())) {
+					int newQtaCarello = product.getQtaCarello() - 1;
+					if(newQtaCarello <= 0)
+						products.remove(i);
+					else
+						product.setQtaCarello(newQtaCarello);
+				}
+				i++;
 			}
-			i++;
 		}
 	}
 	

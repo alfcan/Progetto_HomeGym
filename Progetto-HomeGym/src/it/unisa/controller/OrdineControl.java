@@ -34,7 +34,8 @@ public class OrdineControl extends HttpServlet {
 		if(session != null) {
 			UtenteBean utente = (UtenteBean) session.getAttribute("Utente");
 			if(utente == null) {
-				response.sendRedirect("/pages/login.jsp");
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/login.jsp");
+				dispatcher.forward(request, response);
 			}
 			
 			String action = request.getParameter("action");
@@ -42,6 +43,10 @@ public class OrdineControl extends HttpServlet {
 			if(action.equals("checkout")) {
 				Carrello carrello = (Carrello) request.getSession().getAttribute("carrello");
 				ArrayList<ProductBean> prodotti = carrello.getProducts();
+				if(prodotti.size() == 0) {
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/checkoutError.jsp");
+					dispatcher.forward(request, response);
+				}
 				
 				OrdineBean ordine = new OrdineBean();
 				try {
@@ -51,12 +56,11 @@ public class OrdineControl extends HttpServlet {
 				}
 				ordine.setData(new Date());
 				ordine.setStato("Ordinato");
-				ordine.setIndirizzoSpedizione("via standard");
+				ordine.setIndirizzoSpedizione("1111");
 				ordine.setUtente(utente.getEmail());
 				ordine.setTotale(carrello.getTotale());
 				try {
 					ordineDAO.doSave(ordine);
-					System.out.println("save ordine");
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -71,7 +75,6 @@ public class OrdineControl extends HttpServlet {
 					composizione.setIvaAcquisto(product.getIva());
 					try {
 						composizioneDM.doSave(composizione);
-						System.out.println("save composizione");
 					} catch (SQLException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -95,17 +98,16 @@ public class OrdineControl extends HttpServlet {
 					ProductModelDM productDAO = new ProductModelDM();
 					for(ComposizioneBean composizione : composizioni) {
 						ProductBean product = productDAO.doRetrieveByKey(composizione.getProdotto());
+						product.setQtaCarello(composizione.getQuantita());
 						products.add(product);
-						System.out.println("aggiunta prodotto ad array per dettaglio ordine");
 					}
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
-				System.out.println("fuori dal for dettagli ordine");
-				request.getSession().setAttribute("dettagliOrdine", products);
-				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/dettagliOrdini.jsp");
+				request.setAttribute("dettagliOrdine", products);
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/dettagliOrdine.jsp");
 				dispatcher.forward(request, response);
 			}
 	

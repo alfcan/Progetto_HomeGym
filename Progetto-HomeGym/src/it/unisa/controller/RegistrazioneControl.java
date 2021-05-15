@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import it.unisa.model.DAOS.AziendaDM;
 import it.unisa.model.DAOS.PersonaFisicaDM;
@@ -68,7 +69,9 @@ public class RegistrazioneControl extends HttpServlet {
 			}
 		}
 		
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(request.getContextPath() + "/pages/areaUtente.jsp");
+		HttpSession session = request.getSession(true);
+		session.setAttribute("Utente", utente);
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/areaUtente.jsp");
 		dispatcher.forward(request, response);
 	}
 

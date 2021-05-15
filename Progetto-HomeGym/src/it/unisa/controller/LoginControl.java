@@ -30,11 +30,11 @@ public class LoginControl extends HttpServlet {
 				HttpSession session = request.getSession(true);
 				session.setMaxInactiveInterval(60*20);
 				session.setAttribute("Utente", utente);
-				response.sendRedirect(request.getContextPath() + "/pages/areaUtente.jsp");
+				response.sendRedirect("pages/areaUtente.jsp");
 			}
 			else {
 				request.setAttribute("isNotValidLogin", "NotValid");
-				response.sendRedirect(request.getContextPath() + "/pages/login.jsp");
+				response.sendRedirect("pages/login.jsp");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

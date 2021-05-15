@@ -18,28 +18,35 @@
 		<%@ include file="../fragments/header.jsp" %>
 		<%@ include file="../fragments/menu.jsp" %>
 		<h1>Dettaglio Ordine</h1>
-		<table>
 			<%
 				if(products != null && products.size() != 0){
+			%>
+			<table>
+				<tr>
+					<th>Codice</th>
+					<th>Nome</th>
+					<th>Prezzo</th>
+					<th>Iva</th>
+					<th>Quantità</th>
+				</tr>
+			<%
 					for(ProductBean product : products){
 			%>
-			<tr>
-				<th>Codice</th>
-				<th>Nome</th>
-				<th>Prezzo</th>
-				<th>Iva</th>
-			</tr>
-			<tr>
-				<th><%=product.getCodice()%></th>
-				<th><%=product.getNome()%></th>
-				<th><%=product.getPrezzo()%></th>
-				<th><%=product.getIva()%></th>
-			</tr>
+				<tr>
+					<th><%=product.getCodice()%></th>
+					<th><%=product.getNome()%></th>
+					<th><%=product.getPrezzo()%></th>
+					<th><%=product.getIva()%></th>
+					<th><%=product.getQtaCarello()%></th>
+				</tr>
 			<%
 					}
+			%>
+			</table>
+			<%
 				}
 			%>
-		</table>
+		
 		
 		<%@ include file="../fragments/footer.jsp" %>
 	</body>

@@ -55,9 +55,10 @@
 			%>
 		</table>
 		
-		<%if(carrello != null){ %>
-			<h3>Totale: <%=carrello.getTotale()%></h3><br>
+		<%if(carrello != null && carrello.getTotale()!=0){ %>
+			<h3>Totale: <%=carrello.getTotale()%></h3>
 		<%}%>
+		<br>
 		<a href="/Progetto-HomeGym/OrdineControl?action=checkout">CheckOut</a>
 		
 		<%@ include file="../fragments/footer.jsp" %>	
