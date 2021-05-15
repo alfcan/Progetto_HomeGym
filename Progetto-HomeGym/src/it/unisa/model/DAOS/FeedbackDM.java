@@ -7,30 +7,28 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import it.unisa.database.DriverManagerConnectionPool;
-import it.unisa.model.beans.AziendaBean;
+import it.unisa.model.beans.FeedbackBean;
 
-public class AziendaDM implements Azienda
+public class FeedbackDM implements Feedback
 {
-	private static final String TABLE_NAME = "azienda";
+	private static final String TABLE_NAME = "feedback";
 	
 	@Override
-	public synchronized void doSave(AziendaBean azienda) throws SQLException {
+	public synchronized void doSave(FeedbackBean feedback) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
-		String insertSQL = "INSERT INTO " + AziendaDM.TABLE_NAME
-						 + " (ragione_sociale, partita_iva, citta, indirizzo_sede_legale, cap, numero_telefono, email) VALUES (?, ?, ?, ?, ?, ?, ?)";
+		String insertSQL = "INSERT INTO " + FeedbackDM.TABLE_NAME
+						 + " (ID, valutazione, commento, email, prodotto) VALUES (?, ?, ?, ?, ?)";
 		
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setString(1, azienda.getRagioneSociale());
-			preparedStatement.setString(2, azienda.getPartitaIva());
-			preparedStatement.setString(3, azienda.getCitta());
-			preparedStatement.setString(4, azienda.getIndirizzoSedeLegale());
-			preparedStatement.setString(5, azienda.getCap());
-			preparedStatement.setString(6, azienda.getNumeroTelefono());
-			preparedStatement.setString(7, azienda.getEmail());
+			preparedStatement.setInt(1, feedback.getID());
+			preparedStatement.setString(2, feedback.getValutazione());
+			preparedStatement.setString(3, feedback.getCommento());
+			preparedStatement.setString(4, feedback.getEmail());
+			preparedStatement.setString(5, feedback.getProdotto());
 			
 			preparedStatement.executeUpdate();
 			connection.commit();
@@ -45,24 +43,23 @@ public class AziendaDM implements Azienda
 	}
 
 	@Override
-	public synchronized void doUpdate(AziendaBean azienda) throws SQLException {
+	public synchronized void doUpdate(FeedbackBean feedback) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
-		String updateSQL = "UPDATE " + AziendaDM.TABLE_NAME
-						 + " SET ragione_sociale= ?, citta= ?, indirizzo_sede_legale= ?, cap= ?, numero_telefono= ?, email= ?"
-						 + " WHERE partita_iva = ?";
+		String updateSQL = "UPDATE " + FeedbackDM.TABLE_NAME
+						 + " SET valutazione= ?, commento= ?, email= ?, prodotto= ?"
+						 + " WHERE ID = ?";
 		
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
 			preparedStatement = connection.prepareStatement(updateSQL);
-			preparedStatement.setString(1, azienda.getRagioneSociale());
-			preparedStatement.setString(2, azienda.getCitta());
-			preparedStatement.setString(3, azienda.getIndirizzoSedeLegale());
-			preparedStatement.setString(4, azienda.getCap());
-			preparedStatement.setString(5, azienda.getNumeroTelefono());
-			preparedStatement.setString(6, azienda.getEmail());
-			preparedStatement.setString(7, azienda.getPartitaIva());
+			preparedStatement.setString(1, feedback.getValutazione());
+			preparedStatement.setString(2, feedback.getCommento());
+			preparedStatement.setString(3, feedback.getEmail());
+			preparedStatement.setString(4, feedback.getProdotto());
+			preparedStatement.setInt(5, feedback.getID());
+			
 			
 			preparedStatement.executeUpdate();
 			connection.commit();
@@ -77,18 +74,18 @@ public class AziendaDM implements Azienda
 	}
 
 	@Override
-	public synchronized boolean doDelete(String partitaIva) throws SQLException {
+	public synchronized boolean doDelete(int ID) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
 		int result = 0;
 
-		String deleteSQL = "DELETE FROM " + AziendaDM.TABLE_NAME + " WHERE partita_iva = ?";
+		String deleteSQL = "DELETE FROM " + FeedbackDM.TABLE_NAME + " WHERE ID = ?";
 
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
-			preparedStatement.setString(1, partitaIva);
+			preparedStatement.setInt(1, ID);
 
 			result = preparedStatement.executeUpdate();
 			connection.commit();
@@ -105,29 +102,27 @@ public class AziendaDM implements Azienda
 	}
 
 	@Override
-	public synchronized AziendaBean doRetrieveByKey(String partitaIva) throws SQLException {
+	public synchronized FeedbackBean doRetrieveByKey(int ID) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		AziendaBean bean = new AziendaBean();
+		FeedbackBean bean = new FeedbackBean();
 
-		String selectSQL = "SELECT * FROM " + AziendaDM.TABLE_NAME + " WHERE partita_iva = ?";
+		String selectSQL = "SELECT * FROM " + FeedbackDM.TABLE_NAME + " WHERE ID = ?";
 
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
-			preparedStatement.setString(1, partitaIva);
+			preparedStatement.setInt(1, ID);
 			
 
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
-				bean.setRagioneSociale(rs.getString("ragione_sociale"));
-				bean.setCitta(rs.getString("citta"));
-				bean.setIndirizzoSedeLegale(rs.getString("indirizzo_sede_legale"));
-				bean.setCap(rs.getString("cap"));
-				bean.setNumeroTelefono(rs.getString("numero_telefono"));
+				bean.setValutazione(rs.getString("valutazione"));
+				bean.setCommento(rs.getString("commento"));
 				bean.setEmail(rs.getString("email"));
+				bean.setProdotto(rs.getString("prodotto"));
 			}
 
 		} finally {
@@ -142,13 +137,13 @@ public class AziendaDM implements Azienda
 	}
 
 	@Override
-	public synchronized ArrayList<AziendaBean> doRetrieveAll(String order) throws SQLException {
+	public synchronized ArrayList<FeedbackBean> doRetrieveAll(String order) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		ArrayList<AziendaBean> aziende = new ArrayList<AziendaBean>();
+		ArrayList<FeedbackBean> feedback = new ArrayList<FeedbackBean>();
 
-		String selectSQL = "SELECT * FROM " + AziendaDM.TABLE_NAME;
+		String selectSQL = "SELECT * FROM " + FeedbackDM.TABLE_NAME;
 
 		if (order != null && !order.equals("")) {
 			selectSQL += " ORDER BY " + order;
@@ -161,15 +156,13 @@ public class AziendaDM implements Azienda
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
-				AziendaBean bean = new AziendaBean();
-				bean.setRagioneSociale(rs.getString("ragione_sociale"));
-				bean.setPartitaIva(rs.getString("partita_iva"));
-				bean.setCitta(rs.getString("citta"));
-				bean.setIndirizzoSedeLegale(rs.getString("indirizzo_sede_legale"));
-				bean.setCap(rs.getString("cap"));
-				bean.setNumeroTelefono(rs.getString("numero_telefono"));
+				FeedbackBean bean = new FeedbackBean();
+				bean.setID(rs.getInt("ID"));
+				bean.setValutazione(rs.getString("valutazione"));
+				bean.setCommento(rs.getString("commento"));
 				bean.setEmail(rs.getString("email"));
-				aziende.add(bean);
+				bean.setProdotto(rs.getString("prodotto"));
+				feedback.add(bean);
 			}
 
 		} finally {
@@ -180,6 +173,6 @@ public class AziendaDM implements Azienda
 				DriverManagerConnectionPool.releaseConnection(connection);
 			}
 		}
-		return aziende;
+		return feedback;
 	}
 }

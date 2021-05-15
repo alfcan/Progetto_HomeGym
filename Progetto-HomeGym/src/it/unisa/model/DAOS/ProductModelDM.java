@@ -71,6 +71,7 @@ public class ProductModelDM implements ProductModel {
 			preparedStatement.setString(9, product.getCodice());
 			
 			preparedStatement.executeUpdate();
+			connection.commit();
 
 		} finally {
 			try {
@@ -136,6 +137,7 @@ public class ProductModelDM implements ProductModel {
 			preparedStatement.setString(1, codice);
 
 			result = preparedStatement.executeUpdate();
+			connection.commit();
 
 		} finally {
 			try {

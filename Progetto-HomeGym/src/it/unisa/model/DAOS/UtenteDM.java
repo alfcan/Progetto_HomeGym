@@ -45,7 +45,7 @@ public class UtenteDM implements Utente{
 		PreparedStatement preparedStatement = null;
 		
 		String updateSQL = "UPDATE " + UtenteDM.TABLE_NAME
-						 + " SET password= ?, dati_pagamento= ?,tipo = ?)"
+						 + " SET password= ?, dati_pagamento= ?,tipo = ?"
 						 + " WHERE email = ?";
 		
 		try {
@@ -83,6 +83,7 @@ public class UtenteDM implements Utente{
 			preparedStatement.setString(1, email);
 
 			result = preparedStatement.executeUpdate();
+			connection.commit();
 
 		} finally {
 			try {
