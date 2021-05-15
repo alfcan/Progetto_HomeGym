@@ -119,6 +119,7 @@ public class OrdineDM implements Ordine{
 			preparedStatement.setInt(1, ID);
 
 			result = preparedStatement.executeUpdate();
+			connection.commit();
 
 		} finally {
 			try {

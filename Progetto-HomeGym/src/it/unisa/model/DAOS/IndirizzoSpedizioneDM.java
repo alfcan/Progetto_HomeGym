@@ -88,6 +88,7 @@ public class IndirizzoSpedizioneDM implements IndirizzoSpedizione
 			preparedStatement.setInt(1, ID);
 
 			result = preparedStatement.executeUpdate();
+			connection.commit();
 
 		} finally {
 			try {

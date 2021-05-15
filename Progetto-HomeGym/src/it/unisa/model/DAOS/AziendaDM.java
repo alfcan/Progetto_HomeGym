@@ -91,6 +91,7 @@ public class AziendaDM implements Azienda
 			preparedStatement.setString(1, partitaIva);
 
 			result = preparedStatement.executeUpdate();
+			connection.commit();
 
 		} finally {
 			try {

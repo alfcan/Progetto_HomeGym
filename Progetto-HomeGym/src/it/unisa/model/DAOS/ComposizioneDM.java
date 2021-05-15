@@ -89,6 +89,7 @@ public class ComposizioneDM implements Composizione
 			preparedStatement.setString(2, prodotto);
 
 			result = preparedStatement.executeUpdate();
+			connection.commit();
 
 		} finally {
 			try {

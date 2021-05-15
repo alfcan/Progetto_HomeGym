@@ -88,6 +88,7 @@ public class FeedbackDM implements Feedback
 			preparedStatement.setInt(1, ID);
 
 			result = preparedStatement.executeUpdate();
+			connection.commit();
 
 		} finally {
 			try {

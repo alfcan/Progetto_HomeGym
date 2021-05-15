@@ -87,6 +87,7 @@ public class DatiPagamentoDM implements DatiPagamento
 			preparedStatement.setString(1, numeroCarta);
 
 			result = preparedStatement.executeUpdate();
+			connection.commit();
 
 		} finally {
 			try {

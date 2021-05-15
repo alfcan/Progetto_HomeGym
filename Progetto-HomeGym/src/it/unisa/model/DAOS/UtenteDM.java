@@ -84,6 +84,7 @@ public class UtenteDM implements Utente{
 			preparedStatement.setString(1, email);
 
 			result = preparedStatement.executeUpdate();
+			connection.commit();
 
 		} finally {
 			try {
