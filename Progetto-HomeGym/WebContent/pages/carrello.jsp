@@ -5,9 +5,9 @@
 
 <%
 	Carrello carrello = (Carrello) request.getSession().getAttribute("carrello");
-	ArrayList<ProductBean> prodotti = null;
+	ArrayList<ProductBean> products = null;
 	if(carrello != null)	
-		prodotti = carrello.getProducts();
+		products = carrello.getProducts();
 %>
 
 <!DOCTYPE html>
@@ -22,29 +22,36 @@
 		<h1>Carrello</h1>
 		<table>
 			<%
-				if(prodotti != null && prodotti.size() != 0){
-					for(ProductBean product : prodotti){
+				if(products != null && products.size() != 0){
 			%>
+			<thead>
 			<tr>
+				<th>Immagine</th>
 				<th>Codice</th>
 				<th>Nome</th>
 				<th>Prezzo</th>
 				<th>Iva</th>
 				<th>Quantità</th>
-				<th>Azioni</th>
 			</tr>
-			<tr>
-				<th><%=product.getCodice()%></th>
-				<th><%=product.getNome()%></th>
-				<th><%=product.getPrezzo()%></th>
-				<th><%=product.getIva()%></th>
-				<th><%=product.getQtaCarello()%></th>
-				<th>
-					<a href="/Progetto-HomeGym/ProductControl?action=AddToCarrello&codice=<%=product.getCodice()%>">Aggiungi un elemento</a><br>
-					<a href="/Progetto-HomeGym/ProductControl?action=RemoveToCarrello&codice=<%=product.getCodice()%>">Rimuovi un elemento</a><br>
-					<a href="/Progetto-HomeGym/ProductControl?action=DeleteToCarrello&codice=<%=product.getCodice()%>">Elimina elemento</a><br>
-				</th>
-			<tr>
+			</thead>
+			<%
+					for(ProductBean product : products){
+			%>
+			<tbody>
+				<tr>
+					<td><img src="<%=product.getUrlImmagine()%>" width="80" height="80"></td>
+					<td><%=product.getCodice()%></td>
+					<td><%=product.getNome()%></td>
+					<td><%=product.getPrezzo()%></td>
+					<td><%=product.getIva()%></td>
+					<td><%=product.getQtaCarrello()%></td>
+					<td>
+						<a href="/Progetto-HomeGym/ProductControl?action=AddToCarrello&codice=<%=product.getCodice()%>">Aggiungi un elemento</a><br>
+						<a href="/Progetto-HomeGym/ProductControl?action=RemoveToCarrello&codice=<%=product.getCodice()%>">Rimuovi un elemento</a><br>
+						<a href="/Progetto-HomeGym/ProductControl?action=DeleteToCarrello&codice=<%=product.getCodice()%>">Elimina elemento</a><br>
+					</td>
+				<tr>
+			</tbody>
 			<%
 					}
 				}else{

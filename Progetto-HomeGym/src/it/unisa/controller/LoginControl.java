@@ -3,6 +3,7 @@ package it.unisa.controller;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,13 +29,20 @@ public class LoginControl extends HttpServlet {
 			UtenteBean utente = model.doRetrieve(email, password);
 			if(utente != null) {
 				HttpSession session = request.getSession(true);
-				session.setMaxInactiveInterval(60*20);
-				session.setAttribute("Utente", utente);
-				response.sendRedirect("pages/areaUtente.jsp");
+				if(utente.getTipo().equalsIgnoreCase("admin")) {
+					session.setMaxInactiveInterval(60*35);
+					session.setAttribute("Utente", utente);
+					response.sendRedirect("pages/areaUtente.jsp");
+				}else {
+					session.setMaxInactiveInterval(60*20);
+					session.setAttribute("Utente", utente);
+					response.sendRedirect("pages/areaUtente.jsp");
+				}
 			}
 			else {
-				request.setAttribute("isNotValidLogin", "NotValid");
-				response.sendRedirect("pages/login.jsp");
+				request.setAttribute("operazione", "Login non riuscito");
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/operazione.jsp");
+				dispatcher.forward(request, response);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

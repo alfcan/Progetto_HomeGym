@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import it.unisa.database.DriverManagerConnectionPool;
 import it.unisa.model.beans.ComposizioneBean;
@@ -167,6 +168,47 @@ public class OrdineDM implements Ordine{
 			}
 		}
 		return bean;
+	}
+	
+	@Override
+	public synchronized ArrayList<OrdineBean> doRetrieveByDate(Date da, Date a) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		ArrayList<OrdineBean> ordini = new ArrayList<OrdineBean>();
+
+		java.sql.Date daSQL = new java.sql.Date(da.getTime());
+		java.sql.Date aSQL = new java.sql.Date(a.getTime());
+		String selectSQL = "SELECT * FROM Ordine WHERE data >= ? and data <= ?;";
+
+		try {
+			connection = DriverManagerConnectionPool.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setDate(1, daSQL);
+			preparedStatement.setDate(2, aSQL);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				OrdineBean bean = new OrdineBean();
+				bean.setID(rs.getInt("ID"));
+				bean.setStato(rs.getString("stato"));
+				bean.setData(new java.util.Date(rs.getDate("data").getTime()));
+				bean.setUtente(rs.getString("utente"));
+				bean.setIndirizzoSpedizione(rs.getString("indirizzo_spedizione"));
+				bean.setTotale(rs.getInt("totale"));
+				ordini.add(bean);
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		return ordini;
 	}
 	
 	@Override

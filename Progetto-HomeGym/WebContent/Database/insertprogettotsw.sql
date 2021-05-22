@@ -4,6 +4,7 @@ insert into utente value("giuseppeesposito@gmail.com", "giuseppe00", "1234567887
 insert into utente(email, password, tipo) value("fitcardio@gmail.com", "fitcardio00", "Azienda");
 insert into utente(email, password, tipo) value("bodyfless@gmail.com", "Password1", "Azienda");
 insert into utente(email, password, tipo) value("sanosprint@gmail.com", "Password1", "Azienda");
+insert into utente(email, password, tipo) value("admin@homegym.it", "HomeGym2021", "Admin");
 
 insert into azienda value("FitCardio","86334519757","Napoli","Via Nuova Dietro La Vigna","80121","3336810506","fitcardio@gmail.com");
 insert into azienda value("Bodyfless","34546732564","Milano","Via G.B.Vico", "66054", " 3337856432", "bodyfless@gmail.com");
@@ -17,11 +18,10 @@ insert into indirizzo_spedizione value("2222","Via Margherita","Napoli","80121",
 insert into ordine value(1,"Ordinato","23-03-21","giuseppeesposito@gmail.com","1111",16700);
 insert into ordine value(2,"Ordinato","06-10-21","fitcardio@gmail.com","2222",13438);
 
-insert into categoria value (1, "Categoria 1");
-insert into categoria value (2, "Categoria 2");
-insert into categoria value (3, "Categoria 3");
-insert into categoria value (4, "Categoria 4");
-insert into categoria value (5, "Categoria 5");
+insert into categoria value (1, "Fitness");
+insert into categoria value (2, "BodyBuilding");
+insert into categoria value (3, "Manubri");
+insert into categoria value (4, "Accessori");
 
 insert into prodotto value("AAAA1","Technogym MyRun","Design essenziale e compatto, superficie di corsa adattiva, allenamenti personalizzati direttamente sul tuo tablet.","3200","22","0","Fitness","1",".");
 insert into prodotto value("BBBB2","Synchro Forma","Synchro Forma è il cross trainer professionale perfetto per godersi un allenamento total body in tutta semplicità. La fluidità di movimento riduce lo stress articolare e muscolare, rendendolo ideale per dimagrire, tonificare e migliorare la coordinazione.","3590","22","0","Fitness","2",".");

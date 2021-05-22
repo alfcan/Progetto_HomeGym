@@ -44,7 +44,8 @@ public class OrdineControl extends HttpServlet {
 				Carrello carrello = (Carrello) request.getSession().getAttribute("carrello");
 				ArrayList<ProductBean> prodotti = carrello.getProducts();
 				if(prodotti.size() == 0) {
-					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/checkoutError.jsp");
+					request.setAttribute("operazione", "Il carrello è vuoto, visita il nostro catalogo");
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/operazione.jsp");
 					dispatcher.forward(request, response);
 				}
 				
@@ -70,7 +71,7 @@ public class OrdineControl extends HttpServlet {
 					ComposizioneBean composizione = new ComposizioneBean();
 					composizione.setOrdine(ordine.getID());
 					composizione.setProdotto(product.getCodice());
-					composizione.setQuantita(product.getQtaCarello());
+					composizione.setQuantita(product.getQtaCarrello());
 					composizione.setPrezzoAcquisto(product.getPrezzo());
 					composizione.setIvaAcquisto(product.getIva());
 					try {
@@ -84,7 +85,8 @@ public class OrdineControl extends HttpServlet {
 				request.getSession().removeAttribute("carrello");
 				carrello = new Carrello();
 				request.getSession().setAttribute("carrello", carrello);
-				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/carrello.jsp");
+				request.setAttribute("operazione", "Il tuo ordine è stato preso in carico");
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/operazione.jsp");
 				dispatcher.forward(request, response);
 			}
 			
@@ -98,7 +100,9 @@ public class OrdineControl extends HttpServlet {
 					ProductModelDM productDAO = new ProductModelDM();
 					for(ComposizioneBean composizione : composizioni) {
 						ProductBean product = productDAO.doRetrieveByKey(composizione.getProdotto());
-						product.setQtaCarello(composizione.getQuantita());
+						product.setPrezzo(composizione.getPrezzoAcquisto());
+						product.setIva(composizione.getIvaAcquisto());
+						product.setQtaCarrello(composizione.getQuantita());
 						products.add(product);
 					}
 				} catch (SQLException e) {

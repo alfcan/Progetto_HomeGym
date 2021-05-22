@@ -23,7 +23,7 @@ public class Carrello {
 		for(ProductBean product : products) {
 			if(codice.equals(product.getCodice())) {
 				flag = true;
-				product.setQtaCarello(product.getQtaCarello()+1);
+				product.setQtaCarrello(product.getQtaCarrello()+1);
 				products.set(i, product);
 			}
 			i++;
@@ -31,25 +31,20 @@ public class Carrello {
 		if(!flag) {
 			ProductModelDM prodottoDAO = new ProductModelDM();
 			ProductBean product = prodottoDAO.doRetrieveByKey(codice);
-			product.setQtaCarello(1);
+			product.setQtaCarrello(1);
 			products.add(product);
 		}
 	}
 	
 	public synchronized void removeProduct(String codice) {
-		int i = 0;
-		if(products.size() == 1 && products.get(0).getQtaCarello() == 1) {
-			products = new ArrayList<ProductBean>();
-		} else {
-			for(ProductBean product : products) {
-				if(codice.equals(product.getCodice())) {
-					int newQtaCarello = product.getQtaCarello() - 1;
-					if(newQtaCarello <= 0)
-						products.remove(i);
-					else
-						product.setQtaCarello(newQtaCarello);
-				}
-				i++;
+		for(int i = 0; i < products.size(); i++) {
+			ProductBean product = products.get(i);
+			if(codice.equals(product.getCodice())) {
+				int newQtaCarrello = product.getQtaCarrello() - 1;
+				if(newQtaCarrello <= 0)
+					products.remove(i);
+				else
+					product.setQtaCarrello(newQtaCarrello);
 			}
 		}
 	}
@@ -65,7 +60,7 @@ public class Carrello {
 	public synchronized double getTotale() {
 		double totale = 0;
 		for(ProductBean product : products) {
-			totale = totale + (product.getPrezzo()*product.getQtaCarello());
+			totale = totale + (product.getPrezzo()*product.getQtaCarrello());
 		}
 		return totale;
 	}

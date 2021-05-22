@@ -18,6 +18,7 @@
 		<%@ include file="../fragments/menu.jsp" %>
 		
 		<h1><%=prodotto.getNome()%></h1>
+		<img src="<%=prodotto.getUrlImmagine()%>" width="500" height="600">	
 		<h1>Prezzo: <%=prodotto.getPrezzo()%></h1>
 		<p><%=prodotto.getDescrizione()%></p>
 		<a href="ProductControl?action=AddToCarrello&codice=<%=prodotto.getCodice()%>">Aggiungi al carrello</a>

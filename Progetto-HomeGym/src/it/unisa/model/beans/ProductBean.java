@@ -15,7 +15,7 @@ public class ProductBean implements Serializable {
 	private String sottocategoria;
 	private int idCategoria;
 	private String urlImmagine;
-	private int qtaCarello;
+	private int qtaCarrello;
 
 	public ProductBean() {
 		codice = "";
@@ -27,7 +27,7 @@ public class ProductBean implements Serializable {
 		sottocategoria = "";
 		idCategoria = 0;
 		urlImmagine = "";
-		qtaCarello = 0;
+		qtaCarrello = 0;
 	}
 
 	public String getCodice() {
@@ -102,12 +102,12 @@ public class ProductBean implements Serializable {
 		this.urlImmagine = url_immagini;
 	}
 	
-	public int getQtaCarello() {
-		return qtaCarello;
+	public int getQtaCarrello() {
+		return qtaCarrello;
 	}
 
-	public void setQtaCarello(int qtaCarello) {
-		this.qtaCarello = qtaCarello;
+	public void setQtaCarrello(int qtaCarrello) {
+		this.qtaCarrello = qtaCarrello;
 	}
 
 	@Override
