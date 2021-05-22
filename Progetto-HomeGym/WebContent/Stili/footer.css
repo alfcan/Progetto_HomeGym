@@ -1,0 +1,27 @@
+h6#headfoot{ 
+    text-transform: uppercase;
+    font-size: 19px;
+    color: #FFFFFF;
+    font-weight:bold;
+    text-align:left;
+    }
+a.linkfoot{
+    color: #000000 ;
+  text-decoration: none;
+}
+a.linkfoot:hover{
+    color: #000000;
+  text-decoration:underline;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+a#img:hover{
+  text-decoration: none;
+}
+
+h6#testoarancio{
+	color: #FA9600;
+}
+
+

@@ -1,0 +1,159 @@
+p#r{
+    text-align: center;
+    font-weight: bold;
+    
+
+  }
+  body#rece{
+    background: url("foto/imag.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    
+  }
+  h1#rec{
+  
+    margin-left: 5%;
+    margin-top: 2%;
+    text-transform: uppercase;
+    font-style: italic;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+
+h2.z-jarvis-rt-text_mq{
+  
+  border : 2px  rgb(172,172,172) !important; margin: 0 auto;
+  margin-left: 10%;
+  padding-bottom: 5px;
+      padding-top: 5px;
+  
+  margin-right: 50%;
+background: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 90%;
+  
+}
+font#second{
+      background-color:rgba(138, 128, 128, 0.164);
+      color: black;
+      font-size: 113%;
+      padding:1%;
+      font-weight: bold;
+      text-transform: capitalize;
+}
+div.containerrecesso{
+  background: rgb(224, 224, 224) !important;padding-left: 3%;
+    border: 2px solid #686662 !important; margin: 0 auto;
+margin-left: 5%;
+margin-right: 30%;
+padding-right: 5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+a.index{
+  margin-left: 10%;
+  border : 2px outset rgb(172, 172, 172);
+background: rgb(0, 0, 0);
+width: 300px;
+  color: rgb(255, 255, 255);
+        text-decoration: none;
+        font-size: 80%;
+        font-family: Arial, Helvetica, sans-serif;
+        display: block;
+        text-align: center;
+        text-transform: uppercase;
+        padding: 0.4%;
+
+}
+a.index{
+  margin-left: 10%;
+  border-radius : 10px 10px 10px 10px;
+  border:  outset rgb(172, 172, 172);
+background: rgba(0, 0, 0, 0.774);
+width: 300px;
+  color: rgb(255, 255, 255);
+        text-decoration: none;
+        font-size: 80%;
+        font-family: Arial, Helvetica, sans-serif;
+        display: block;
+        text-align: center;
+        text-transform: uppercase;
+        padding: 0.4%;
+
+}
+  div#tab{
+    margin-left: 5%;
+    margin-top: 2%;
+    text-transform: uppercase;
+    font-weight: bold;
+  } 
+  h2#bambino{
+    margin-left: 5%;
+    margin-top: 2%;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  
+  h2#uomo{
+    margin-left: 5%;
+    margin-top: 2%;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  p#fr{
+    margin-left: 5%;
+    margin-top: 2%;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  tr#uno{
+    background-color: #f3f3f3
+    }
+    tr#due{
+    background-color: white;
+    }
+    a.sesso{
+        color: rgb(70, 67, 67);
+        text-decoration: none;
+        font-size: 100%;
+    }
+    a.sesso:hover{
+      text-decoration: underline;
+      font-weight: bold;
+    }
+    body#tab{
+      background: url("foto/tab.jpg") no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      
+    }
+    th.table{
+      background-color:rgba(182, 176, 176, 0.959);
+    }
+
+    
+    h5.nomi{
+      font-family: inherit;
+  text-transform: uppercase;
+  font-size: 20px;
+  line-height: 17px;
+  color: rgb(0, 0, 0);
+  font-weight:bold;}
+
+  div.body
+  {
+    margin-bottom: 40%;
+  }
+
+  table.tabl{
+    width: 90%;
+  
+  }
+    

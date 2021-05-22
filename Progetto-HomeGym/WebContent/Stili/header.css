@@ -1,0 +1,142 @@
+#navbar1{                               /*navbar1*/
+    background-color: white;
+}
+
+#navbar2{                             /*navbar2*/
+    background-color: #3F3F3F;
+}
+
+#logo{                       /*logo*/
+    margin-left: 15%;
+}
+
+#collegamento{                /*collegamenti in alto a DX(ACCEDI E REGISTRATI)*/
+    color: rgb(117, 117, 117);
+    font-weight: bold;
+    border-left-color: rgb(66, 66, 66);
+    border-left-style: solid;
+    border-left-width: 1px;
+}
+#collegamento:hover{
+    color: black;
+    text-decoration: underline;
+}
+
+#collegamento2{           /*collegamento in alto a DX(CONTATTI E SUPPORTO)*/
+    color: rgb(66, 66, 66);
+}
+#collegamento2:hover{
+    text-decoration: underline;
+}
+
+
+/*carrello e wish*/
+.bottone{
+    background-color: white;
+    border-color: black !important;
+}
+.bottone:hover{
+    background-color: rgb(233, 229, 229);
+}
+/*fine carrello e wish*/
+
+/*carello*/
+#carrello{
+    margin-left: 15%;
+    border-width: 2.5px !important;
+}
+/*fine carrello*/
+
+/*wishlist*/
+#wishlist{
+    margin-left: 10px ;
+    margin-right: 15% ;
+    border-width: 2.5px !important;
+}
+/*fine carrello*/
+
+#collegamento3{           /*categorie tranne sale*/
+    color:white;
+    font-weight: bold;
+}
+#collegamento3:hover{
+    color: black;
+    background-color: white;
+}
+
+#collegamento4{           /*sale*/
+    color: rgb(219, 16, 16);
+    font-weight: bold;
+}
+#collegamento4:hover{
+    color: white;
+    background-color: rgb(173, 14, 14);
+}
+
+
+#cerca {        /*bottone search*/
+    color: white;
+    border-color: white;
+    margin-left: 3%;
+}
+#cerca:hover{       /*bottone search quando viene passato sopra col mouse*/
+    color:black;
+    background-color:rgb(233, 229, 229);
+    font-weight: bold;
+}
+
+#tastino1{   /*tastino responsive prima barra*/
+   background-color:white;
+    border-color:  rgb(0, 0, 0);
+    border-width: medium;
+}
+
+
+#tastino2{   /*tastino responsive prima barra*/
+    background-color:white;
+    border-color: rgb(59, 57, 57);
+    border-width: medium;
+}
+
+#togg{
+    background-color: white;
+}
+
+/*media query*/
+@media (max-width: 575.98px) { 
+    #collegamento{                /*collegamenti in alto a DX(ACCEDI E REGISTRATI)*/
+        border-left-width: 0px;
+    }
+    #wishlist{
+    margin-right: 0px;
+    margin-bottom: 15%;
+    }
+}
+
+
+@media (max-width: 767.98px) {
+    #collegamento{                /*collegamenti in alto a DX(ACCEDI E REGISTRATI)*/
+        border-left-width: 0px;
+    }
+    #wishlist{
+    margin-right: 0px;
+    margin-bottom: 15%;
+    }
+}
+
+
+@media (max-width: 991.98px) {
+    #collegamento{                /*collegamenti in alto a DX(ACCEDI E REGISTRATI)*/
+        border-left-width: 0px;
+        
+    }
+    #wishlist{
+    margin-right: 0px;
+    margin-bottom: 3%;
+    }
+}
+
+
+@media (max-width: 1199.98px) {
+    
+}

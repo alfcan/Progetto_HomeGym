@@ -1,0 +1,25 @@
+/*CENTRO*/
+#paragrafo{   
+    background-color: rgba(0, 0, 0, 0.534);
+    color:white;
+    font-weight: 110%;
+}
+
+@media (max-width: 767px){
+.d-md-block {
+    display: block!important;
+}
+#paragrafo{
+    font-size: 80%;
+}
+}
+
+@media (max-width: 380px){
+.d-md-block {
+    display: block!important;
+}
+#paragrafo{
+    font-size: 70%;
+}
+}
+/*FINE CENTRO*/
