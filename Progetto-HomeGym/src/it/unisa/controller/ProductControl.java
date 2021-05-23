@@ -38,7 +38,6 @@ public class ProductControl extends HttpServlet {
 				try {
 					prodotti = model.doRetrieveAll(null);
 				} catch (SQLException e) {
-					System.out.println("Errore ProductControl doRetrieveAll");
 					e.printStackTrace();
 				}
 				request.setAttribute("prodotti", prodotti);

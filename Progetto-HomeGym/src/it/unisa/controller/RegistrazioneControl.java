@@ -71,7 +71,8 @@ public class RegistrazioneControl extends HttpServlet {
 		
 		HttpSession session = request.getSession(true);
 		session.setAttribute("Utente", utente);
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/areaUtente.jsp");
+		request.setAttribute("operazione", "Registrazione effettuata con successo");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/operazione.jsp");
 		dispatcher.forward(request, response);
 	}
 

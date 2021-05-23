@@ -32,7 +32,7 @@ public class ProductModelDM implements ProductModel {
 			preparedStatement.setInt(6, product.getSconto());
 			preparedStatement.setString(7, product.getSottocategoria());
 			preparedStatement.setInt(8, product.getIdCategoria());
-			preparedStatement.setDouble(9, product.getPrezzo());
+			preparedStatement.setString(9, product.getUrlImmagine());
 			
 			preparedStatement.executeUpdate();
 
@@ -67,7 +67,7 @@ public class ProductModelDM implements ProductModel {
 			preparedStatement.setInt(5, product.getSconto());
 			preparedStatement.setString(6, product.getSottocategoria());
 			preparedStatement.setInt(7, product.getIdCategoria());
-			preparedStatement.setDouble(8, product.getPrezzo());
+			preparedStatement.setString(8, product.getUrlImmagine());
 			preparedStatement.setString(9, product.getCodice());
 			
 			preparedStatement.executeUpdate();

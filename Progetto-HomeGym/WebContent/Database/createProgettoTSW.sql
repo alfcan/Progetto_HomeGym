@@ -97,7 +97,7 @@ ordine integer not null,
 foreign key(ordine) references ordine(ID)
 ON UPDATE CASCADE ON DELETE CASCADE,
 prodotto varchar(30) references prodotto(codice)
-ON UPDATE CASCADE ON DELETE CASCADE,
+ON UPDATE CASCADE ON DELETE NO ACTION,
 quantita integer not null,
 prezzo_acquisto float not null,
 iva_acquisto integer not null,

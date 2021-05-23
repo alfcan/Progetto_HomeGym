@@ -19,6 +19,14 @@
 		<%
 		if(utente == null){	
 			response.sendRedirect("login.jsp");
+		}else if (utente.getTipo().equalsIgnoreCase("admin")){
+		%>
+			<ul>
+				<li><a href="/Progetto-HomeGym/AdminControl?action=gestioneOrdini">Gestione Ordini</a></li>
+				<li><a href="/Progetto-HomeGym/AdminControl?action=gestioneCatalogo">Gestione Catalogo</a></li>
+				<li><a href="/Progetto-HomeGym/AdminControl?action=gestioneClienti">I Tuoi Clienti</a></li>
+			</ul>
+		<%
 		}else{
 		%>
 			<ul>

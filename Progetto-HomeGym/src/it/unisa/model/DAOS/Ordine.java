@@ -2,6 +2,7 @@ package it.unisa.model.DAOS;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import it.unisa.model.beans.OrdineBean;
 
@@ -18,5 +19,7 @@ public interface Ordine {
 	public ArrayList<OrdineBean> doRetrieveAll(String order) throws SQLException;
 
 	public ArrayList<OrdineBean> doRetrieveAllByUtente(String utente) throws SQLException;
+
+	public ArrayList<OrdineBean> doRetrieveByDate(Date da, Date a) throws SQLException;
 	
 }

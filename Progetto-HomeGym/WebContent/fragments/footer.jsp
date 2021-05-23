@@ -23,7 +23,7 @@
 
           <!-- Grid column -->
           <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
-            <h6 id="headfoot" class="mb-0">Resta connesso con noi sui social</h6>
+            <h6 id="headfoot" class="mb-0">Resta connesso con noi sui social</h6> 
           </div>
           <!-- Grid column -->
 
