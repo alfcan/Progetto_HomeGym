@@ -13,12 +13,12 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<meta charset="ISO-8859-1">
 		<title>HomeGym - Carrello</title>
 	</head>
 	<body>
 		<%@ include file="../fragments/header.jsp" %>
-		<%@ include file="../fragments/menu.jsp" %>
 		<h1>Carrello</h1>
 		<table>
 			<%
@@ -46,7 +46,11 @@
 					<td><%=product.getIva()%></td>
 					<td><%=product.getQtaCarrello()%></td>
 					<td>
-						<a href="/Progetto-HomeGym/ProductControl?action=AddToCarrello&codice=<%=product.getCodice()%>">Aggiungi un elemento</a><br>
+						<%if(product.getQtaMagazzino() >= 1){ %>
+							<a href="/Progetto-HomeGym/ProductControl?action=AddToCarrello&codice=<%=product.getCodice()%>">Aggiungi un elemento</a><br>
+						<%} else { %>
+							Disponibile solo in queste quantità<br>
+						<%} %>
 						<a href="/Progetto-HomeGym/ProductControl?action=RemoveToCarrello&codice=<%=product.getCodice()%>">Rimuovi un elemento</a><br>
 						<a href="/Progetto-HomeGym/ProductControl?action=DeleteToCarrello&codice=<%=product.getCodice()%>">Elimina elemento</a><br>
 					</td>
@@ -68,6 +72,8 @@
 		<br>
 		<a href="/Progetto-HomeGym/OrdineControl?action=checkout">CheckOut</a>
 		
-		<%@ include file="../fragments/footer.jsp" %>	
+		<%@ include file="../fragments/footer.jsp" %>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    	<script src="js/bootstrap.min.js"></script>	
 	</body>
 </html>

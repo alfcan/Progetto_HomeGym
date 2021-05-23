@@ -3,8 +3,8 @@
 <%@ page import="it.unisa.model.beans.*" %>
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="css/bootstrap.min.css">
 	<head>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<meta charset="ISO-8859-1">
 		<title>HomeGym</title>
 	</head>

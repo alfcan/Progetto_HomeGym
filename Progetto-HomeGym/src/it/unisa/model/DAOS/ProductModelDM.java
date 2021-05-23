@@ -206,7 +206,7 @@ public class ProductModelDM implements ProductModel {
 		ArrayList<ProductBean> products = new ArrayList<ProductBean>();
 
 		String selectSQL = "SELECT * FROM " + ProductModelDM.TABLE_NAME
-						 + "WHERE categoria = ?";
+						 + " WHERE categoria = ?";
 
 		try {
 			connection = DriverManagerConnectionPool.getConnection();

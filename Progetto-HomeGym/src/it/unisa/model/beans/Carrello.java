@@ -23,7 +23,10 @@ public class Carrello {
 		for(ProductBean product : products) {
 			if(codice.equals(product.getCodice())) {
 				flag = true;
-				product.setQtaCarrello(product.getQtaCarrello()+1);
+				if(product.getQtaMagazzino() >= 1) {
+					product.setQtaCarrello(product.getQtaCarrello()+1);
+					product.setQtaMagazzino(product.getQtaMagazzino() - 1);
+				}
 				products.set(i, product);
 			}
 			i++;
@@ -32,6 +35,7 @@ public class Carrello {
 			ProductModelDM prodottoDAO = new ProductModelDM();
 			ProductBean product = prodottoDAO.doRetrieveByKey(codice);
 			product.setQtaCarrello(1);
+			product.setQtaMagazzino(product.getQtaMagazzino() - 1);
 			products.add(product);
 		}
 	}
@@ -40,6 +44,7 @@ public class Carrello {
 		for(int i = 0; i < products.size(); i++) {
 			ProductBean product = products.get(i);
 			if(codice.equals(product.getCodice())) {
+				product.setQtaMagazzino(product.getQtaMagazzino() + 1);
 				int newQtaCarrello = product.getQtaCarrello() - 1;
 				if(newQtaCarrello <= 0)
 					products.remove(i);

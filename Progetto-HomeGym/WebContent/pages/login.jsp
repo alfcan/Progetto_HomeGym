@@ -2,21 +2,12 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>HomeGym - Login</title>
 	</head>
 	<body>
 		<%@ include file="../fragments/header.jsp" %>
-		<%@ include file="../fragments/menu.jsp" %>
-		
-		<%
-			String isNotValidLogin = (String) request.getAttribute("isNotValidLogin");
-			if(isNotValidLogin != null){
-		%>
-				<h5>Email o password non corretta</h1>
-		<%
-			}
-		%>
 		
 		<form action="/Progetto-HomeGym/Login" method="post">
 			<fieldset>
@@ -36,5 +27,7 @@
 		<a href="registerAzienda.jsp">Sei un'azienda e non sei ancora registrata? Registarti qui.</a>
 		
 		<%@ include file="../fragments/footer.jsp" %>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    	<script src="js/bootstrap.min.js"></script>
 	</body>
 </html>

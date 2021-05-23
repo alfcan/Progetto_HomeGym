@@ -10,6 +10,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<meta charset="ISO-8859-1">
 		<%if(utente.getTipo().equalsIgnoreCase("admin")) {%>
 			<title>HomeGym - Amministratore</title>
@@ -20,7 +21,6 @@
 	<body>
 	
 		<%@ include file="../fragments/header.jsp" %>
-		<%@ include file="../fragments/menu.jsp" %>
 		
 		<%if(utente.getTipo().equalsIgnoreCase("admin")) {%>
 			<h1>Ordini dell'utente selezionato</h1>
@@ -63,5 +63,7 @@
 			<%} %>
 			
 		<%@ include file="../fragments/footer.jsp" %>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    	<script src="js/bootstrap.min.js"></script>
 	</body>
 </html>

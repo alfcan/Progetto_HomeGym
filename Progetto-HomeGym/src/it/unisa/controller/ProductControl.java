@@ -35,8 +35,9 @@ public class ProductControl extends HttpServlet {
 		if(action != null) {
 			if(action.equals("ViewProdotti")) {
 				ArrayList<ProductBean> prodotti = null;
+				int cat = Integer.parseInt(request.getParameter("cat"));
 				try {
-					prodotti = model.doRetrieveAll(null);
+					prodotti = model.doRetrieveCategoria(cat);
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
