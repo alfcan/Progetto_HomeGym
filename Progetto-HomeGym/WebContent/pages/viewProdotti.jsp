@@ -24,7 +24,6 @@
 			<thead>
 			<tr>
 				<th>Immagine</th>
-				<th>Codice</th>
 				<th>Nome</th>
 				<th>Prezzo</th>
 				<th>Iva</th>
@@ -36,7 +35,6 @@
 			%>
 			<tr>
 				<td><img src="<%=product.getUrlImmagine()%>" width="80" height="80"></td>
-				<td><%=product.getCodice()%></td>
 				<td><%=product.getNome()%></td>
 				<td><%=product.getPrezzo()%></td>
 				<td><%=product.getIva()%></td>

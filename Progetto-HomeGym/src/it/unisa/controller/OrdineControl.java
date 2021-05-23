@@ -47,47 +47,47 @@ public class OrdineControl extends HttpServlet {
 					request.setAttribute("operazione", "Il carrello è vuoto, visita il nostro catalogo");
 					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/operazione.jsp");
 					dispatcher.forward(request, response);
-				}
-				
-				OrdineBean ordine = new OrdineBean();
-				try {
-					ordine.setID(ordineDAO.getIdCodice());
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-				ordine.setData(new Date());
-				ordine.setStato("Ordinato");
-				ordine.setIndirizzoSpedizione("1111");
-				ordine.setUtente(utente.getEmail());
-				ordine.setTotale(carrello.getTotale());
-				try {
-					ordineDAO.doSave(ordine);
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-				for(ProductBean product : prodotti) {
-					ComposizioneBean composizione = new ComposizioneBean();
-					composizione.setOrdine(ordine.getID());
-					composizione.setProdotto(product.getCodice());
-					composizione.setQuantita(product.getQtaCarrello());
-					composizione.setPrezzoAcquisto(product.getPrezzo());
-					composizione.setIvaAcquisto(product.getIva());
+				}else {
+					OrdineBean ordine = new OrdineBean();
 					try {
-						composizioneDM.doSave(composizione);
+						ordine.setID(ordineDAO.getIdCodice());
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					ordine.setData(new Date());
+					ordine.setStato("Ordinato");
+					ordine.setIndirizzoSpedizione("1111");
+					ordine.setUtente(utente.getEmail());
+					ordine.setTotale(carrello.getTotale());
+					try {
+						ordineDAO.doSave(ordine);
 					} catch (SQLException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+					
+					for(ProductBean product : prodotti) {
+						ComposizioneBean composizione = new ComposizioneBean();
+						composizione.setOrdine(ordine.getID());
+						composizione.setProdotto(product.getCodice());
+						composizione.setQuantita(product.getQtaCarrello());
+						composizione.setPrezzoAcquisto(product.getPrezzo());
+						composizione.setIvaAcquisto(product.getIva());
+						try {
+							composizioneDM.doSave(composizione);
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					
+					request.getSession().removeAttribute("carrello");
+					carrello = new Carrello();
+					request.getSession().setAttribute("carrello", carrello);
+					request.setAttribute("operazione", "Il tuo ordine è stato preso in carico");
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/operazione.jsp");
+					dispatcher.forward(request, response);
 				}
-				
-				request.getSession().removeAttribute("carrello");
-				carrello = new Carrello();
-				request.getSession().setAttribute("carrello", carrello);
-				request.setAttribute("operazione", "Il tuo ordine è stato preso in carico");
-				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/operazione.jsp");
-				dispatcher.forward(request, response);
 			}
 			
 			if(action.equals("dettagliOrdine")) {

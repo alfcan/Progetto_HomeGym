@@ -28,7 +28,7 @@
   <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar7">
       <ul class="navbar-nav ml-auto flex-nowrap">
           <li class="nav-item">
-              <a id="collegamento2" href="<%=request.getContextPath()%>/pages/faq.html" class="nav-link">Domande Frequenti</a>
+              <a id="collegamento2" href="<%=request.getContextPath()%>/faq.html" class="nav-link">Domande Frequenti</a>
           </li>
           <%if(session.getAttribute("Utente")==null){ %>
 	          <li class="nav-item">

@@ -163,6 +163,7 @@ public class AdminControl extends HttpServlet {
 			product.setDescrizione(request.getParameter("descrizione"));
 			product.setPrezzo(Double.parseDouble(request.getParameter("prezzo")));
 			product.setIva(Integer.parseInt(request.getParameter("iva")));
+			product.setQtaMagazzino(Integer.parseInt(request.getParameter("qtaMagazzino")));
 			product.setIdCategoria(Integer.parseInt(request.getParameter("categoria")));
 			product.setUrlImmagine("fotoProdotti/"+request.getParameter("img"));
 			
@@ -185,6 +186,7 @@ public class AdminControl extends HttpServlet {
 			product.setDescrizione(request.getParameter("descrizione"));
 			product.setPrezzo(Double.parseDouble(request.getParameter("prezzo")));
 			product.setIva(Integer.parseInt(request.getParameter("iva")));
+			product.setQtaMagazzino(Integer.parseInt(request.getParameter("qtaMagazzino")));
 			product.setIdCategoria(Integer.parseInt(request.getParameter("categoria")));
 			product.setUrlImmagine("fotoProdotti/"+request.getParameter("img"));
 			
