@@ -11,6 +11,7 @@ public class ProductBean implements Serializable {
 	private String descrizione;
 	private double prezzo;
 	private int iva;
+	private int qtaMagazzino;
 	private int sconto;
 	private String sottocategoria;
 	private int idCategoria;
@@ -23,6 +24,7 @@ public class ProductBean implements Serializable {
 		descrizione = "";
 		prezzo = 0;
 		iva = 0;
+		qtaMagazzino = 0;
 		sconto = 0;
 		sottocategoria = "";
 		idCategoria = 0;
@@ -70,6 +72,14 @@ public class ProductBean implements Serializable {
 		this.iva = iva;
 	}
 
+	public int getQtaMagazzino() {
+		return qtaMagazzino;
+	}
+
+	public void setQtaMagazzino(int qtaMagazzino) {
+		this.qtaMagazzino = qtaMagazzino;
+	}
+	
 	public int getSconto() {
 		return sconto;
 	}

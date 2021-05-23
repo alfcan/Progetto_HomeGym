@@ -27,37 +27,23 @@
   </div>
   <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar7">
       <ul class="navbar-nav ml-auto flex-nowrap">
-      <%UtenteBean utw=(UtenteBean) session.getAttribute("UtenteBean");
-      if(utw!=null){
-      if(utw.getTipo().equalsIgnoreCase("ADMIN"))
-      {%>
-      	<li classs="nov-item">
-      	<a id="collegamento2" style="background-color:Orange;" href="" class="nav-link"><b>Administration Page</b></a>
-      	</li>
-      	<%}}%>
           <li class="nav-item">
               <a id="collegamento2" href="faq.html" class="nav-link">Domande Frequenti</a>
           </li>
           <%if(session.getAttribute("Utente")==null){ %>
 	          <li class="nav-item">
-	              <a id="collegamento" href="login.jsp" class="nav-link">Accedi</a>
+	              <a id="collegamento" href=<%=request.getContextPath() + "/pages/login.jsp"%> class="nav-link">Accedi</a>
 	          </li>
-		          <li class="nav-item">
-		              <a id="collegamento" href="registerPersonaFisica.jsp" class="nav-link">Registrati ora come persona</a>
-		          </li>
-		          <li class="nav-item">
-		              <a id="collegamento" href="registerAzienda.jsp" class="nav-link">Registrati ora come azienda</a>
-		          </li>
-
-          <%} else{
-        	  Utente ute=(Utente) session.getAttribute("Utente");
-          %>
+          <%} else{%>
           <li class="nav-item">
               <a id="collegamento" href="<%=request.getContextPath()%>/servletLogout" class="nav-link">Logout</a>
           </li>
+          <li class="nav-item">
+              <a id="collegamento" href="<%=request.getContextPath()%>/pages/areaUtente.jsp" class="nav-link">Area Utente</a>
+          </li>
           <%} %>
           <li class="nav-item">
-            <a href="carrello.jsp"><button type="button" class="btn btn-secondary bottone" id="carrello"><img src="foto/car.png"></button></a>
+            <a href="<%=request.getContextPath()%>/pages/carrello.jsp"><button type="button" class="btn btn-secondary bottone" id="carrello"><img src="foto/car.png"></button></a>
           </li>
           
       </ul>

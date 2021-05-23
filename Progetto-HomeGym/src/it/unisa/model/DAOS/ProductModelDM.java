@@ -19,7 +19,7 @@ public class ProductModelDM implements ProductModel {
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + ProductModelDM.TABLE_NAME
-				+ " (codice, nome, descrizione, prezzo, iva, sconto, sottocategoria, categoria, url_immagine) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ " (codice, nome, descrizione, prezzo, iva, quantitaMagazzino, sconto, sottocategoria, categoria, url_immagine) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
@@ -29,10 +29,11 @@ public class ProductModelDM implements ProductModel {
 			preparedStatement.setString(3, product.getDescrizione());
 			preparedStatement.setDouble(4, product.getPrezzo());
 			preparedStatement.setInt(5, product.getIva());
-			preparedStatement.setInt(6, product.getSconto());
-			preparedStatement.setString(7, product.getSottocategoria());
-			preparedStatement.setInt(8, product.getIdCategoria());
-			preparedStatement.setString(9, product.getUrlImmagine());
+			preparedStatement.setInt(6, product.getQtaMagazzino());
+			preparedStatement.setInt(7, product.getSconto());
+			preparedStatement.setString(8, product.getSottocategoria());
+			preparedStatement.setInt(9, product.getIdCategoria());
+			preparedStatement.setString(10, product.getUrlImmagine());
 			
 			preparedStatement.executeUpdate();
 
@@ -54,7 +55,7 @@ public class ProductModelDM implements ProductModel {
 		PreparedStatement preparedStatement = null;
 
 		String updateSQL = "UPDATE " + ProductModelDM.TABLE_NAME
-				+ " SET nome = ?, descrizione = ?, prezzo = ?, iva = ?, sconto = ?, sottocategoria = ?, categoria = ?, url_immagine = ?"
+				+ " SET nome = ?, descrizione = ?, prezzo = ?, iva = ?, quantitaMagazzino = ?, sconto = ?, sottocategoria = ?, categoria = ?, url_immagine = ?"
 				+ " WHERE codice = ?";
 
 		try {
@@ -64,11 +65,12 @@ public class ProductModelDM implements ProductModel {
 			preparedStatement.setString(2, product.getDescrizione());
 			preparedStatement.setDouble(3, product.getPrezzo());
 			preparedStatement.setInt(4, product.getIva());
-			preparedStatement.setInt(5, product.getSconto());
-			preparedStatement.setString(6, product.getSottocategoria());
-			preparedStatement.setInt(7, product.getIdCategoria());
-			preparedStatement.setString(8, product.getUrlImmagine());
-			preparedStatement.setString(9, product.getCodice());
+			preparedStatement.setInt(5, product.getQtaMagazzino());
+			preparedStatement.setInt(6, product.getSconto());
+			preparedStatement.setString(7, product.getSottocategoria());
+			preparedStatement.setInt(8, product.getIdCategoria());
+			preparedStatement.setString(9, product.getUrlImmagine());
+			preparedStatement.setString(10, product.getCodice());
 			
 			preparedStatement.executeUpdate();
 			connection.commit();
@@ -105,6 +107,7 @@ public class ProductModelDM implements ProductModel {
 				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setPrezzo(rs.getInt("prezzo"));
 				bean.setIva(rs.getInt("iva"));
+				bean.setQtaMagazzino(rs.getInt("quantitaMagazzino"));
 				bean.setSconto(rs.getInt("sconto"));
 				bean.setSottocategoria(rs.getString("sottocategoria"));
 				bean.setIdCategoria(rs.getInt("categoria"));
@@ -176,6 +179,50 @@ public class ProductModelDM implements ProductModel {
 				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setPrezzo(rs.getInt("prezzo"));
 				bean.setIva(rs.getInt("iva"));
+				bean.setQtaMagazzino(rs.getInt("quantitaMagazzino"));
+				bean.setSconto(rs.getInt("sconto"));
+				bean.setSottocategoria(rs.getString("sottocategoria"));
+				bean.setIdCategoria(rs.getInt("categoria"));
+				bean.setUrlImmagine(rs.getString("url_immagine"));
+				products.add(bean);
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		return products;
+	}
+	
+	@Override
+	public synchronized ArrayList<ProductBean> doRetrieveCategoria(int categoria) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		ArrayList<ProductBean> products = new ArrayList<ProductBean>();
+
+		String selectSQL = "SELECT * FROM " + ProductModelDM.TABLE_NAME
+						 + "WHERE categoria = ?";
+
+		try {
+			connection = DriverManagerConnectionPool.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setInt(1, categoria);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				ProductBean bean = new ProductBean();
+				bean.setCodice(rs.getString("codice"));
+				bean.setNome(rs.getString("nome"));
+				bean.setDescrizione(rs.getString("descrizione"));
+				bean.setPrezzo(rs.getInt("prezzo"));
+				bean.setIva(rs.getInt("iva"));
+				bean.setQtaMagazzino(rs.getInt("quantitaMagazzino"));
 				bean.setSconto(rs.getInt("sconto"));
 				bean.setSottocategoria(rs.getString("sottocategoria"));
 				bean.setIdCategoria(rs.getInt("categoria"));

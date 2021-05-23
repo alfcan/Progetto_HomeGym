@@ -15,4 +15,6 @@ public interface ProductModel {
 	public ProductBean doRetrieveByKey(String codice) throws SQLException;
 	
 	public ArrayList<ProductBean> doRetrieveAll(String order) throws SQLException;
+
+	public ArrayList<ProductBean> doRetrieveCategoria(int categoria) throws SQLException;
 }
