@@ -96,7 +96,7 @@
             <a class="linkfoot" href="#!">Area Personale</a>
           </p>
           <p>
-            <a class="linkfoot" href="registerPersonaFisica.jsp">Registrati</a>
+            <a class="linkfoot" href="registerAzienda.jsp">Registrati</a>
           </p>
           
 

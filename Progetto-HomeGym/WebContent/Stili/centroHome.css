@@ -1,7 +1,7 @@
 /*CENTRO*/
-#paragrafo{   
+p#paragrafo{   
     background-color: rgba(0, 0, 0, 0.534);
-    color:white;
+    color:#FA9600;
     font-weight: 110%;
 }
 
@@ -22,4 +22,6 @@
     font-size: 70%;
 }
 }
+
+
 /*FINE CENTRO*/

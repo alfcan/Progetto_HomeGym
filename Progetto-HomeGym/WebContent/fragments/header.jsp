@@ -17,7 +17,7 @@
   <div class="d-flex flex-grow-1">
       <span class="w-100 d-lg-none d-block"><!-- hidden spacer to center brand on mobile --></span>
       <a class="navbar-brand" href="index.jsp">
-         <img src="foto/logo.jpg" alt="HomeGym" id="logo">
+         <img src="foto/logo.jpg"  alt="HomeGym" id="logo">
       </a>
       <div class="w-100 text-right">
           <button id="tastino1" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar7">

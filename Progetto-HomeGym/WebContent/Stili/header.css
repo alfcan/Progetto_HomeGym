@@ -55,7 +55,7 @@
 }
 /*fine carrello*/
 
-#collegamento3{           /*categorie tranne sale*/
+#collegamento3{           
     color:white;
     font-weight: bold;
 }
@@ -63,16 +63,6 @@
     color: black;
     background-color: white;
 }
-
-#collegamento4{           /*sale*/
-    color: rgb(219, 16, 16);
-    font-weight: bold;
-}
-#collegamento4:hover{
-    color: white;
-    background-color: rgb(173, 14, 14);
-}
-
 
 #cerca {        /*bottone search*/
     color: white;

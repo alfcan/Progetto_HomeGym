@@ -1,0 +1,33 @@
+.carta1 {         /*card dove sta scritto login*/
+    color: white;
+    background-color: #3F3F3F;
+}
+
+.btn-mio{              /*bottone login*/
+    background-color: #3F3F3F;;
+    border-color: white;
+}
+
+.btn-mio:hover{
+    background-color: #FA9600;
+    border-color:#FA9600 ;
+}
+
+#linkReg{            /*LINK A REGISTRAZIONE*/
+    color: black;
+    font-weight: bold;
+}
+
+#linkReg:visited{            /*LINK A REGISTRAZIONE*/
+    color: black;
+    font-weight: bold;
+}
+
+.BORDO{    
+    border-color: #3F3F3F;
+    border-width: 3px;
+}
+
+.grassetto{         /*per fare username e password in grassetto*/
+    font-weight: bold;
+}
