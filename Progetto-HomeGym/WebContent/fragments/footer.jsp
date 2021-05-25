@@ -23,23 +23,11 @@
 
           <!-- Grid column -->
           <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
-            <h6 id="headfoot" class="mb-0">Resta connesso con noi sui social</h6> 
+            <h6 id="headfoot" class="mb-0">HomeGym per il tuo benessere fisico!</h6> 
           </div>
           <!-- Grid column -->
 
-          <!-- Grid column -->
-          <div class="col-md-6 col-lg-7 text-center text-md-right">
-
-            <!-- Facebook -->
-              <a href="" id="img" onMouseOver="cambiaFacebook()" onMouseOut="ricambiaFacebook()"><img id="facebook" src="foto/facebook2.png" class="fb-ic">
-              <i class="fab fa-facebook-f white-text mr-4"> </i>
-            </a>
-            <!--Instagram-->
-                <a href="" id="img" onMouseOver="cambiaInstagram()" onMouseOut="ricambiaInstagram()"><img id="instagram" src="foto/Instagram2.png"  class="fb-ic" >
-          <i class="fab fa-instagram white-text"> </i>
-        </a>
-        <!-- Grid column -->
-    </div>
+          
         </div>
 
         <!-- Grid row-->
@@ -59,7 +47,7 @@
           <!-- Content -->
           <h6 class="text-uppercase font-weight-bold" id="testoarancio">CHI SIAMO</h6>
           <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-          <p>Salve,siamo due studenti di Informatica. Abbiamo sviluppo questo E-Commerce con lo scopo di fornire un shop di prodotti fitness comodo e confortevole.</p>
+          <p>Salve, abbiamo sviluppo questo E-Commerce con lo scopo di fornire un shop di prodotti fitness comodo e confortevole.</p>
 
         </div>
         <!-- Grid column -->
@@ -121,6 +109,20 @@
         <p>
           <img src="foto/fisso.png">
           <i class="fas fa-print mr-3"></i> + 089 89 11 56</p>
+          
+          <!-- Grid column -->
+          <div>
+
+            <!-- Facebook -->
+              <a href="" id="img" onMouseOver="cambiaFacebook()" onMouseOut="ricambiaFacebook()"><img id="facebook" src="foto/facebook.jpg" class="fb-ic">
+              <i class="fab fa-facebook-f white-text mr-4"> </i>
+            </a>
+            <!--Instagram-->
+                <a href="" id="img" onMouseOver="cambiaInstagram()" onMouseOut="ricambiaInstagram()"><img id="instagram" src="foto/instagram.PNG"  class="fb-ic" >
+          <i class="fab fa-instagram white-text"> </i>
+        </a>
+        <!-- Grid column -->
+    </div>
 
         </div>
         <!-- Grid column -->
