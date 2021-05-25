@@ -30,4 +30,8 @@
 
 .grassetto{         /*per fare username e password in grassetto*/
     font-weight: bold;
+    
+.foto{
+	background-image:url:("sfondo.jpg");
+}
 }

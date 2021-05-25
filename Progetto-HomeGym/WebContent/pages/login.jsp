@@ -1,16 +1,22 @@
 <%@page import="it.unisa.model.DAOS.*"%>
 <%@page import="it.unisa.model.beans.*"%>
 <%@page import="it.unisa.controller.*"%>
+<%@page import="it.unisa.database.*"%>
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<link rel="icon" href="foto/logo.jpg" sizes="9x9">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HomeGym-Login</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="Stili/login.css">
-</head>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link rel="stylesheet" href="../css/bootstrap.min.css">
+		<link rel="stylesheet" href="../Stili/login.css">
+		<link rel="stylesheet" href="../Stili/header.css">
+		<link rel="stylesheet" href="../Stili/footer.css">
+		<script src="../jsMiei/footer.js"></script> 
+		<meta charset="UTF-8">
+		<title>HomeGym-Login</title>
+	</head>
+
 <body>
 
     <%@ include file="../fragments/header.jsp" %>
@@ -57,8 +63,9 @@
       
     </div>
 
-  <%@ include file="../fragments/footer.jsp" %>
-     
+  
+     <%@ include file="../fragments/footer.jsp" %>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-   <script src="js/bootstrap.min.js"></script>
+   <script src="../js/bootstrap.min.js"></script>
 </body>
+</html>
