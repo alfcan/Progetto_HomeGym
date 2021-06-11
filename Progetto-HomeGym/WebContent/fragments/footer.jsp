@@ -118,7 +118,7 @@
               <i class="fab fa-facebook-f white-text mr-4"> </i>
             </a>
             <!--Instagram-->
-                <a href="" id="img" onMouseOver="cambiaInstagram()" onMouseOut="ricambiaInstagram()"><img id="instagram" src="foto/instagram.PNG"  class="fb-ic" >
+                <a href="" id="img" onMouseOver="cambiaInstagram()" onMouseOut="ricambiaInstagram()"><img id="instagram" src="foto/instagram.jpg"  class="fb-ic" >
           <i class="fab fa-instagram white-text"> </i>
         </a>
         <!-- Grid column -->

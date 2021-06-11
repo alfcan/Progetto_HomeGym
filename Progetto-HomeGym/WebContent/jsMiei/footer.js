@@ -5,12 +5,12 @@ function cambiaInstagram(){
 
 function ricambiaInstagram(){
 	var instagranm=document.getElementById("instagram");
-	instagram.src="foto/instagram.PNG";
+	instagram.src="foto/instagram.jpg";
 }
 
 function cambiaFacebook(){
 	var facebook=document.getElementById("facebook");
-	facebook.src="foto/facebook2.jpg";
+	facebook.src="foto/facebook2.PNG";
 }
 
 function ricambiaFacebook(){
