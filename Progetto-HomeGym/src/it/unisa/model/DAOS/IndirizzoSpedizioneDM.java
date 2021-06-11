@@ -135,6 +135,43 @@ public class IndirizzoSpedizioneDM implements IndirizzoSpedizione
 		}
 		return bean;
 	}
+	
+	public synchronized ArrayList<IndirizzoSpedizioneBean> doRetrieveByUtente(String utente) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		IndirizzoSpedizioneBean bean = new IndirizzoSpedizioneBean();
+		ArrayList<IndirizzoSpedizioneBean> indirizzi=new ArrayList<IndirizzoSpedizioneBean>();
+
+		String selectSQL = "SELECT * FROM " + IndirizzoSpedizioneDM.TABLE_NAME + " WHERE utente = ?";
+
+		try {
+			connection = DriverManagerConnectionPool.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, utente);
+			
+			
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				bean.setVia(rs.getString("via"));
+				bean.setCitta(rs.getString("citta"));
+				bean.setCap(rs.getString("cap"));
+				bean.setUtente(rs.getString("utente"));
+				indirizzi.add(bean);
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		return indirizzi;
+	}
 
 	@Override
 	public synchronized ArrayList<IndirizzoSpedizioneBean> doRetrieveAll(String order) throws SQLException {

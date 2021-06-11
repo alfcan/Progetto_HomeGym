@@ -16,6 +16,10 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<meta charset="ISO-8859-1">
 		<title>HomeGym - Carrello</title>
+		<link rel="stylesheet" href="../css/bootstrap.min.css">
+    	<link rel="stylesheet" href="../Stili/header.css">
+		<link rel="stylesheet" href="../Stili/footer.css">
+		<script src="../jsMiei/footer.js"></script> 	
 	</head>
 	<body>
 		<%@ include file="../fragments/header.jsp" %>
@@ -67,10 +71,11 @@
 		</table>
 		
 		<%if(carrello != null && carrello.getTotale()!=0){ %>
-			<h3>Totale: <%=carrello.getTotale()%></h3>
+			<h3>Totale: <%=carrello.getTotale()%></h3><br>
+			<button id="checkout"><a hreft="/Progetto-HomeGym/OrdineControl?action=datiOrdineUtente">Checkout</a></button>
 		<%}%>
-		<br>
-		<a href="/Progetto-HomeGym/OrdineControl?action=checkout">CheckOut</a>
+		
+		
 		
 		<%@ include file="../fragments/footer.jsp" %>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

@@ -14,10 +14,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import it.unisa.model.DAOS.ComposizioneDM;
+import it.unisa.model.DAOS.DatiPagamentoDM;
+import it.unisa.model.DAOS.IndirizzoSpedizioneDM;
 import it.unisa.model.DAOS.OrdineDM;
 import it.unisa.model.DAOS.ProductModelDM;
 import it.unisa.model.beans.Carrello;
 import it.unisa.model.beans.ComposizioneBean;
+import it.unisa.model.beans.DatiPagamentoBean;
+import it.unisa.model.beans.IndirizzoSpedizioneBean;
 import it.unisa.model.beans.OrdineBean;
 import it.unisa.model.beans.ProductBean;
 import it.unisa.model.beans.UtenteBean;
@@ -39,6 +43,25 @@ public class OrdineControl extends HttpServlet {
 			}
 			
 			String action = request.getParameter("action");
+			
+			if(action.equals("datiOrdineUtente")) {
+				IndirizzoSpedizioneDM indirizzoDAO=new IndirizzoSpedizioneDM();
+				DatiPagamentoDM datiPagamentoDAO=new DatiPagamentoDM();
+				try {
+					ArrayList<IndirizzoSpedizioneBean> indirizzi= indirizzoDAO.doRetrieveByUtente(utente.getEmail());
+					DatiPagamentoBean datiPagamento= datiPagamentoDAO.doRetrieveByKey(utente.getDatiPagamento());
+					request.setAttribute("indirizziSpedizione", indirizzi);
+					request.setAttribute("datiPagamento", datiPagamento);
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/checkoutOrdine.jsp");
+					dispatcher.forward(request, response);
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				
+				
+			}
+				
 					
 			if(action.equals("checkout")) {
 				Carrello carrello = (Carrello) request.getSession().getAttribute("carrello");
