@@ -84,13 +84,10 @@ public class AdminControl extends HttpServlet {
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 			Date da = null;
 			Date a = null;
-			String daStr = request.getParameter("dataDa");
-			String aStr = request.getParameter("dataA");
 			try {
 				da = dateFormat.parse(request.getParameter("dataDa"));
 				a = dateFormat.parse(request.getParameter("dataA"));
 			} catch (ParseException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			

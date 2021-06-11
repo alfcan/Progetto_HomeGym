@@ -11,7 +11,7 @@ import it.unisa.model.beans.IndirizzoSpedizioneBean;
 
 public class IndirizzoSpedizioneDM implements IndirizzoSpedizione
 {
-	private static final String TABLE_NAME = "indirizzoSpedizione";
+	private static final String TABLE_NAME = "indirizzo_spedizione";
 	
 	@Override
 	public synchronized void doSave(IndirizzoSpedizioneBean indirizzoSpedizione) throws SQLException {
@@ -19,16 +19,15 @@ public class IndirizzoSpedizioneDM implements IndirizzoSpedizione
 		PreparedStatement preparedStatement = null;
 		
 		String insertSQL = "INSERT INTO " + IndirizzoSpedizioneDM.TABLE_NAME
-						 + " (ID, via, citta, cap, utente) VALUES (?, ?, ?, ?, ?)";
+						 + " (via, citta, cap, utente) VALUES (?, ?, ?, ?)";
 		
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setInt(1, indirizzoSpedizione.getID());
-			preparedStatement.setString(2, indirizzoSpedizione.getVia());
-			preparedStatement.setString(3, indirizzoSpedizione.getCitta());
-			preparedStatement.setString(4, indirizzoSpedizione.getCap());
-			preparedStatement.setString(5, indirizzoSpedizione.getUtente());
+			preparedStatement.setString(1, indirizzoSpedizione.getVia());
+			preparedStatement.setString(2, indirizzoSpedizione.getCitta());
+			preparedStatement.setString(3, indirizzoSpedizione.getCap());
+			preparedStatement.setString(4, indirizzoSpedizione.getUtente());
 			
 			preparedStatement.executeUpdate();
 			connection.commit();
@@ -119,6 +118,7 @@ public class IndirizzoSpedizioneDM implements IndirizzoSpedizione
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
+				bean.setID(rs.getInt("ID"));
 				bean.setVia(rs.getString("via"));
 				bean.setCitta(rs.getString("citta"));
 				bean.setCap(rs.getString("cap"));
@@ -140,7 +140,6 @@ public class IndirizzoSpedizioneDM implements IndirizzoSpedizione
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		IndirizzoSpedizioneBean bean = new IndirizzoSpedizioneBean();
 		ArrayList<IndirizzoSpedizioneBean> indirizzi=new ArrayList<IndirizzoSpedizioneBean>();
 
 		String selectSQL = "SELECT * FROM " + IndirizzoSpedizioneDM.TABLE_NAME + " WHERE utente = ?";
@@ -155,6 +154,8 @@ public class IndirizzoSpedizioneDM implements IndirizzoSpedizione
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
+				IndirizzoSpedizioneBean bean = new IndirizzoSpedizioneBean();
+				bean.setID(rs.getInt("ID"));
 				bean.setVia(rs.getString("via"));
 				bean.setCitta(rs.getString("citta"));
 				bean.setCap(rs.getString("cap"));

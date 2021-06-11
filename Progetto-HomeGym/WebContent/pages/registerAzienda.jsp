@@ -41,7 +41,8 @@
                             <p id="error">
 		                    </p> 
                                 <form action="/Progetto-HomeGym/RegistrazioneControl" method="post">     
-                                   <div class="form-group">
+                                   <input type="hidden" name="tipo" value="Azienda">
+                                   <div class="form-group">	
                                         <label  class="grassetto"><img src="foto/edificio.png" alt="">&nbspRagione Sociale</label>
                                         <input type="text" class="form-control form-control-lg rounded-0 BORDO" name="ragioneSociale" id="ragioneSociale"  placeholder="Ragione Sociale" >
                                        

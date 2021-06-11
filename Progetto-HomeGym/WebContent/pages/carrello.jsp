@@ -13,9 +13,9 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<meta charset="ISO-8859-1">
 		<title>HomeGym - Carrello</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="../css/bootstrap.min.css">
     	<link rel="stylesheet" href="../Stili/header.css">
 		<link rel="stylesheet" href="../Stili/footer.css">
@@ -58,7 +58,7 @@
 						<a href="/Progetto-HomeGym/ProductControl?action=RemoveToCarrello&codice=<%=product.getCodice()%>">Rimuovi un elemento</a><br>
 						<a href="/Progetto-HomeGym/ProductControl?action=DeleteToCarrello&codice=<%=product.getCodice()%>">Elimina elemento</a><br>
 					</td>
-				<tr>
+				</tr>
 			</tbody>
 			<%
 					}
@@ -72,7 +72,7 @@
 		
 		<%if(carrello != null && carrello.getTotale()!=0){ %>
 			<h3>Totale: <%=carrello.getTotale()%></h3><br>
-			<button id="checkout"><a hreft="/Progetto-HomeGym/OrdineControl?action=datiOrdineUtente">Checkout</a></button>
+			<button><a href="/Progetto-HomeGym/OrdineControl?action=datiOrdineUtente">Checkout</a></button>
 		<%}%>
 		
 		

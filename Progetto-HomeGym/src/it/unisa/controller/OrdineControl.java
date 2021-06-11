@@ -53,13 +53,10 @@ public class OrdineControl extends HttpServlet {
 					request.setAttribute("indirizziSpedizione", indirizzi);
 					request.setAttribute("datiPagamento", datiPagamento);
 					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/checkoutOrdine.jsp");
-					dispatcher.forward(request, response);
-					
+					dispatcher.forward(request, response);	
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-				
-				
 			}
 				
 					
@@ -79,13 +76,12 @@ public class OrdineControl extends HttpServlet {
 					}
 					ordine.setData(new Date());
 					ordine.setStato("Ordinato");
-					ordine.setIndirizzoSpedizione("1111");
+					ordine.setIndirizzoSpedizione(request.getParameter("indirizzo"));
 					ordine.setUtente(utente.getEmail());
 					ordine.setTotale(carrello.getTotale());
 					try {
 						ordineDAO.doSave(ordine);
 					} catch (SQLException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					
@@ -99,7 +95,6 @@ public class OrdineControl extends HttpServlet {
 						try {
 							composizioneDM.doSave(composizione);
 						} catch (SQLException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 					}

@@ -40,12 +40,13 @@
                             <p id="error">
 		                    </p> 
                                 <form action="/Progetto-HomeGym/RegistrazioneControl" method="post">     
-                                   <div class="form-group">
+                                   	<input type="hidden" name="tipo" value="PersonaFisica">
+                                   	<div class="form-group">
                                         <label  class="grassetto"><img src="foto/ominologin.PNG" alt="">&nbspCognome</label>
                                         <input type="text" class="form-control form-control-lg rounded-0 BORDO" name="cognome" id="cognome" placeholder="Cognome">
                                         
                                     </div>                        
-                                  <div class="form-group">
+                                  	<div class="form-group">
                                         <label  class="grassetto"><img src="foto/ominologin.PNG" alt="">&nbspNome</label>
                                         <input type="text" class="form-control form-control-lg rounded-0 BORDO" name="nome" id="nome" placeholder="Nome">
                                         

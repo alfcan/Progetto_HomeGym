@@ -13,7 +13,7 @@ password varchar(30) not null,
 dati_pagamento char(16),
 tipo varchar(30) not null,
 foreign key(dati_pagamento) references dati_pagamento(numero_carta)
-ON UPDATE CASCADE ON DELETE CASCADE
+ON UPDATE NO ACTION ON DELETE CASCADE
 );
 
 create table azienda(
@@ -40,7 +40,7 @@ ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 create table indirizzo_spedizione(
-ID integer primary key,
+ID integer primary key AUTO_INCREMENT,
 via varchar(40) not null,
 citta varchar(40) not null,
 cap varchar(40) not null,
@@ -104,16 +104,3 @@ prezzo_acquisto float not null,
 iva_acquisto integer not null,
 primary key (ordine,prodotto)
 );
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -9,9 +9,13 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<meta charset="ISO-8859-1">
 		<title>HomeGym - Area Utente</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="../css/bootstrap.min.css">
+    	<link rel="stylesheet" href="../Stili/header.css">
+		<link rel="stylesheet" href="../Stili/footer.css">
+		<script src="../jsMiei/footer.js"></script>
 	</head>
 	<body>
 		<%@ include file="../fragments/header.jsp" %>
@@ -31,6 +35,9 @@
 		%>
 			<ul>
 				<li><a href="/Progetto-HomeGym/OrdineControl?action=viewOrdini">I miei ordini</a></li>
+				<li><a href="/Progetto-HomeGym/UtenteControl?action=viewDatiPagamentoSpedizione">Dati Pagamento & Spedizione</a></li>
+				<li><a href="/Progetto-HomeGym/UtenteControl?action=viewDatiAnagrafica">Dati Anagrafica</a></li>
+				<li><a href="/Progetto-HomeGym/UtenteControl?action=modificaPwd">Modifica Password</a></li>				
 			</ul>
 		<%
 		}
@@ -39,5 +46,5 @@
 	
 	<%@ include file="../fragments/footer.jsp" %>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>	
 </html>

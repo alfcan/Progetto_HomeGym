@@ -10,7 +10,7 @@ public class DatiPagamentoBean
 	
 	public DatiPagamentoBean() 
 	{
-		numeroCarta =" ";
+		numeroCarta ="";
 		cvv=0;
 		dataScadenza=null;
 	}

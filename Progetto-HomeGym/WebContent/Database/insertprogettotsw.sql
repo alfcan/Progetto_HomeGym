@@ -12,11 +12,11 @@ insert into azienda value("Sano Sprint", "98745110982", "Napoli", "Via Tansillo 
 
 insert into persona_fisica(nome, cognome, genere, numero_telefono, email) value("Esposito","Giuseppe","Uomo", "3286534342", "giuseppeesposito@gmail.com");
 
-insert into indirizzo_spedizione value("1111","Via Arbostella","Napoli","80125","giuseppeesposito@gmail.com");
-insert into indirizzo_spedizione value("2222","Via Margherita","Napoli","80121","fitcardio@gmail.com");
+insert into indirizzo_spedizione(via, citta, cap, utente) value("Via Arbostella","Napoli","80125","giuseppeesposito@gmail.com");
+insert into indirizzo_spedizione(via, citta, cap, utente) value("Via Margherita","Napoli","80121","fitcardio@gmail.com");
 
-insert into ordine value(1,"Ordinato","23-03-21","giuseppeesposito@gmail.com","1111",16700);
-insert into ordine value(2,"Ordinato","06-10-21","fitcardio@gmail.com","2222",13438);
+insert into ordine value(1,"Ordinato","23-03-21","giuseppeesposito@gmail.com",1,16700);
+insert into ordine value(2,"Ordinato","06-10-21","fitcardio@gmail.com",2,13438);
 
 insert into categoria value (1, "Fitness");
 insert into categoria value (2, "BodyBuilding");
@@ -35,4 +35,3 @@ insert into composizione value(1,"EEEE5",1,6900,22);
 insert into composizione value(2,"AAAA1",2,3200,22);
 insert into composizione value(2,"CCCC3",2,69,22);
 insert into composizione value(2,"EEEE5",1,6900,22);
-

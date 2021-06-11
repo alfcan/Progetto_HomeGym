@@ -11,7 +11,7 @@ import it.unisa.model.beans.DatiPagamentoBean;
 
 public class DatiPagamentoDM implements DatiPagamento
 {
-	private static final String TABLE_NAME = "DatiPagamento";
+	private static final String TABLE_NAME = "dati_pagamento";
 	
 	@Override
 	public synchronized void doSave(DatiPagamentoBean dati) throws SQLException {
@@ -19,7 +19,7 @@ public class DatiPagamentoDM implements DatiPagamento
 		PreparedStatement preparedStatement = null;
 		
 		String insertSQL = "INSERT INTO " + DatiPagamentoDM.TABLE_NAME
-						 + " (numero_carta, cvv, data_scadenza, utente) VALUES (?, ?, ?)";
+						 + " (numero_carta, cvv, data_scadenza) VALUES (?, ?, ?)";
 		
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
@@ -27,7 +27,6 @@ public class DatiPagamentoDM implements DatiPagamento
 			preparedStatement.setString(1,dati.getNumeroCarta() );
 			preparedStatement.setInt(2,dati.getCvv());
 			preparedStatement.setDate(3, new java.sql.Date(dati.getDataScadenza().getTime()));
-		
 			
 			preparedStatement.executeUpdate();
 			connection.commit();
@@ -118,9 +117,9 @@ public class DatiPagamentoDM implements DatiPagamento
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
-				bean.setNumeroCarta(rs.getString("numeroCarta"));
+				bean.setNumeroCarta(rs.getString("numero_carta"));
 				bean.setCvv(rs.getInt("cvv"));
-				bean.setDataScadenza(new java.util.Date(rs.getDate("dataScadenza").getTime()));
+				bean.setDataScadenza(new java.util.Date(rs.getDate("data_scadenza").getTime()));
 				
 			}
 
@@ -154,9 +153,9 @@ public class DatiPagamentoDM implements DatiPagamento
 
 			while (rs.next()) {
 				DatiPagamentoBean bean = new DatiPagamentoBean();
-				bean.setCvv(rs.getInt("Cvv"));
-				bean.setDataScadenza(new java.util.Date(rs.getDate("data").getTime()));
-				bean.setNumeroCarta(rs.getString("numeroCarta"));
+				bean.setCvv(rs.getInt("cvv"));
+				bean.setDataScadenza(new java.util.Date(rs.getDate("data_scadenza").getTime()));
+				bean.setNumeroCarta(rs.getString("numero_carta"));
 				
 				datiPagamento.add(bean);
 			}
@@ -193,9 +192,9 @@ public class DatiPagamentoDM implements DatiPagamento
 
 			while (rs.next()) {
 				DatiPagamentoBean bean = new DatiPagamentoBean();
-				bean.setNumeroCarta(rs.getString("numeroCarta"));
+				bean.setNumeroCarta(rs.getString("numero_carta"));
 				bean.setCvv(rs.getInt("cvv"));
-				bean.setDataScadenza(new java.util.Date(rs.getDate("data").getTime()));
+				bean.setDataScadenza(new java.util.Date(rs.getDate("data_scadenza").getTime()));
 				datiPagamento.add(bean);
 			}
 
