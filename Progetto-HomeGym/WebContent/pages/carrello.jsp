@@ -15,67 +15,124 @@
 	<head>
 		<meta charset="ISO-8859-1">
 		<title>HomeGym - Carrello</title>
-		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="../css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="Stili/carello.css">
+    	<link rel="stylesheet" href="../Stili/carello.css">
     	<link rel="stylesheet" href="../Stili/header.css">
 		<link rel="stylesheet" href="../Stili/footer.css">
 		<script src="../jsMiei/footer.js"></script> 	
 	</head>
 	<body>
 		<%@ include file="../fragments/header.jsp" %>
+		
+		<div class="container dark-grey-text">
+
+      	<!--Grid row-->
+      	<div class="row wow fadeIn">
+
+        <!--Grid column-->
+        <div class="col-md-8 mb-4 div1">
 		<h1>Carrello</h1>
-		<table>
+		<div class="card" id="carta">
+		<table class="table table-hover shopping-cart-wrap">
 			<%
 				if(products != null && products.size() != 0){
 			%>
-			<thead>
-			<tr>
-				<th>Immagine</th>
-				<th>Codice</th>
-				<th>Nome</th>
-				<th>Prezzo</th>
-				<th>Iva</th>
-				<th>Quantità</th>
+			<thead class="text-muted">
+			<tr id="intestazione">
+				<th scope="col">Prodotto</th>
+				<th scope="col">Prezzo</th>
+				<th scope="col">Iva</th>
+				<th scope="col">Quantita'</th>
 			</tr>
 			</thead>
 			<%
 					for(ProductBean product : products){
 			%>
 			<tbody>
-				<tr>
-					<td><img src="<%=product.getUrlImmagine()%>" width="80" height="80"></td>
-					<td><%=product.getCodice()%></td>
-					<td><%=product.getNome()%></td>
+				<tr id="figura">
+					<td>
+						<figure class="media">
+						<div class="img-wrap"><img src="<%=request.getContextPath()+ "/" + product.getUrlImmagine()%>" width="80" height="80" class="img-thumbnail img-sm" id="fotoprodotto">
+						<figcaption class="media-body">
+                                   <dl class="dlist-inline small">   
+									<dd><%=product.getNome()%></dd>
+									</dl>
+                        </figcaption>
+						</figure> 
+					</td>
+					
 					<td><%=product.getPrezzo()%></td>
 					<td><%=product.getIva()%></td>
 					<td><%=product.getQtaCarrello()%></td>
 					<td>
-						<%if(product.getQtaMagazzino() >= 1){ %>
-							<a href="/Progetto-HomeGym/ProductControl?action=AddToCarrello&codice=<%=product.getCodice()%>">Aggiungi un elemento</a><br>
-						<%} else { %>
-							Disponibile solo in queste quantità<br>
-						<%} %>
-						<a href="/Progetto-HomeGym/ProductControl?action=RemoveToCarrello&codice=<%=product.getCodice()%>">Rimuovi un elemento</a><br>
-						<a href="/Progetto-HomeGym/ProductControl?action=DeleteToCarrello&codice=<%=product.getCodice()%>">Elimina elemento</a><br>
+						<div class="container">
+						<a href="/Progetto-HomeGym/ProductControl?action=AddToCarrello&codice=<%=product.getCodice()%>"><img src="foto/piu.png" class="btn btn-danger btn-lg float-right" id="aggiungi"></a><br>
+						<a href="/Progetto-HomeGym/ProductControl?action=RemoveToCarrello&codice=<%=product.getCodice()%>"><img src="foto/meno.png" class="btn btn-danger btn-lg float-right" id="rimuovi"></a><br>
+						<a href="/Progetto-HomeGym/ProductControl?action=DeleteToCarrello&codice=<%=product.getCodice()%>"><img src="foto/rimuovi.png" class="btn btn-danger btn-lg float-right" id="elimina"></a><br>
+						</div>
 					</td>
 				</tr>
 			</tbody>
 			<%
 					}
+			%>
+		</table>
+		</div> 
+			<% 
 				}else{
 			%>
-			<tr>Non ci sono prodotti nel carrello</tr>
+			<br>
+       		<h6>Nessun elemento aggiunto al carrello fino ad ora.</h6>
+       		<br>
 			<%
 				}
 			%>
-		</table>
+			</div>
+        
 		
 		<%if(carrello != null && carrello.getTotale()!=0){ %>
-			<h3>Totale: <%=carrello.getTotale()%></h3><br>
-			<button><a href="/Progetto-HomeGym/OrdineControl?action=datiOrdineUtente">Checkout</a></button>
+		
+		<div class="col-md-4 mb-4">
+        <!--<div id="MIODIV">-->
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12 mx-auto">
+                                <div>
+                                
+        <div class="row">
+        	<div class="col-md-12 mx-auto">
+                
+                
+				<h5>TOTALE: <%=carrello.getTotale() %></h5>
+				<a href="/Progetto-HomeGym/OrdineControl?action=datiOrdineUtente"><button class="btn btn-lg btn-primary btn-block btn-dark" id="bottoneAcquisto">Acquista</button></a>
+			
+				
+        	</div>
+    	</div>
+			</div>
+                <!--/col-->
+            </div>
+            <!--/row-->
+        </div>
+        <!--/container-->
+      <!--</div>--> 
+        </div>
 		<%}%>
 		
-		
+		<!--Grid column-->
+
+      	</div>
+      	<!--Grid row-->
+      	<hr>
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>
 		
 		<%@ include file="../fragments/footer.jsp" %>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

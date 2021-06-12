@@ -1,0 +1,87 @@
+#fotoprodotto{
+	width: 70%; height: 70%;
+	border: 0px;
+}
+
+#figura:hover{
+	background-color:#e9e9e9;
+}
+
+#intestazione{
+	background-color:#3F3F3F;
+	color:white;
+}
+
+
+.table td, .table th {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 3px solid #3F3F3F;
+}
+
+#carta{
+	border-left: 4px solid #3F3F3F;
+	border-bottom: 4px solid #3F3F3F;
+	border-right: 4px solid #3F3F3F;
+}
+
+a#bottoneAcquisto{
+	text-decoration:none;
+}
+a#bottoneAcquisto:hover{
+	background-color: #FA9600;
+	color:#3F3F3F;
+	border-color:  #FA9600;
+	text-decoration: none;
+}
+
+#elimina{
+	margin-top:35%;
+	background-color: #3F3F3F;
+	border-color:#3F3F3F
+}
+#elimina:hover{
+	background-color: #FA9600;
+	color:#3F3F3F;
+	border-color:  #FA9600;
+}
+
+#aggiungi{
+	margin-top:35%;
+	background-color: #3F3F3F;
+	border-color:#3F3F3F
+}
+#aggiungi:hover{
+	background-color: #FA9600;
+	color:#3F3F3F;
+	border-color:  #FA9600;
+}
+#rimuovi{
+	margin-top:35%;
+	background-color: #3F3F3F;
+	border-color:#3F3F3F
+}
+#rimuovi:hover{
+	background-color: #FA9600;
+	color:#3F3F3F;
+	border-color:  #FA9600;
+}
+
+@media screen and (max-width: 768px) {
+    #elimina{
+	margin-top:80%;
+}
+} 
+
+@media screen and (max-width: 991px) {
+    #elimina{
+	margin-top:80%;
+}
+} 
+
+
+
+
+
+
+
