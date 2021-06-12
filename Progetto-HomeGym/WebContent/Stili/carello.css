@@ -25,10 +25,10 @@
 	border-right: 4px solid #3F3F3F;
 }
 
-a#bottoneAcquisto{
+#bottoneAcquisto{
 	text-decoration:none;
 }
-a#bottoneAcquisto:hover{
+#bottoneAcquisto:hover{
 	background-color: #FA9600;
 	color:#3F3F3F;
 	border-color:  #FA9600;
