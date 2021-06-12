@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import it.unisa.database.DriverManagerConnectionPool;
 import it.unisa.model.beans.FeedbackBean;
+import it.unisa.model.beans.ProductBean;
 
 public class FeedbackDM implements Feedback
 {
@@ -19,16 +20,15 @@ public class FeedbackDM implements Feedback
 		PreparedStatement preparedStatement = null;
 		
 		String insertSQL = "INSERT INTO " + FeedbackDM.TABLE_NAME
-						 + " (ID, valutazione, commento, email, prodotto) VALUES (?, ?, ?, ?, ?)";
+						 + " (valutazione, commento, email, prodotto) VALUES (?, ?, ?, ?)";
 		
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setInt(1, feedback.getID());
-			preparedStatement.setString(2, feedback.getValutazione());
-			preparedStatement.setString(3, feedback.getCommento());
-			preparedStatement.setString(4, feedback.getEmail());
-			preparedStatement.setString(5, feedback.getProdotto());
+			preparedStatement.setInt(1, feedback.getValutazione());
+			preparedStatement.setString(2, feedback.getCommento());
+			preparedStatement.setString(3, feedback.getEmail());
+			preparedStatement.setString(4, feedback.getProdotto());
 			
 			preparedStatement.executeUpdate();
 			connection.commit();
@@ -54,7 +54,7 @@ public class FeedbackDM implements Feedback
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
 			preparedStatement = connection.prepareStatement(updateSQL);
-			preparedStatement.setString(1, feedback.getValutazione());
+			preparedStatement.setInt(1, feedback.getValutazione());
 			preparedStatement.setString(2, feedback.getCommento());
 			preparedStatement.setString(3, feedback.getEmail());
 			preparedStatement.setString(4, feedback.getProdotto());
@@ -119,7 +119,7 @@ public class FeedbackDM implements Feedback
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
-				bean.setValutazione(rs.getString("valutazione"));
+				bean.setValutazione(rs.getInt("valutazione"));
 				bean.setCommento(rs.getString("commento"));
 				bean.setEmail(rs.getString("email"));
 				bean.setProdotto(rs.getString("prodotto"));
@@ -158,7 +158,7 @@ public class FeedbackDM implements Feedback
 			while (rs.next()) {
 				FeedbackBean bean = new FeedbackBean();
 				bean.setID(rs.getInt("ID"));
-				bean.setValutazione(rs.getString("valutazione"));
+				bean.setValutazione(rs.getInt("valutazione"));
 				bean.setCommento(rs.getString("commento"));
 				bean.setEmail(rs.getString("email"));
 				bean.setProdotto(rs.getString("prodotto"));

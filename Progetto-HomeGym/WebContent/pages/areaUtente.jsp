@@ -38,6 +38,7 @@
 				<li><a href="/Progetto-HomeGym/UtenteControl?action=viewDatiPagamentoSpedizione">Dati Pagamento & Spedizione</a></li>
 				<li><a href="/Progetto-HomeGym/UtenteControl?action=viewDatiAnagrafica">Dati Anagrafica</a></li>
 				<li><a href="/Progetto-HomeGym/UtenteControl?action=modificaPwd">Modifica Password</a></li>				
+				<li><a href="/Progetto-HomeGym/UtenteControl?action=feedback">FeedBack</a></li>
 			</ul>
 		<%
 		}

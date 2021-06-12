@@ -16,10 +16,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import it.unisa.model.DAOS.DatiPagamentoDM;
+import it.unisa.model.DAOS.FeedbackDM;
 import it.unisa.model.DAOS.IndirizzoSpedizioneDM;
+import it.unisa.model.DAOS.ProductModelDM;
 import it.unisa.model.DAOS.UtenteDM;
 import it.unisa.model.beans.DatiPagamentoBean;
+import it.unisa.model.beans.FeedbackBean;
 import it.unisa.model.beans.IndirizzoSpedizioneBean;
+import it.unisa.model.beans.ProductBean;
 import it.unisa.model.beans.UtenteBean;
 
 
@@ -95,6 +99,7 @@ public class UtenteControl extends HttpServlet {
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/operazione.jsp");
 				dispatcher.forward(request, response);
 			}
+			
 			if(action.equals("addDatiPagamento")) {
 				String numeroCarta=request.getParameter("carta");
 				int cvv=Integer.parseInt(request.getParameter("cvv"));
@@ -121,6 +126,32 @@ public class UtenteControl extends HttpServlet {
 					dispatcher.forward(request, response);
 				}
 				request.setAttribute("operazione", "L'aggiunta dei Dati di Pagamento è avvenuta correttamente");
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/operazione.jsp");
+				dispatcher.forward(request, response);
+			}
+			
+			if(action.equals("feedback")) {
+				ProductModelDM prodottoDAO = new ProductModelDM();
+				ArrayList<ProductBean> prodotti = prodottoDAO.doRetrieveProductBuy(utente.getEmail());
+				request.setAttribute("prodottiBuy", prodotti);
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/feedback.jsp");
+				dispatcher.forward(request, response);
+			}
+			
+			if(action.equals("valutazione")) {
+				FeedbackBean f = new FeedbackBean();
+				f.setValutazione(Integer.parseInt(request.getParameter("val")));
+				f.setCommento(request.getParameter("commento"));
+				f.setEmail(request.getParameter("utente"));
+				f.setProdotto(request.getParameter("prodotto"));
+				
+				FeedbackDM feedbackDAO = new FeedbackDM();
+				try {
+					feedbackDAO.doSave(f);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				request.setAttribute("operazione", "Grazie per il tuo feedback. Il tuo parere per noi è molto importante.");
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/operazione.jsp");
 				dispatcher.forward(request, response);
 			}

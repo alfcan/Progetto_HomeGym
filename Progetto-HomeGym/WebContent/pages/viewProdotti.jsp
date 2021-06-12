@@ -34,7 +34,7 @@
 					for(ProductBean product : products){
 			%>
 			<tr>
-				<td><img src="<%=product.getUrlImmagine()%>" width="80" height="80"></td>
+				<td><img src="<%=request.getContextPath() + "/" + product.getUrlImmagine()%>" width="80" height="80"></td>
 				<td><%=product.getNome()%></td>
 				<td><%=product.getPrezzo()%></td>
 				<td><%=product.getIva()%></td>

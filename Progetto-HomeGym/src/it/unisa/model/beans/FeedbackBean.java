@@ -6,7 +6,7 @@ public class FeedbackBean implements Serializable
 {
 	private static final long serialVersionUID=1L;
 	 private int ID;
-	 private String valutazione;
+	 private int valutazione;
 	 private String commento;
 	 private String email;
 	 private String prodotto;
@@ -14,7 +14,7 @@ public class FeedbackBean implements Serializable
 	 public FeedbackBean()
 	 {
 		 ID=0;
-		 valutazione="";
+		 valutazione=0;
 		 commento="";
 		 email="";
 		 prodotto="";
@@ -28,11 +28,11 @@ public class FeedbackBean implements Serializable
 		ID = iD;
 	}
 
-	public String getValutazione() {
+	public int getValutazione() {
 		return valutazione;
 	}
 
-	public void setValutazione(String valutazione) {
+	public void setValutazione(int valutazione) {
 		this.valutazione = valutazione;
 	}
 

@@ -240,5 +240,38 @@ public class ProductModelDM implements ProductModel {
 		}
 		return products;
 	}
+	
+	public ArrayList<ProductBean> doRetrieveProductBuy (String utente){
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		ArrayList<ProductBean> products = new ArrayList<ProductBean>();
+		ArrayList<String> idProducts = new ArrayList<String>();
+		
+		
+		String selectSQL = "SELECT DISTINCT COMPOSIZIONE.PRODOTTO FROM ORDINE,COMPOSIZIONE WHERE ORDINE.UTENTE = ? "
+						 + " AND ORDINE.ID = COMPOSIZIONE.ORDINE";
+		
+		try {
+			connection = DriverManagerConnectionPool.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			
+			preparedStatement.setString(1, utente);
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while(rs.next()) {
+				idProducts.add(rs.getString(1));
+			}
+			
+			for(String s : idProducts) {
+				products.add(this.doRetrieveByKey(s));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return products;
+	}
 
 }
