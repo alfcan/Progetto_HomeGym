@@ -27,6 +27,7 @@
 			<%
 				if(products != null && products.size() != 0){
 			%>
+			<h6>Indirizzo spedizione: <%=request.getAttribute("indirizzo")%></h6>
 			<table>
 				<tr>
 					<th></th>

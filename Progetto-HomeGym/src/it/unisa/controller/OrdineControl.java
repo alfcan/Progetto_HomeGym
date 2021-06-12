@@ -111,6 +111,9 @@ public class OrdineControl extends HttpServlet {
 			if(action.equals("dettagliOrdine")) {
 				int id = Integer.parseInt(request.getParameter("id"));
 				ArrayList<ProductBean> products = new ArrayList<ProductBean>();
+				IndirizzoSpedizioneDM indirizzoDAO = new IndirizzoSpedizioneDM();
+				OrdineDM ordineDAO = new OrdineDM();
+				IndirizzoSpedizioneBean indirizzo = null;
 				
 				try {
 					ArrayList<ComposizioneBean> composizioni = composizioneDM.doRetrieveByOrdine(id);
@@ -123,12 +126,15 @@ public class OrdineControl extends HttpServlet {
 						product.setQtaCarrello(composizione.getQuantita());
 						products.add(product);
 					}
+					OrdineBean o = ordineDAO.doRetrieveByKey(id);
+					indirizzo = indirizzoDAO.doRetrieveByKey(Integer.parseInt(o.getIndirizzoSpedizione()));
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
+				String indCompleto = indirizzo.getVia() + " Città " + indirizzo.getCitta() + " CAP " + indirizzo.getCap();
 				request.setAttribute("dettagliOrdine", products);
+				request.setAttribute("indirizzo", indCompleto);
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/dettagliOrdine.jsp");
 				dispatcher.forward(request, response);
 			}

@@ -16,10 +16,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import it.unisa.model.DAOS.ComposizioneDM;
+import it.unisa.model.DAOS.FeedbackDM;
+import it.unisa.model.DAOS.IndirizzoSpedizioneDM;
 import it.unisa.model.DAOS.OrdineDM;
 import it.unisa.model.DAOS.ProductModelDM;
 import it.unisa.model.DAOS.UtenteDM;
 import it.unisa.model.beans.ComposizioneBean;
+import it.unisa.model.beans.FeedbackBean;
+import it.unisa.model.beans.IndirizzoSpedizioneBean;
 import it.unisa.model.beans.OrdineBean;
 import it.unisa.model.beans.ProductBean;
 import it.unisa.model.beans.UtenteBean;
@@ -103,11 +107,14 @@ public class AdminControl extends HttpServlet {
 			dispatcher.forward(request, response);
 		}
 		
-		if(action.equals("viewOrdine")) {
+		/*if(action.equals("viewOrdine")) {
 			ComposizioneDM model = new ComposizioneDM();
+			IndirizzoSpedizioneDM indirizzoDAO = new IndirizzoSpedizioneDM();
+			OrdineDM ordineDAO = new OrdineDM();
 			
 			int id = Integer.parseInt(request.getParameter("idOrdine"));
 			ArrayList<ProductBean> products = new ArrayList<ProductBean>();
+			IndirizzoSpedizioneBean indirizzo = null;
 			
 			try {
 				ArrayList<ComposizioneBean> composizioni = model.doRetrieveByOrdine(id);
@@ -118,15 +125,19 @@ public class AdminControl extends HttpServlet {
 					product.setQtaCarrello(composizione.getQuantita());
 					products.add(product);
 				}
+				OrdineBean o = ordineDAO.doRetrieveByKey(id);
+				indirizzo = indirizzoDAO.doRetrieveByKey(Integer.parseInt(o.getIndirizzoSpedizione()));
+				System.out.println("Indirizzo:" + Integer.parseInt(o.getIndirizzoSpedizione()));
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
 			request.setAttribute("dettagliOrdine", products);
+			request.setAttribute("indirizzo", indirizzo);
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/dettagliOrdine.jsp");
 			dispatcher.forward(request, response);
-		}
+		}*/
 		
 		if(action.equals("ordiniUtente")) {
 			OrdineDM model = new OrdineDM();
@@ -196,6 +207,19 @@ public class AdminControl extends HttpServlet {
 			}
 			request.setAttribute("operazione", "La modifica del prodotto al catalogo è avvenuta con successo");
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/operazione.jsp");
+			dispatcher.forward(request, response);
+		}
+		
+		if(action.equals("feedbackUtente")) {
+			FeedbackDM feedbackDAO = new FeedbackDM();
+			ArrayList<FeedbackBean> feedbacks = null;
+			try {
+				feedbacks = feedbackDAO.doRetrieveByUtente(request.getParameter("utente"));
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			request.setAttribute("feedbackUtente", feedbacks);
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/admin/feedbackUtente.jsp");
 			dispatcher.forward(request, response);
 		}
 	}

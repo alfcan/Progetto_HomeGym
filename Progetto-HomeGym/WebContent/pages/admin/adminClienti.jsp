@@ -30,9 +30,14 @@
 						<td><%=u.getEmail()%></td>
 						<td><%=u.getTipo()%></td>
 						<form method="post" action="/Progetto-HomeGym/AdminControl">
-	                    <input type="hidden" name="utente" value="<%=u.getEmail()%>">
-	                    <input type="hidden" name="action" value="ordiniUtente">
-	                    <td><button type="submit">I suoi ordini</button></td>
+		                    <input type="hidden" name="utente" value="<%=u.getEmail()%>">
+		                    <input type="hidden" name="action" value="ordiniUtente">
+		                    <td><button type="submit">I suoi ordini</button></td>
+	                    </form>
+		                <form method="post" action="/Progetto-HomeGym/AdminControl">
+		                    <input type="hidden" name="utente" value="<%=u.getEmail()%>">
+		                    <input type="hidden" name="action" value="feedbackUtente">
+		                    <td><button type="submit">I suoi feedback</button></td>
 	                    </form>
                     </tr>
                     <%} %>
