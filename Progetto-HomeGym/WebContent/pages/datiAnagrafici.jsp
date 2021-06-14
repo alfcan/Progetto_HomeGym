@@ -10,7 +10,7 @@
 <html>
 	<head>
 		<meta charset="ISO-8859-1">
-		<title>HomeGym - Area Utente</title>
+		<title>HomeGym - Dati Anagrafici</title>
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="../css/bootstrap.min.css">
     	<link rel="stylesheet" href="../Stili/header.css">
@@ -19,29 +19,40 @@
 	</head>
 	<body>
 		<%@ include file="../fragments/header.jsp" %>
-		<h1>Benvenuto nella tua area utente</h1>
+		<h1>I tuoi dati anagrafici</h1>
 		<%
 		if(utente == null){	
 			response.sendRedirect("login.jsp");
-		}else if (utente.getTipo().equalsIgnoreCase("admin")){
+		}else if (utente.getTipo().equalsIgnoreCase("persona fisica")){
+			PersonaFisicaBean p = (PersonaFisicaBean)request.getAttribute("anagrafica");
 		%>
-			<ul>
-				<li><a href="/Progetto-HomeGym/AdminControl?action=gestioneOrdini">Gestione Ordini</a></li>
-				<li><a href="/Progetto-HomeGym/AdminControl?action=gestioneCatalogo">Gestione Catalogo</a></li>
-				<li><a href="/Progetto-HomeGym/AdminControl?action=gestioneClienti">I Tuoi Clienti</a></li>
-			</ul>
+			<h5>Cognome</h5>
+			<p><%=p.getCognome()%></p>
+			<h5>Nome</h5>
+			<p><%=p.getNome()%></p>
+			<h5>Genere</h5>
+			<p><%=p.getGenere()%></p>
+			<h5>Telefono</h5>
+			<p><%=p.getNumeroTelefono()%></p>
+			<h5>Email</h5>
+			<p><%=p.getEmail()%></p>
 		<%
 		}else{
+			AziendaBean a = (AziendaBean)request.getAttribute("anagrafica");
 		%>
-			<ul>
-				<li><a href="/Progetto-HomeGym/OrdineControl?action=viewOrdini">I miei ordini</a></li>
-				<li><a href="/Progetto-HomeGym/UtenteControl?action=viewDatiPagamentoSpedizione">Dati Pagamento & Spedizione</a></li>
-				<li><a href="/Progetto-HomeGym/UtenteControl?action=viewDatiAnagrafica">Dati Anagrafica</a></li>			
-				<li><a href="/Progetto-HomeGym/UtenteControl?action=feedback">FeedBack</a></li>
-			</ul>
-		<%
-		}
-		%>
+			<h5>Ragione Sociale</h5>
+			<p><%=a.getRagioneSociale()%></p>
+			<h5>Partita IVA</h5>
+			<p><%=a.getPartitaIva()%></p>
+			<h5>Città Sede Legale</h5>
+			<p><%=a.getCitta()%></p>
+			<h5>Indirizzo Sede Legale</h5>
+			<p><%=a.getIndirizzoSedeLegale()%></p>
+			<h5>Telefono</h5>
+			<p><%=a.getNumeroTelefono()%></p>
+			<h5>Email</h5>
+			<p><%=a.getEmail()%></p>
+		<%}%>
 	</body>
 	
 	<%@ include file="../fragments/footer.jsp" %>

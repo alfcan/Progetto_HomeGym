@@ -122,6 +122,44 @@ public class AziendaDM implements Azienda
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
+				bean.setPartitaIva(rs.getString("partita_iva"));
+				bean.setRagioneSociale(rs.getString("ragione_sociale"));
+				bean.setCitta(rs.getString("citta"));
+				bean.setIndirizzoSedeLegale(rs.getString("indirizzo_sede_legale"));
+				bean.setCap(rs.getString("cap"));
+				bean.setNumeroTelefono(rs.getString("numero_telefono"));
+				bean.setEmail(rs.getString("email"));
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		return bean;
+	}
+	
+	public synchronized AziendaBean doRetrieveByEmail(String email) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		AziendaBean bean = new AziendaBean();
+
+		String selectSQL = "SELECT * FROM " + AziendaDM.TABLE_NAME + " WHERE email = ?";
+
+		try {
+			connection = DriverManagerConnectionPool.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, email);
+			
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				bean.setPartitaIva(rs.getString("partita_iva"));
 				bean.setRagioneSociale(rs.getString("ragione_sociale"));
 				bean.setCitta(rs.getString("citta"));
 				bean.setIndirizzoSedeLegale(rs.getString("indirizzo_sede_legale"));

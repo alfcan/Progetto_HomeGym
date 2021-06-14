@@ -15,14 +15,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import it.unisa.model.DAOS.AziendaDM;
 import it.unisa.model.DAOS.DatiPagamentoDM;
 import it.unisa.model.DAOS.FeedbackDM;
 import it.unisa.model.DAOS.IndirizzoSpedizioneDM;
+import it.unisa.model.DAOS.PersonaFisicaDM;
 import it.unisa.model.DAOS.ProductModelDM;
 import it.unisa.model.DAOS.UtenteDM;
+import it.unisa.model.beans.AziendaBean;
 import it.unisa.model.beans.DatiPagamentoBean;
 import it.unisa.model.beans.FeedbackBean;
 import it.unisa.model.beans.IndirizzoSpedizioneBean;
+import it.unisa.model.beans.PersonaFisicaBean;
 import it.unisa.model.beans.ProductBean;
 import it.unisa.model.beans.UtenteBean;
 
@@ -33,9 +37,7 @@ public class UtenteControl extends HttpServlet {
 	
 	private IndirizzoSpedizioneDM indirizzoDAO= new IndirizzoSpedizioneDM();
 	private DatiPagamentoDM datiDAO= new DatiPagamentoDM();
-    
-
-	
+    	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		HttpSession session = request.getSession(false);
 		if(session != null) {
@@ -153,6 +155,33 @@ public class UtenteControl extends HttpServlet {
 				}
 				request.setAttribute("operazione", "Grazie per il tuo feedback. Il tuo parere per noi è molto importante.");
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/operazione.jsp");
+				dispatcher.forward(request, response);
+			}
+			
+			if(action.equals("viewDatiAnagrafica")) {
+				PersonaFisicaBean persona = null;
+				AziendaBean azienda = null;
+				
+				if(utente.getTipo().equalsIgnoreCase("persona fisica")) {
+					PersonaFisicaDM personaDAO = new PersonaFisicaDM();
+					try {
+						 persona = personaDAO.doRetrieveByEmail(utente.getEmail());
+						 request.setAttribute("anagrafica", persona);
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+				if(utente.getTipo().equalsIgnoreCase("azienda")) {
+					AziendaDM aziendaDAO = new AziendaDM();
+					try {
+						azienda = aziendaDAO.doRetrieveByEmail(utente.getEmail());
+						request.setAttribute("anagrafica", azienda);
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+				
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/datiAnagrafici.jsp");
 				dispatcher.forward(request, response);
 			}
 		}
