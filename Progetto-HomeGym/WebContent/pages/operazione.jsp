@@ -10,8 +10,8 @@
 	<body>
 		<%@ include file="../fragments/header.jsp" %>
 		
-		<%String operazione = (String) request.getAttribute("operazione"); %>		
-		<h3><%=operazione %></h3>
+		<%String operazione = (String) request.getAttribute("operazione"); %>	
+		<h3 style="text-align: center;color: #FA9600;font-family:Verdana;padding-top:30px;"><%=operazione %></h3>
 		
 		<%@ include file="/fragments/footer.jsp" %>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

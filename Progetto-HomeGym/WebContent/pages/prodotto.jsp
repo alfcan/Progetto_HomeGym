@@ -13,26 +13,41 @@
 <head>
 	<head>
 		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href=<%=request.getContextPath() + "/Stili/prodotto.css" %>>
+		<link rel="stylesheet" href=<%=request.getContextPath() + "/Stili/registrazione.css" %>>
+		<link rel="stylesheet" href="../Stili/header.css">
+		<link rel="stylesheet" href="../Stili/footer.css">
 		<meta charset="ISO-8859-1">
 		<title>HomeGym - <%=prodotto.getNome()%></title>
 	</head>
 	<body>
 		<%@ include file="../fragments/header.jsp" %>
 		
-		<h1><%=prodotto.getNome()%></h1>
-		<img src="<%=prodotto.getUrlImmagine()%>" width="500" height="600">	
+		<h1 style="padding-left:20px;"><%=prodotto.getNome()%></h1>
+		<img src="<%=prodotto.getUrlImmagine()%>" width="500" height="600" id="foto">	
 		<h1>Prezzo: <%=prodotto.getPrezzo()%></h1>
-		<p><%=prodotto.getDescrizione()%></p>
+		<p style="padding-left:1px;"><%=prodotto.getDescrizione()%></p>
 		
 		<%if(prodotto.getQtaMagazzino() > 0) {%>
-			<a href="ProductControl?action=AddToCarrello&codice=<%=prodotto.getCodice()%>">Aggiungi al carrello</a>
+			<a href="ProductControl?action=AddToCarrello&codice=<%=prodotto.getCodice()%>" class="btn btn-danger btn-lg float-right btn-mio">Aggiungi al carrello</a>
 		<%} else { %>
 			Non disponibile
 		<%} %>
 		
 		<hr>
+		
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-6 mx-auto">
+                    
 		<%if(feedbacks != null && feedbacks.size() != 0) {%>
-			<h6>Recensioni</h6>
+			<div class="card rounded-0 CDtot" id="contenitoreTotale">
+         	<div class="card-header carta1">
+           	<h3 class="mb-0">Recensioni</h3>
+          	</div>
+           	<div class="card-body">
+			
 			<table>
 				<thead>
 					<tr>
@@ -49,8 +64,17 @@
 				<%} %>
 				</tbody>
 			</table>
+			
+			</div>
+			</div>
+			</div>
+			</div>
+			</div>
+			</div>
+			</div>
+			
 		<%} else {%>
-			<h6>Nessuna recensione per questo prodotto.</h6>
+			<h6 class="testo">Nessuna recensione per questo prodotto.</h6>
 		<%} %>
 		
 		<%@ include file="../fragments/footer.jsp" %>	
