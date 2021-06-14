@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.unisa.model.DAOS.FeedbackDM;
 import it.unisa.model.DAOS.ProductModelDM;
 import it.unisa.model.beans.Carrello;
+import it.unisa.model.beans.FeedbackBean;
 import it.unisa.model.beans.ProductBean;
 
 @WebServlet("/ProductControl")
@@ -48,11 +50,17 @@ public class ProductControl extends HttpServlet {
 			
 			if(action.equals("ViewProdotto")) {
 				ProductBean prodotto = null;
+				ArrayList<FeedbackBean> f = null;
+				FeedbackDM fDAO = new FeedbackDM();
+				
+				String cod = request.getParameter("codice");
 				try {
-					prodotto = model.doRetrieveByKey(request.getParameter("codice"));
+					prodotto = model.doRetrieveByKey(cod);
+					f = fDAO.doRetrieveByProduct(cod);
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
+				request.setAttribute("feedbacks", f);
 				request.setAttribute("prodotto", prodotto);
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/prodotto.jsp");
 				dispatcher.forward(request, response);

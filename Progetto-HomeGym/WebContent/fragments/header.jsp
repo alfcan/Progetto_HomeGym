@@ -16,7 +16,7 @@
 <nav id="navbar1" class="navbar navbar-expand-lg">
   <div class="d-flex flex-grow-1">
       <span class="w-100 d-lg-none d-block"><!-- hidden spacer to center brand on mobile --></span>
-      <a class="navbar-brand" href="index.jsp">
+      <a class="navbar-brand" href="<%=request.getContextPath()%>/index.jsp">
          <img src="foto/logo.jpg"  alt="HomeGym" id="logo">
       </a>
       <div class="w-100 text-right">

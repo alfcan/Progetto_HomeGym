@@ -33,7 +33,6 @@
 					<th>Stato</th>
 					<th>Data</th>
 					<th>Utente</th>
-					<th>Indirizzo di Spedizione</th>
 				</thead>
 			</tr>
 				<tbody>
@@ -42,8 +41,7 @@
 						<td><%=o.getID()%></td>
 						<td><%=o.getStato()%></td>
 						<td><%=o.getData()%></td>
-						<td><%=o.getUtente()%></td>
-						<td><%=o.getIndirizzoSpedizione()%></td>		
+						<td><%=o.getUtente()%></td>		
 						<form method="post" action="/Progetto-HomeGym/AdminControl">
 	                    <input type="hidden" name="idOrdine" value="<%=o.getID()%>">
 	                    <input type="hidden" name="action" value="viewOrdine">

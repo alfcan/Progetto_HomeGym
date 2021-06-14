@@ -107,7 +107,7 @@ public class AdminControl extends HttpServlet {
 			dispatcher.forward(request, response);
 		}
 		
-		/*if(action.equals("viewOrdine")) {
+		if(action.equals("viewOrdine")) {
 			ComposizioneDM model = new ComposizioneDM();
 			IndirizzoSpedizioneDM indirizzoDAO = new IndirizzoSpedizioneDM();
 			OrdineDM ordineDAO = new OrdineDM();
@@ -127,17 +127,17 @@ public class AdminControl extends HttpServlet {
 				}
 				OrdineBean o = ordineDAO.doRetrieveByKey(id);
 				indirizzo = indirizzoDAO.doRetrieveByKey(Integer.parseInt(o.getIndirizzoSpedizione()));
-				System.out.println("Indirizzo:" + Integer.parseInt(o.getIndirizzoSpedizione()));
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
+			String indCompleto = indirizzo.getVia() + " Città " + indirizzo.getCitta() + " CAP " + indirizzo.getCap();
 			request.setAttribute("dettagliOrdine", products);
-			request.setAttribute("indirizzo", indirizzo);
+			request.setAttribute("indirizzo", indCompleto);
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/dettagliOrdine.jsp");
 			dispatcher.forward(request, response);
-		}*/
+		}
 		
 		if(action.equals("ordiniUtente")) {
 			OrdineDM model = new OrdineDM();

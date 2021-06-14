@@ -30,7 +30,7 @@
 		<form method="post" action="/Progetto-HomeGym/AdminControl">
 			<input type="hidden" name="action" value="modificaProdotto">
 			<label for="codice">Codice Prodotto</label>
-			<input type="text" id="codice" name="codice" value="<%=codice%>"><br>
+			<input type="text" id="codice" name="codice" value="<%=codice%>" readonly><br>
 			<label for="nome">Nome</label>
 			<input type="text" id="nome" name="nome" value="<%=nome%>"><br>
 			<label for="descrizione">Descrizione</label><br>

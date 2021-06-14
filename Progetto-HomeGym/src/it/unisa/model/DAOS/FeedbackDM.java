@@ -176,6 +176,43 @@ public class FeedbackDM implements Feedback
 		return feedback;
 	}
 	
+	public synchronized ArrayList<FeedbackBean> doRetrieveByProduct(String product) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		ArrayList<FeedbackBean> feedback = new ArrayList<FeedbackBean>();
+
+		String selectSQL = "SELECT * FROM " + FeedbackDM.TABLE_NAME
+						  +" WHERE prodotto = ?";
+
+		try {
+			connection = DriverManagerConnectionPool.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+
+			preparedStatement.setString(1, product);
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				FeedbackBean bean = new FeedbackBean();
+				bean.setID(rs.getInt("ID"));
+				bean.setValutazione(rs.getInt("valutazione"));
+				bean.setCommento(rs.getString("commento"));
+				bean.setEmail(rs.getString("email"));
+				bean.setProdotto(rs.getString("prodotto"));
+				feedback.add(bean);
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		return feedback;
+	}
+	
 	public synchronized ArrayList<FeedbackBean> doRetrieveByUtente(String utente) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
