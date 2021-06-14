@@ -1,0 +1,13 @@
+
+
+a.lista{
+	text-decoration:none;
+	color:#0a0a0a;
+}
+
+
+a.lista:hover{
+	text-decoration:none;
+	color: #FA9600;
+	
+}

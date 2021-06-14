@@ -86,16 +86,17 @@
 			<br>
        		<h6>Nessun elemento aggiunto al carrello fino ad ora.</h6>
        		<br>
+       		
 			<%
 				}
 			%>
-			</div>
+			
         
 		
 		<%if(carrello != null && carrello.getTotale()!=0){ %>
 		
 		<div class="col-md-4 mb-4">
-        <!--<div id="MIODIV">-->
+        
         <div class="container py-5">
             <div class="row">
                 <div class="col-md-12">
@@ -106,22 +107,18 @@
         <div class="row">
         	<div class="col-md-12 mx-auto">
                 
-                <br>
+                <br> <br>
 				<h5>TOTALE: <%=carrello.getTotale() %></h5>
 				<a href="/Progetto-HomeGym/OrdineControl?action=datiOrdineUtente"><button class="btn btn-lg btn-primary btn-block btn-dark" id="bottoneAcquisto">Acquista</button></a>
-			
+			<%}%>
 				
         	</div>
     	</div>
-			</div>
-                <!--/col-->
-            </div>
-            <!--/row-->
-        </div>
-        <!--/container-->
-      <!--</div>--> 
-        </div>
-		<%}%>
+								</div>
+            			</div>
+        			</div>
+        		</div>
+		
 		
 		<!--Grid column-->
 
@@ -133,6 +130,7 @@
 		</div>
 		</div>
 		</div>
+		
 		
 		<%@ include file="../fragments/footer.jsp" %>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

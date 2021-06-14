@@ -44,8 +44,6 @@
                             </div>
                             <div class="card-body">
                          
-                            <p id="error">
-		                    </p> 
 				<form method="post" action="/Progetto-HomeGym/UtenteControl">
 				
 				<input type="hidden" name="action" value="addDatiPagamento">
@@ -69,8 +67,7 @@
            <h3 class="mb-0">Dati Pagamento</h3>
           </div>
            <div class="card-body">
-            <p id="error">
-		    </p> 
+             
 			<p>
 				Numero Carta: <%=datiPagamento.getNumeroCarta()%>
 			</p>

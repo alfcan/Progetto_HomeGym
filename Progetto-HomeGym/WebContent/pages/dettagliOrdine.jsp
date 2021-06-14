@@ -13,6 +13,7 @@
 	<head>
 		<meta charset="ISO-8859-1">
 		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href=<%=request.getContextPath() + "/Stili/registrazione.css" %>>
 		<%if(utente.getTipo().equalsIgnoreCase("admin")) {%>
 			<title>HomeGym - Amministratore</title>
 		<%} else {%>
@@ -21,13 +22,21 @@
 	</head>
 	<body>
 		<%@ include file="../fragments/header.jsp" %>
-		
-		<h1>Dettaglio Ordine</h1>
+		<div class="container py-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-6 mx-auto">
+				<div class="card rounded-0 CDtot" id="contenitoreTotale">
+                            <div class="card-header carta1">
+                                <h3 class="mb-0">Dettagli Ordine</h3>
+                            </div>
+                            <div class="card-body">
 		
 			<%
 				if(products != null && products.size() != 0){
 			%>
-			<h6>Indirizzo spedizione: <%=request.getAttribute("indirizzo")%></h6>
+			<h6 id="testo">Indirizzo spedizione: <%=request.getAttribute("indirizzo")%></h6>
 			<table>
 				<tr>
 					<th></th>
@@ -53,7 +62,13 @@
 			<%
 				}
 			%>
-		
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>
 		
 		<%@ include file="../fragments/footer.jsp" %>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

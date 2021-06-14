@@ -24,10 +24,14 @@
     border-width: 3px;
 }
 
-.grassetto{         /*per fare username e password in grassetto*/
+.grassetto{        
     font-weight: bold;
 }
 
 .suggerimento{
     color: gray;
+}
+
+h6#testo{
+	font-weight:bold;
 }

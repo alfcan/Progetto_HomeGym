@@ -16,42 +16,77 @@
     	<link rel="stylesheet" href="../Stili/header.css">
 		<link rel="stylesheet" href="../Stili/footer.css">
 		<script src="../jsMiei/footer.js"></script>
+		<link rel="stylesheet" href=<%=request.getContextPath() + "/Stili/registrazione.css" %>>
 	</head>
 	<body>
 		<%@ include file="../fragments/header.jsp" %>
-		<h1>I tuoi dati anagrafici</h1>
+		
+		
+		<h1 style="text-align: center;color: #FA9600;font-family:Verdana;">I tuoi dati anagrafici</h1>
 		<%
 		if(utente == null){	
 			response.sendRedirect("login.jsp");
 		}else if (utente.getTipo().equalsIgnoreCase("persona fisica")){
 			PersonaFisicaBean p = (PersonaFisicaBean)request.getAttribute("anagrafica");
 		%>
-			<h5>Cognome</h5>
+		<div class="container py-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-6 mx-auto">
+                    
+                    <div class="card rounded-0 CDtot" id="contenitoreTotale">
+                            <div class="card-body">
+			<h5 class="grassetto"><img src="foto/ominologin.PNG">Cognome</h5>
 			<p><%=p.getCognome()%></p>
-			<h5>Nome</h5>
+			<h5 class="grassetto"><img src="foto/ominologin.PNG">Nome</h5>
 			<p><%=p.getNome()%></p>
-			<h5>Genere</h5>
+			<h5 class="grassetto"><img src="foto/genere.jpg">Genere</h5>
 			<p><%=p.getGenere()%></p>
-			<h5>Telefono</h5>
+			<h5 class="grassetto"><img src="foto/phone.png">Telefono</h5>
 			<p><%=p.getNumeroTelefono()%></p>
-			<h5>Email</h5>
+			<h5 class="grassetto"><img src="foto/email.png">Email</h5>
 			<p><%=p.getEmail()%></p>
+					</div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
 		<%
+		
 		}else{
 			AziendaBean a = (AziendaBean)request.getAttribute("anagrafica");
 		%>
-			<h5>Ragione Sociale</h5>
+		<div class="container py-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-6 mx-auto">
+                    
+                    <div class="card rounded-0 CDtot" id="contenitoreTotale">
+                            <div class="card-body">
+			<h5 class="grassetto"><img src="foto/edificio.png">Ragione Sociale</h5>
 			<p><%=a.getRagioneSociale()%></p>
-			<h5>Partita IVA</h5>
+			<h5 class="grassetto"><img src="foto/partitaiva.png">Partita IVA</h5>
 			<p><%=a.getPartitaIva()%></p>
-			<h5>Città Sede Legale</h5>
+			<h5 class="grassetto"><img src="foto/luogo.png">Città Sede Legale</h5>
 			<p><%=a.getCitta()%></p>
-			<h5>Indirizzo Sede Legale</h5>
+			<h5 class="grassetto"><img src="foto/luogo.png">Indirizzo Sede Legale</h5>
 			<p><%=a.getIndirizzoSedeLegale()%></p>
-			<h5>Telefono</h5>
+			<h5 class="grassetto"><img src="foto/phone.png">Telefono</h5>
 			<p><%=a.getNumeroTelefono()%></p>
-			<h5>Email</h5>
+			<h5 class="grassetto"><img src="foto/email.png">Email</h5>
 			<p><%=a.getEmail()%></p>
+			
+					</div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
 		<%}%>
 	</body>
 	
