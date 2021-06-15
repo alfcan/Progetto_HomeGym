@@ -6,26 +6,46 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href=<%=request.getContextPath() + "/Stili/registrazione.css" %>>
 		<meta charset="ISO-8859-1">
 		<title>HomeGym - Amministratore</title>
 	</head>
 	<body>
 		<%@ include file="/fragments/header.jsp" %>
 		
-		<h1>Gestione Ordini</h1>
+		<h1 style="text-align: center;color: #FA9600;font-family:Verdana;">Gestione Ordini</h1>
+		<div class="container py-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-6 mx-auto">
 		<form method="post" action="/Progetto-HomeGym/AdminControl">
-			<p>Effetuare ricerca per data:</p>
+		<div class="card rounded-0 CDtot" id="contenitoreTotale">
+          <div class="card-header carta1">
+              <h3 class="mb-0">Effettuare ricerca per data:</h3>
+          </div>
+          <div class="card-body">
 			<input type="hidden" name="action" value="viewOrdinePerData">
 			<label>Da <input type="date" name="dataDa" required></label><br>
 			<label>A <input type="date" name="dataA" required></label>
 			<br>
-			<button type="submit">Invia</button>		
+			<button type="submit" class="btn btn-danger btn-lg float-right btn-mio">Invia</button>		
 		</form>
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>
+		
 		<hr>
 		<%
 		ArrayList<OrdineBean> ordini = (ArrayList<OrdineBean>) request.getAttribute("ordini");
 		if(ordini != null){
 		%>
+		<div class="card rounded-0 CDtot" id="contenitoreTotale">
+          
 		<table>
 			<tr>
 				<thead>	
@@ -45,12 +65,14 @@
 						<form method="post" action="/Progetto-HomeGym/AdminControl">
 	                    <input type="hidden" name="idOrdine" value="<%=o.getID()%>">
 	                    <input type="hidden" name="action" value="viewOrdine">
-	                    <td><button type="submit">Vai all'ordine</button></td>
+	                    <td><button type="submit" class="btn btn-danger btn-lg float-right btn-mio">Vai all'ordine</button></td>
 	                    </form>
                     </tr>
                     <%} %>
 				</tbody>	
 		</table>
+		</div>
+		</div>
 		<%} %>
 		
 		<%@ include file="/fragments/footer.jsp" %>

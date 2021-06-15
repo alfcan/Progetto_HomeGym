@@ -6,13 +6,25 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href=<%=request.getContextPath() + "/Stili/registrazione.css" %>>
 		<meta charset="ISO-8859-1">
 		<title>HomeGym - Amministratore</title>
 	</head>
 	<body>
 		<%@ include file="/fragments/header.jsp" %>
 		
-		<h1>Gestione Clienti</h1>		
+			<div class="container py-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-6 mx-auto">
+    
+                        
+                        <div class="card rounded-0 CDtot" id="contenitoreTotale">
+                            <div class="card-header carta1">
+                                <h3 class="mb-0">Gestione Clienti</h3>
+                            </div>
+                         <div class="card-body">
 		<%
 		ArrayList<UtenteBean> utenti = (ArrayList<UtenteBean>) request.getAttribute("listaUtenti");
 		if(utenti != null){
@@ -32,18 +44,25 @@
 						<form method="post" action="/Progetto-HomeGym/AdminControl">
 		                    <input type="hidden" name="utente" value="<%=u.getEmail()%>">
 		                    <input type="hidden" name="action" value="ordiniUtente">
-		                    <td><button type="submit">I suoi ordini</button></td>
+		                    <td><button type="submit" class="btn btn-danger btn-lg float-right btn-mio" id="btnLogin">I suoi ordini</button></td>
 	                    </form>
 		                <form method="post" action="/Progetto-HomeGym/AdminControl">
 		                    <input type="hidden" name="utente" value="<%=u.getEmail()%>">
 		                    <input type="hidden" name="action" value="feedbackUtente">
-		                    <td><button type="submit">I suoi feedback</button></td>
+		                    <td><button type="submit" class="btn btn-danger btn-lg float-right btn-mio" id="btnLogin">I suoi feedback</button></td>
 	                    </form>
                     </tr>
                     <%} %>
 				</tbody>	
 		</table>
 		<%} %>
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>
 		
 		<%@ include file="/fragments/footer.jsp" %>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
