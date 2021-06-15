@@ -36,8 +36,7 @@
                             </div>
                             <div class="card-body">
                          
-                            <p id="error">
-		                    </p> 
+                            <p id="error"></p> 
                                 <form action="/Progetto-HomeGym/RegistrazioneControl" method="post" onsubmit="return controlPersonaFisica(this)">     
                                    	<input type="hidden" name="tipo" value="Persona Fisica">
                                    	<div class="form-group">
@@ -62,8 +61,7 @@
                                         <label for="uomo">Uomo</label>
 			                            <input id="uomo" type="radio" name="genere" value="Uomo" required><br>
 			                            <label for="donna">Donna</label>
-				                        <input type="radio" id="donna" name="genere" value="Donna"><br>
-                                        
+				                        <input type="radio" id="donna" name="genere" value="Donna"><br>  
                                     </div>
                                     
                                     <div class="form-group">
@@ -71,7 +69,7 @@
                                         <input type="text" class="form-control form-control-lg rounded-0 BORDO" name="email" id="email" placeholder="Email" onclick="startEmail()" onkeyup="startEmail()">
                                         <p id="errorEmail"></p>
                                     </div>
-                                       <p id="errorE"></p>
+                                    <p id="errorE"></p>
                                     <div class="form-group">
                                         <label class="grassetto"><img src="foto/chiave.PNG" alt="">&nbspPassword</label>
                                         <input type="password" class="form-control form-control-lg rounded-0 BORDO" name="password" id="password" placeholder="Password" onclick="startPassword()" onkeyup="startPassword()">

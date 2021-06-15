@@ -132,6 +132,40 @@ public class UtenteDM implements Utente{
 		return bean;
 	}
 
+	public synchronized UtenteBean doRetrieveByEmail(String email) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		UtenteBean bean = null;
+
+		String selectSQL = "SELECT * FROM " + UtenteDM.TABLE_NAME + " WHERE email = ?";
+
+		try {
+			connection = DriverManagerConnectionPool.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, email);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				bean = new UtenteBean();
+				bean.setEmail(rs.getString("email"));
+				bean.setPassword(rs.getString("password"));
+				bean.setDatiPagamento(rs.getString("dati_pagamento"));
+				bean.setTipo(rs.getString("tipo"));
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		return bean;
+	}
+	
 	@Override
 	public synchronized ArrayList<UtenteBean> doRetrieveAll(String order) throws SQLException {
 		Connection connection = null;

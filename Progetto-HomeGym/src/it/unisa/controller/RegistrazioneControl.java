@@ -24,56 +24,65 @@ public class RegistrazioneControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UtenteBean utente = new UtenteBean();
-		utente.setEmail(request.getParameter("email"));
-		utente.setPassword(request.getParameter("password"));
-		utente.setTipo(request.getParameter("tipo"));
-		
 		UtenteDM utenteDAO = new UtenteDM();
+		UtenteBean utente = null;
 		try {
-			utenteDAO.doSave(utente);
+			utente = utenteDAO.doRetrieveByEmail(request.getParameter("email"));
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}	
-	
-		if(request.getParameter("tipo").equals("Azienda")) {
-			AziendaBean azienda = new AziendaBean();
-			azienda.setRagioneSociale(request.getParameter("ragioneSociale"));
-			azienda.setPartitaIva(request.getParameter("partitaIva"));
-			azienda.setCitta(request.getParameter("citta"));
-			azienda.setIndirizzoSedeLegale(request.getParameter("indirizzo"));
-			azienda.setCap(request.getParameter("cap"));
-			azienda.setNumeroTelefono(request.getParameter("telefono"));
-			azienda.setEmail(request.getParameter("email"));
-			
-			AziendaDM aziendaDAO = new AziendaDM();
-			try {
-				aziendaDAO.doSave(azienda);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}else {
-			PersonaFisicaBean persona = new PersonaFisicaBean();
-			persona.setCognome(request.getParameter("cognome"));
-			persona.setNome(request.getParameter("nome"));
-			persona.setGenere(request.getParameter("genere"));
-			persona.setNumeroTelefono(request.getParameter("telefono"));
-			persona.setEmail(request.getParameter("email"));
-			
-			PersonaFisicaDM personaDAO = new PersonaFisicaDM();
-			try {
-				personaDAO.doSave(persona);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
 		
-		HttpSession session = request.getSession(true);
-		session.setAttribute("Utente", utente);
-		request.setAttribute("operazione", "Registrazione effettuata con successo");
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/operazione.jsp");
-		dispatcher.forward(request, response);
+		if(utente != null)
+			response.getWriter().write("0");
+		else{
+			
+			utente = new UtenteBean();
+			utente.setEmail(request.getParameter("email"));
+			utente.setPassword(request.getParameter("password"));
+			utente.setTipo(request.getParameter("tipo"));
+			
+			boolean flag = true;
+			try {
+				utenteDAO.doSave(utente);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		
+			if(flag && request.getParameter("tipo").equals("Azienda")) {
+				AziendaBean azienda = new AziendaBean();
+				azienda.setRagioneSociale(request.getParameter("ragioneSociale"));
+				azienda.setPartitaIva(request.getParameter("partitaIva"));
+				azienda.setCitta(request.getParameter("citta"));
+				azienda.setIndirizzoSedeLegale(request.getParameter("indirizzo"));
+				azienda.setCap(request.getParameter("cap"));
+				azienda.setNumeroTelefono(request.getParameter("telefono"));
+				azienda.setEmail(request.getParameter("email"));
+				
+				AziendaDM aziendaDAO = new AziendaDM();
+				try {
+					aziendaDAO.doSave(azienda);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if(flag && request.getParameter("tipo").equals("Persona Fisica")) {
+				PersonaFisicaBean persona = new PersonaFisicaBean();
+				persona.setCognome(request.getParameter("cognome"));
+				persona.setNome(request.getParameter("nome"));
+				persona.setGenere(request.getParameter("genere"));
+				persona.setNumeroTelefono(request.getParameter("telefono"));
+				persona.setEmail(request.getParameter("email"));
+				
+				PersonaFisicaDM personaDAO = new PersonaFisicaDM();
+				try {
+					personaDAO.doSave(persona);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+			response.getWriter().write("0");
+		}
 	}
-
 }
