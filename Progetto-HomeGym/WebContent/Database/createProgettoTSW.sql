@@ -85,7 +85,7 @@ url_immagine varchar(50) not null
 create table feedback(
 ID integer primary key AUTO_INCREMENT,
 valutazione integer not null,
-commento varchar(100) not null,
+commento varchar(500) not null,
 email varchar(30) not null,
 foreign key(email) references utente(email)
 ON UPDATE CASCADE ON DELETE CASCADE,

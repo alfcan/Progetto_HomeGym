@@ -23,10 +23,11 @@
 	<body>
 		<%@ include file="../fragments/header.jsp" %>
 		
-		<h1 style="padding-left:20px;"><%=prodotto.getNome()%></h1>
-		<img src="<%=prodotto.getUrlImmagine()%>" width="500" height="600" id="foto">	
-		<h1>Prezzo: <%=prodotto.getPrezzo()%></h1>
-		<p style="padding-left:1px;"><%=prodotto.getDescrizione()%></p>
+		
+		<img src="<%=prodotto.getUrlImmagine()%>" width="500" height="600" style="float:left; margin:0px 20px 20px 0px;">	
+		<h1 style="padding-top:30px;"><%=prodotto.getNome()%></h1>
+		<p style="padding-top:20px;"><%=prodotto.getDescrizione()%></p>
+		<h1 id="grassetto"> &euro;<%=prodotto.getPrezzo()%></h1>
 		
 		<%if(prodotto.getQtaMagazzino() > 0) {%>
 			<a href="ProductControl?action=AddToCarrello&codice=<%=prodotto.getCodice()%>" class="btn btn-danger btn-lg float-right btn-mio">Aggiungi al carrello</a>
@@ -34,20 +35,17 @@
 			Non disponibile
 		<%} %>
 		
-		<hr>
 		
-        <div class="row">
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="col-md-6 mx-auto">
-                    
+		<div style="clear:left;" class="feedback">
 		<%if(feedbacks != null && feedbacks.size() != 0) {%>
-			<div class="card rounded-0 CDtot" id="contenitoreTotale">
-         	<div class="card-header carta1">
-           	<h3 class="mb-0">Recensioni</h3>
-          	</div>
-           	<div class="card-body">
-			
+		<div class="container py-5">
+			<div class="card rounded-0 CDtot" >
+            <div class="card-header carta1">
+                 <h3 class="mb-0">Recensioni</h3>
+             </div>
+             <div class="card-body">
+        
+  
 			<table>
 				<thead>
 					<tr>
@@ -68,14 +66,16 @@
 			</div>
 			</div>
 			</div>
-			</div>
-			</div>
-			</div>
-			</div>
-			
+		
+		<br>
+		<br>
+		<br>
 		<%} else {%>
 			<h6 class="testo">Nessuna recensione per questo prodotto.</h6>
 		<%} %>
+		<br>
+		<br>
+		<br>
 		
 		<%@ include file="../fragments/footer.jsp" %>	
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

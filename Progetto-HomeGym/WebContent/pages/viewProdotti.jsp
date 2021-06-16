@@ -16,7 +16,7 @@
 	</head>
 	<body>
 		<%@ include file="../fragments/header.jsp" %>
-		<h1>Catalogo</h1>
+		<h1 style="text-align: center;color: #FA9600;font-family:Verdana;">Catalogo</h1>
 		<table>
 			<%
 				if(products != null && products.size() != 0){

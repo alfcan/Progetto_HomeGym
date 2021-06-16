@@ -108,7 +108,7 @@
         	<div class="col-md-12 mx-auto">
                 
                 <br> <br>
-				<h5>TOTALE: <%=carrello.getTotale() %></h5>
+				<h5>TOTALE: &euro;<%=carrello.getTotale() %></h5>
 				<a href="/Progetto-HomeGym/OrdineControl?action=datiOrdineUtente"><button class="btn btn-lg btn-primary btn-block btn-dark" id="bottoneAcquisto">Acquista</button></a>
 			<%}%>
 				
