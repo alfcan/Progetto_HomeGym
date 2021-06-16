@@ -32,10 +32,7 @@ public class RegistrazioneControl extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		if(utente != null)
-			response.getWriter().write("0");
-		else{
-			
+		if(utente == null) {			
 			utente = new UtenteBean();
 			utente.setEmail(request.getParameter("email"));
 			utente.setPassword(request.getParameter("password"));
@@ -77,11 +74,12 @@ public class RegistrazioneControl extends HttpServlet {
 				try {
 					personaDAO.doSave(persona);
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
 			
+			response.getWriter().write("1");
+		} else {
 			response.getWriter().write("0");
 		}
 	}

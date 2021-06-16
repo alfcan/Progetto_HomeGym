@@ -45,8 +45,8 @@ function controlPersonaFisica(form){
 	var regexEmail = "^\\w+([\\.-]?\\w+)@\\w+([\\.-]?\\w+)(\\.\\w{2,3})+$";
 	if(!($("#email").val().match(regexEmail))) {
 		$("#errorEmail").text('Non hai inserito una e-mail valida').css({"color":"red"});
-		 document.getElementById("email").focus();
-		 return(false);
+		document.getElementById("email").focus();
+		return(false);
 	}
 
 	if ($("#password").val()===""){
@@ -106,7 +106,15 @@ function controlPersonaFisica(form){
 		return(false);
 	}		
     
-	emailRegistrata();
+	$.post("../RegistrazioneControl",$(form).serialize(),function(msg){
+		if(msg === "0"){
+			$("#error").text("REGISTRAZIONE NON EFFETTUATA: email o telefono gia presenti").css({"color":"red"});
+			document.getElementById("cognome").focus();
+		} else {
+			window.location = 'login.jsp';
+		}
+
+	});
 	
 	return(false);
 }
@@ -239,17 +247,26 @@ function controlAzienda(form){
 		return(false);
 	}		
     
-	emailRegistrata();
+	$.post("../RegistrazioneControl",$(form).serialize(),function(msg){
+		console.log(msg);
+		if(msg === "0"){
+			$("#error").text("REGISTRAZIONE NON EFFETTUATA: email o telefono gia presenti").css({"color":"red"});
+			document.getElementById("ragioneSociale").focus();
+		} else {
+			window.location = 'login.jsp';
+		}
+
+	});
 	
 	return(false);
 }
 
-function emailRegistrata(){
+/*function emailRegistrataPersonaFisica(){
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function(){
 		if (xhttp.readyState == 4){
 			if(xhttp.responseText === "0"){
-				$("#error").text("REGISTRAZIONE NON EFFETTUATA: email o telefono gia presenti").css({"color":"red"});			
+				$("#error").text("REGISTRAZIONE NON EFFETTUATA: email o telefono gia presenti").css({"color":"red"});
 				document.getElementById("cognome").focus();
 			} else {
 				window.location = 'login.jsp';
@@ -261,25 +278,58 @@ function emailRegistrata(){
 	xhttp.send("action=verifica&email=" + $("#email").val());
 }
 
+function emailRegistrataAzienda(){
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function(){
+		if (xhttp.readyState == 4){
+			if(xhttp.responseText === "0"){
+				$("#error").text("REGISTRAZIONE NON EFFETTUATA: email o telefono gia presenti").css({"color":"red"});
+				document.getElementById("ragioneSociale").focus();
+			} else {
+				window.location = 'login.jsp';
+			}
+		}
+	}
+	xhttp.open('POST', "../RegistrazioneControl", true);
+	xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	xhttp.send("action=verifica&email=" + $("#email").val());
+}*/
+
+function startRagSoc(){
+	$("#errorRagSoc").text('');
+}
+
+function startPIVA(){
+	$("#errorPIVA").text("");
+}
+
+function startCitta(){
+	$("#errorCitta").text("");
+}
+
+function startind(){
+	$("#errorInd").text("");
+}
+
 function startNome(){
     $("#errorNome").text('');
 }
 
 function startCognome(){
-$("#errorCognome").text('');
+	$("#errorCognome").text('');
 }
 
 function startTel(){
 	$("#errorTel").text('');
-	}
+}
 
 
 function startEmail(){
-$("#errorEmail").text('');
+	$("#errorEmail").text('');
 }
 
 function startPassword(){
-$("#errorP1").text('La password deve avere almeno 8 caratteri, massimo 16 caratteri e deve contenere un valore numerico e una lettera maiuscola').css({"color":"grey"});
+	$("#errorP1").text('La password deve avere almeno 8 caratteri, massimo 16 caratteri e deve contenere un valore numerico e una lettera maiuscola').css({"color":"grey"});
 }
 
 function startPassword2(){

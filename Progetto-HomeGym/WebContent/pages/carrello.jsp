@@ -15,13 +15,11 @@
 	<head>
 		<meta charset="ISO-8859-1">
 		<title>HomeGym - Carrello</title>
-		<link rel="stylesheet" href="../css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<link rel="stylesheet" href="Stili/carello.css">
-    	<link rel="stylesheet" href="../Stili/carello.css">
-    	<link rel="stylesheet" href="../Stili/header.css">
-		<link rel="stylesheet" href="../Stili/footer.css">
-		<script src="../jsMiei/footer.js"></script> 	
+		<link rel="stylesheet" href="<%=request.getContextPath() + "/css/bootstrap.min.css"%>">
+		<link rel="stylesheet" href="<%=request.getContextPath() + "/Stili/carello.css"%>">
+    	<link rel="stylesheet" href="<%=request.getContextPath() + "/Stili/header.css"%>">
+		<link rel="stylesheet" href="<%=request.getContextPath() + "/Stili/footer.css"%>">
+		<script src="<%=request.getContextPath() + "/jsMiei/footer.js"%>"></script>	
 	</head>
 	<body>
 		<%@ include file="../fragments/header.jsp" %>
@@ -63,7 +61,7 @@
 						</figure> 
 					</td>
 					
-					<td><%=product.getPrezzo()%></td>
+					<td>&euro;<%=product.getPrezzo()%></td>
 					<td><%=product.getIva()%></td>
 					<td><%=product.getQtaCarrello()%></td>
 					<td>

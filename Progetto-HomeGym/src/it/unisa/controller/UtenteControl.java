@@ -1,3 +1,4 @@
+
 package it.unisa.controller;
 
 import java.io.IOException;
@@ -46,7 +47,8 @@ public class UtenteControl extends HttpServlet {
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/login.jsp");
 				dispatcher.forward(request, response);
 			}
-			String action=request.getParameter("action");
+
+			String action = request.getParameter("action");
 			
 			if(action.equals("viewDatiPagamentoSpedizione")) {
 				try {
@@ -79,6 +81,7 @@ public class UtenteControl extends HttpServlet {
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/operazione.jsp");
 				dispatcher.forward(request, response);
 			}
+
 			if(action.equals("rimuoviIndirizzoSpedizione")) {
 				int id = Integer.parseInt(request.getParameter("idIndirizzo"));
 				try {
@@ -90,6 +93,7 @@ public class UtenteControl extends HttpServlet {
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/operazione.jsp");
 				dispatcher.forward(request, response);
 			}
+			
 			if(action.equals("rimuoviDatiPagamento")) {
 				String numeroCarta=request.getParameter("carta");
 				try {
