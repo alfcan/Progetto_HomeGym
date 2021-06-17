@@ -27,22 +27,19 @@ public class LoginControl extends HttpServlet {
 		
 		try {
 			UtenteBean utente = model.doRetrieve(email, password);
-			if(utente != null) {
+			if(utente == null) {
+				response.getWriter().write("0");
+			}
+			else {
 				HttpSession session = request.getSession(true);
 				if(utente.getTipo().equalsIgnoreCase("admin")) {
 					session.setMaxInactiveInterval(60*35);
 					session.setAttribute("Utente", utente);
-					response.sendRedirect("pages/areaUtente.jsp");
 				}else {
 					session.setMaxInactiveInterval(60*20);
 					session.setAttribute("Utente", utente);
-					response.sendRedirect("pages/areaUtente.jsp");
 				}
-			}
-			else {
-				request.setAttribute("operazione", "Login non riuscito");
-				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/operazione.jsp");
-				dispatcher.forward(request, response);
+				response.getWriter().write("1");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

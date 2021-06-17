@@ -8,11 +8,12 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
     	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<link rel="stylesheet" href="../css/bootstrap.min.css">
-		<link rel="stylesheet" href="../Stili/login.css">
-		<link rel="stylesheet" href="../Stili/header.css">
-		<link rel="stylesheet" href="../Stili/footer.css">
-		<script src="../jsMiei/footer.js"></script> 
+		<link rel="stylesheet" href="<%=request.getContextPath() + "/css/bootstrap.min.css"%>">
+		<link rel="stylesheet" href="<%=request.getContextPath() + "/Stili/login.css"%>">
+    	<link rel="stylesheet" href="<%=request.getContextPath() + "/Stili/header.css"%>">
+		<link rel="stylesheet" href="<%=request.getContextPath() + "/Stili/footer.css"%>">
+		<script src="<%=request.getContextPath() + "/jsMiei/footer.js"%>"></script>
+		<script src="<%=request.getContextPath() + "/jsMiei/controlliLogin.js"%>"></script>
 		<meta charset="UTF-8">
 		<title>HomeGym-Login</title>
 	</head>
@@ -33,14 +34,17 @@
                                 <h3 class="mb-0">Login</h3>
                             </div>
       
-                                <form action="/Progetto-HomeGym/Login" method="post">
+      							<p id="error"></p>
+                                <form action="/Progetto-HomeGym/Login" method="post" onsubmit="return checkLogin(this)">
                                     <div class="form-group">
                                         <label for="uname1" class="grassetto"><img src="foto/ominologin.PNG" alt="">&nbspEmail</label>
-                                        <input type="email" class="form-control form-control-lg rounded-0 BORDO" name="email" id="email" required="">
+                                        <input type="text" class="form-control form-control-lg rounded-0 BORDO" name="email" id="email" onclick="startEmail()" onkeyup="startEmail()">
+                                        <p id="errorEmail"></p>
                                     </div>
                                     <div class="form-group">
                                         <label class="grassetto"><img src="foto/chiave.PNG" alt="">&nbspPassword</label>
-                                        <input type="password" class="form-control form-control-lg rounded-0 BORDO" name="password" id="password" required="" autocomplete="new-password">
+                                        <input type="password" class="form-control form-control-lg rounded-0 BORDO" name="password" id="password" autocomplete="new-password" onclick="startPassword()" onkeyup="startPassword()">
+                                    	<p id="errorP"></p>
                                     </div>
                                     <button type="submit" class="btn btn-danger btn-lg float-right btn-mio" id="btnLogin">Accedi</button>
                                     <div>
