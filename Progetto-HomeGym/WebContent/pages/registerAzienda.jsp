@@ -11,12 +11,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HomeGym - Registrazione Azienda</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../Stili/registrazione.css">
-    <link rel="stylesheet" href="../Stili/header.css">
-	<link rel="stylesheet" href="../Stili/footer.css">
-	<script src="../jsMiei/footer.js"></script> 
-	<script src="../jsMiei/controlliRegistrazione.js"></script>
+    <link rel="stylesheet" href=<%=request.getContextPath() + "/Stili/footer.css" %>>
+	<link rel="stylesheet" href=<%=request.getContextPath() + "/Stili/header.css" %>>
+	<link rel="stylesheet" href=<%=request.getContextPath() + "/Stili/registrazione.css" %>>
+	<link rel="stylesheet" href=<%=request.getContextPath() + "/css/bootstrap.min.css" %>>
+	<script src="<%=request.getContextPath() + "/jsMiei/footer.js"%>"></script> 
+	<script src="<%=request.getContextPath() + "/jsMiei/controlliRegistrazione.js"%>"></script>
 	</head>
 	<body>
 		<%@ include file="../fragments/header.jsp" %>
