@@ -15,19 +15,22 @@
 	<head>
 		<meta charset="ISO-8859-1">
 		<title>HomeGym - Carrello</title>
-		<link rel="stylesheet" href="<%=request.getContextPath() + "/css/bootstrap.min.css"%>">
-		<link rel="stylesheet" href="<%=request.getContextPath() + "/Stili/carello.css"%>">
-    	<link rel="stylesheet" href="<%=request.getContextPath() + "/Stili/header.css"%>">
-		<link rel="stylesheet" href="<%=request.getContextPath() + "/Stili/footer.css"%>">
-		<script src="<%=request.getContextPath() + "/jsMiei/footer.js"%>"></script>	
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="../css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="Stili/carello.css">
+    	<link rel="stylesheet" href="../Stili/carello.css">
+    	<link rel="stylesheet" href="../Stili/header.css">
+		<link rel="stylesheet" href="../Stili/footer.css">
+		<script src="../jsMiei/footer.js"></script> 	
 	</head>
 	<body>
 		<%@ include file="../fragments/header.jsp" %>
-		
+
 		<div class="container dark-grey-text">
       	<div class="row wow fadeIn">
         <div class="col-md-8 mb-4 div1">
-        
+		<table>
 		<div class="card" id="carta">
 		<table class="table table-hover shopping-cart-wrap">
 			<%
@@ -45,6 +48,8 @@
 					for(ProductBean product : products){
 			%>
 			<tbody>
+					<td><img src="<%=product.getUrlImmagine()%>" width="80" height="80"></td>
+					<td><%=product.getNome()%></td>
 				<tr id="figura">
 					<td>
 						<figure class="media">
@@ -56,58 +61,71 @@
                         </figcaption>
 						</figure> 
 					</td>
-					
-					<td>&euro;<%=product.getPrezzo()%></td>
+
+					<td><%=product.getPrezzo()%></td>
 					<td><%=product.getIva()%></td>
 					<td><%=product.getQtaCarrello()%></td>
 					<td>
-						
+						<%if(product.getQtaMagazzino() >= 1){ %>
+						<div class="container">
 						<a href="/Progetto-HomeGym/ProductControl?action=AddToCarrello&codice=<%=product.getCodice()%>"><img src="foto/piu.png" class="btn btn-danger btn-lg float-right" id="aggiungi"></a><br>
 						<a href="/Progetto-HomeGym/ProductControl?action=RemoveToCarrello&codice=<%=product.getCodice()%>"><img src="foto/meno.png" class="btn btn-danger btn-lg float-right" id="rimuovi"></a><br>
 						<a href="/Progetto-HomeGym/ProductControl?action=DeleteToCarrello&codice=<%=product.getCodice()%>"><img src="foto/rimuovi.png" class="btn btn-danger btn-lg float-right" id="elimina"></a><br>
-						
+						</div>
+						<%} else { %>
+							Disponibile solo in queste quantità<br>
+						<%} %>
 					</td>
 				</tr>
 			</tbody>
-			
 		</table>
-		</div>
+		</div> 
 			<% 
 				}}else{
 			%>
-			
 			<br>
        		<h6>Nessun elemento aggiunto al carrello fino ad ora.</h6>
        		<br>
-       		
-       		
 			<%
 				}
 			%>
-		
+		</table>
+		</div>
+
+
 		<%if(carrello != null && carrello.getTotale()!=0){ %>
-		
 		<div class="col-md-4 mb-4">
-        
-                <br> <br>
-				<h5>TOTALE: &euro;<%=carrello.getTotale() %></h5>
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12 mx-auto">
+                                <div>
+
+        <div class="row">
+        	<div class="col-md-12 mx-auto">
+
+
+				<h5>TOTALE: <%=carrello.getTotale() %></h5>
 				<a href="/Progetto-HomeGym/OrdineControl?action=datiOrdineUtente"><button class="btn btn-lg btn-primary btn-block btn-dark" id="bottoneAcquisto">Acquista</button></a>
-				</div>
-    			</div>
+		<%}%>
+
+        </div>
+    	</div>
 		</div>
-			<%}%>
-				
-       
+        </div>
+        </div>
+        </div>
+      	</div>
+		</div>
 		</div>
 		</div>
 		</div>
 		
-		
-		
+
 		<%@ include file="../fragments/footer.jsp" %>
-		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     	<script src="js/bootstrap.min.js"></script>	
 	</body>
-	
+</html> 
 </html>
