@@ -1,6 +1,6 @@
 function cambiaInstagram(){
 	var instagram=document.getElementById("instagram");
-	instagram.src="foto/instagram2.PNG";
+	instagram.src="foto/instagram2.png";
 }
 
 function ricambiaInstagram(){
@@ -10,7 +10,7 @@ function ricambiaInstagram(){
 
 function cambiaFacebook(){
 	var facebook=document.getElementById("facebook");
-	facebook.src="foto/facebook2.PNG";
+	facebook.src="foto/facebook2.png";
 }
 
 function ricambiaFacebook(){

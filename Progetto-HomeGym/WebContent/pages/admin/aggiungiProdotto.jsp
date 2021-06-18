@@ -12,7 +12,8 @@
 		<link rel="stylesheet" href=<%=request.getContextPath() + "/Stili/footer.css" %>>
 		<link rel="stylesheet" href=<%=request.getContextPath() + "/css/bootstrap.min.css" %>>
 		<link rel="stylesheet" href=<%=request.getContextPath() + "/Stili/registrazione.css" %>>
-		<script src="../jsMiei/footer.js"></script>
+		<script src="<%=request.getContextPath() + "/jsMiei/footer.js"%>"></script> 
+	
 		<meta charset="ISO-8859-1">
 		<title>HomeGym - Amministratore</title>
 	</head>

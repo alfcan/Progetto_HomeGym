@@ -81,10 +81,10 @@
           <h6 class="text-uppercase font-weight-bold" id="testoarancio">LINK UTILI</h6>
           <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
           <p>
-            <a class="linkfoot" href="#!">Area Personale</a>
+            <a class="linkfoot" href="../areaUtente.jsp">Area Personale</a>
           </p>
           <p>
-            <a class="linkfoot" href="registerAzienda.jsp">Registrati</a>
+            <a class="linkfoot" href="../registerAzienda.jsp">Registrati</a>
           </p>
           
 

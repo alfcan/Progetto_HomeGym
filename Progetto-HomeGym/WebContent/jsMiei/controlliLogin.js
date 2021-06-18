@@ -16,7 +16,7 @@ function checkLogin(form){
 	}
 
 	if ($("#password").val()===""){
-		$("#errorP").text('Inserire una password valida.').css({"color":"red"});
+		$("#errorP").text('Non hai inserito la tua password.').css({"color":"red"});
 		document.getElementById("password").focus();
 		return(false);
 	}

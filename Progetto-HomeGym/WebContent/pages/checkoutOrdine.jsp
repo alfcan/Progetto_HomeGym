@@ -7,7 +7,7 @@
 	<head>
 		<meta charset="ISO-8859-1">
 		<title>HomeGym - Checkout</title>
-		<link rel="stylesheet" href=<%=request.getContextPath() + "/Stili/registrazione.css" %>>
+		<link rel="stylesheet" href=<%=request.getContextPath() + "/Stili/registrazione.css"%>>
 		<link rel="stylesheet" href=<%=request.getContextPath() + "/Stili/footer.css" %>>
 		<link rel="stylesheet" href=<%=request.getContextPath() + "/Stili/header.css" %>>
 		<link rel="stylesheet" href=<%=request.getContextPath() + "/css/bootstrap.min.css" %>>
