@@ -11,11 +11,11 @@
 	<head>
 		<meta charset="ISO-8859-1">
 		<title>HomeGym - Area Utente</title>
-		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<link rel="stylesheet" href="../css/bootstrap.min.css">
-    	<link rel="stylesheet" href="../Stili/header.css">
-		<link rel="stylesheet" href="../Stili/footer.css">
 		<link rel="stylesheet" href=<%=request.getContextPath() + "/Stili/areaUtente.css" %>>
+		<link rel="stylesheet" href=<%=request.getContextPath() + "/Stili/footer.css" %>>
+		<link rel="stylesheet" href=<%=request.getContextPath() + "/Stili/header.css" %>>
+		<link rel="stylesheet" href=<%=request.getContextPath() + "/css/bootstrap.min.css" %>>
+		<script src="<%=request.getContextPath() + "/jsMiei/footer.js"%>"></script>
 		
 		<script src="../jsMiei/footer.js"></script>
 	</head>

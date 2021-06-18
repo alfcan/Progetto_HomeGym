@@ -12,11 +12,13 @@
 <html>
 <head>
 	<head>
-		<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href=<%=request.getContextPath() + "/Stili/footer.css" %>>
+		<link rel="stylesheet" href=<%=request.getContextPath() + "/Stili/header.css" %>>
+		<link rel="stylesheet" href=<%=request.getContextPath() + "/css/bootstrap.min.css" %>>
+		<script src="<%=request.getContextPath() + "/jsMiei/footer.js"%>"></script>
 		<link rel="stylesheet" href=<%=request.getContextPath() + "/Stili/prodotto.css" %>>
 		<link rel="stylesheet" href=<%=request.getContextPath() + "/Stili/registrazione.css" %>>
-		<link rel="stylesheet" href="../Stili/header.css">
-		<link rel="stylesheet" href="../Stili/footer.css">
+		
 		<meta charset="ISO-8859-1">
 		<title>HomeGym - <%=prodotto.getNome()%></title>
 	</head>

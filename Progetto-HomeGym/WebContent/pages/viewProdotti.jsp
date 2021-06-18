@@ -13,6 +13,11 @@
 	<link rel="stylesheet" href="<%=request.getContextPath() + "/css/bootstrap.min.css"%>">
 	<link rel="stylesheet" href="<%=request.getContextPath() + "/Stili/registrazione.css"%>">
 	<link rel="stylesheet" href="<%=request.getContextPath() + "/Stili/catalogo.css"%>">
+	 <link rel="stylesheet" href=<%=request.getContextPath() + "/Stili/footer.css" %>>
+	<link rel="stylesheet" href=<%=request.getContextPath() + "/Stili/header.css" %>>
+	<link rel="stylesheet" href=<%=request.getContextPath() + "/css/bootstrap.min.css" %>>
+	<script src="<%=request.getContextPath() + "/jsMiei/footer.js"%>"></script> 
+	
 	<meta charset="ISO-8859-1">
 	<title>HomeGym - Catalogo</title>
 </head>
