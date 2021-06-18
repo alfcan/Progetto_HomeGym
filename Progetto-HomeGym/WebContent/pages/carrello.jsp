@@ -15,117 +15,58 @@
 	<head>
 		<meta charset="ISO-8859-1">
 		<title>HomeGym - Carrello</title>
-		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<link rel="stylesheet" href="../css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<link rel="stylesheet" href="Stili/carello.css">
-    	<link rel="stylesheet" href="../Stili/carello.css">
-    	<link rel="stylesheet" href="../Stili/header.css">
-		<link rel="stylesheet" href="../Stili/footer.css">
-		<script src="../jsMiei/footer.js"></script> 	
+		<link rel="stylesheet" href="<%=request.getContextPath() + "/css/bootstrap.min.css"%>">
+		<link rel="stylesheet" href="<%=request.getContextPath() + "/Stili/registrazione.css"%>">
+		<link rel="stylesheet" href="<%=request.getContextPath() + "/Stili/carello.css"%>">
+    	<link rel="stylesheet" href="<%=request.getContextPath() + "/Stili/header.css"%>">
+		<link rel="stylesheet" href="<%=request.getContextPath() + "/Stili/footer.css"%>">
+		<script src="<%=request.getContextPath() + "/jsMiei/footer.js"%>"></script> 	
 	</head>
 	<body>
 		<%@ include file="../fragments/header.jsp" %>
 
-		<div class="container dark-grey-text">
-      	<div class="row wow fadeIn">
-        <div class="col-md-8 mb-4 div1">
-		<table>
-		<div class="card" id="carta">
-		<table class="table table-hover shopping-cart-wrap">
-			<%
-				if(products != null && products.size() != 0){
-			%>
-			<thead class="text-muted">
-			<tr id="intestazione">
-				<th scope="col">Prodotto</th>
-				<th scope="col">Prezzo</th>
-				<th scope="col">Iva</th>
-				<th scope="col">Quantita'</th>
-			</tr>
-			</thead>
-			<%
-					for(ProductBean product : products){
-			%>
-			<tbody>
-					<td><img src="<%=product.getUrlImmagine()%>" width="80" height="80"></td>
-					<td><%=product.getNome()%></td>
-				<tr id="figura">
-					<td>
-						<figure class="media">
-						<div class="img-wrap"><img src="<%=request.getContextPath()+ "/" + product.getUrlImmagine()%>" width="80" height="80" class="img-thumbnail img-sm" id="fotoprodotto"></div>
-						<figcaption class="media-body">
-                                   <dl class="dlist-inline small">   
-									<dd><%=product.getNome()%></dd>
-									</dl>
-                        </figcaption>
-						</figure> 
-					</td>
-
-					<td><%=product.getPrezzo()%></td>
-					<td><%=product.getIva()%></td>
-					<td><%=product.getQtaCarrello()%></td>
-					<td>
-						<%if(product.getQtaMagazzino() >= 1){ %>
-						<div class="container">
-						<a href="/Progetto-HomeGym/ProductControl?action=AddToCarrello&codice=<%=product.getCodice()%>"><img src="foto/piu.png" class="btn btn-danger btn-lg float-right" id="aggiungi"></a><br>
-						<a href="/Progetto-HomeGym/ProductControl?action=RemoveToCarrello&codice=<%=product.getCodice()%>"><img src="foto/meno.png" class="btn btn-danger btn-lg float-right" id="rimuovi"></a><br>
-						<a href="/Progetto-HomeGym/ProductControl?action=DeleteToCarrello&codice=<%=product.getCodice()%>"><img src="foto/rimuovi.png" class="btn btn-danger btn-lg float-right" id="elimina"></a><br>
+		<div class="card">
+			<div class="row">
+	   			<%if(products != null && products.size() != 0){%>
+				<div class="col-md-8 cart">
+					<div class="title">
+	                	<div class="row">
+	                    	<div class="col">
+	                        	<h4><b>Il tuo Carrello</b></h4>
+	                    	</div>
+	                    	<div class="col align-self-center text-right text-muted"><%=carrello.getQtaProducts()%> prodotti</div>
+	                	</div>
+	            	</div>
+					<%for(ProductBean product : products){%>
+						<div class="row border-top border-bottom">
+							<div class="row main align-items-center">
+								<div class="col-2"><img class="img-cart" src="<%=request.getContextPath()+ "/" + product.getUrlImmagine()%>"></div>
+								<div class="col"><%=product.getNome()%></div>
+								<div class="col"> <a href="/Progetto-HomeGym/ProductControl?action=RemoveToCarrello&codice=<%=product.getCodice()%>">-</a><%=product.getQtaCarrello()%><a href="/Progetto-HomeGym/ProductControl?action=AddToCarrello&codice=<%=product.getCodice()%>">+</a></div>
+								<div class="col">&euro; <%=product.getPrezzo()%><span class="close"><a href="/Progetto-HomeGym/ProductControl?action=DeleteToCarrello&codice=<%=product.getCodice()%>">&#10005;</a></span></div>
+							</div>
 						</div>
-						<%} else { %>
-							Disponibile solo in queste quantità<br>
-						<%} %>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-		</div> 
-			<% 
-				}}else{
-			%>
-			<br>
-       		<h6>Nessun elemento aggiunto al carrello fino ad ora.</h6>
-       		<br>
-			<%
-				}
-			%>
-		</table>
+					<%}%>
+				</div>	
+				<%}else{%>
+					<div>
+		       			<h6 id="not-product">Nessun elemento aggiunto al carrello fino ad ora.</h6>
+					</div>
+				<%}%>
+	
+			<%if(carrello != null && carrello.getTotale()!=0){ %>
+				<div class="col-md-4 summary">
+            		<div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+		                <div class="col">TOTALE</div>
+		                <div class="col text-right">&euro; <%=carrello.getTotale() %></div>
+		            </div> <a href="/Progetto-HomeGym/OrdineControl?action=datiOrdineUtente"><button class="btn btn-mio btn-lg btn-primary btn-block btn-dark">Acquista</button></a>
+				</div>
+			<%}%>
 		</div>
-
-
-		<%if(carrello != null && carrello.getTotale()!=0){ %>
-		<div class="col-md-4 mb-4">
-        <div class="container py-5">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-md-12 mx-auto">
-                                <div>
-
-        <div class="row">
-        	<div class="col-md-12 mx-auto">
-
-
-				<h5>TOTALE: <%=carrello.getTotale() %></h5>
-				<a href="/Progetto-HomeGym/OrdineControl?action=datiOrdineUtente"><button class="btn btn-lg btn-primary btn-block btn-dark" id="bottoneAcquisto">Acquista</button></a>
-		<%}%>
-
-        </div>
-    	</div>
-		</div>
-        </div>
-        </div>
-        </div>
-      	</div>
-		</div>
-		</div>
-		</div>
-		</div>
-		
+	</div>
 
 		<%@ include file="../fragments/footer.jsp" %>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     	<script src="js/bootstrap.min.js"></script>	
 	</body>
-</html> 
 </html>

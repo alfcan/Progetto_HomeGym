@@ -1,87 +1,123 @@
-#fotoprodotto{
-	width: 70%; height: 70%;
-	border: 0px;
+.title {
+    margin-bottom: 5vh
 }
 
-#figura:hover{
-	background-color:#e9e9e9;
+.card {
+    margin: auto;
+    margin-top: 40px;
+    max-width: 950px;
+    width: 90%;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 1rem;
+    border: transparent
 }
 
-#intestazione{
-	background-color:#3F3F3F;
-	color:white;
+@media(max-width:767px) {
+    .card {
+        margin: 3vh auto
+    }
 }
 
-
-.table td, .table th {
-    padding: .75rem;
-    vertical-align: top;
-    border-top: 3px solid #3F3F3F;
+.cart {
+    background-color: #fff;
+    padding: 4vh 5vh;
+    border-bottom-left-radius: 1rem;
+    border-top-left-radius: 1rem
 }
 
-#carta{
-	border-left: 4px solid #3F3F3F;
-	border-bottom: 4px solid #3F3F3F;
-	border-right: 4px solid #3F3F3F;
+@media(max-width:767px) {
+    .cart {
+        padding: 4vh;
+        border-bottom-left-radius: unset;
+        border-top-right-radius: 1rem
+    }
 }
 
-#bottoneAcquisto{
-	text-decoration:none;
-}
-#bottoneAcquisto:hover{
-	background-color: #FA9600;
-	color:#3F3F3F;
-	border-color:  #FA9600;
-	text-decoration: none;
+.summary {
+    background-color: ;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    padding: 4vh;
+    color: rgb(65, 65, 65)
 }
 
-#elimina{
-	margin-top:35%;
-	background-color: #3F3F3F;
-	border-color:#3F3F3F
-}
-#elimina:hover{
-	background-color: #FA9600;
-	color:#3F3F3F;
-	border-color:  #FA9600;
+@media(max-width:767px) {
+    .summary {
+        border-top-right-radius: unset;
+        border-bottom-left-radius: 1rem
+    }
 }
 
-#aggiungi{
-	margin-top:35%;
-	background-color: #3F3F3F;
-	border-color:#3F3F3F
-}
-#aggiungi:hover{
-	background-color: #FA9600;
-	color:#3F3F3F;
-	border-color:  #FA9600;
-}
-#rimuovi{
-	margin-top:35%;
-	background-color: #3F3F3F;
-	border-color:#3F3F3F
-}
-#rimuovi:hover{
-	background-color: #FA9600;
-	color:#3F3F3F;
-	border-color:  #FA9600;
+.summary .col-2 {
+    padding: 0
 }
 
-@media screen and (max-width: 768px) {
-    #elimina{
-	margin-top:80%;
+.summary .col-10 {
+    padding: 0
 }
-} 
 
-@media screen and (max-width: 991px) {
-    #elimina{
-	margin-top:80%;
+.row {
+    margin: 0
 }
-} 
 
+.title b {
+    font-size: 1.5rem
+}
 
+.main {
+    margin: 0;
+    padding: 2vh 0;
+    width: 100%
+}
 
+.col-2,
+.col {
+    padding: 0 1vh
+}
 
+a {
+    padding: 0 1vh
+}
 
+.close {
+    margin-left: auto;
+    font-size: 0.7rem
+}
 
+.img-cart {
+    width: 3.5rem
+}
 
+h5 {
+    margin-top: 4vh
+}
+
+hr {
+    margin-top: 1.25rem
+}
+
+select {
+    border: 1px solid rgba(0, 0, 0, 0.137);
+    padding: 1.5vh 1vh;
+    margin-bottom: 4vh;
+    outline: none;
+    width: 100%;
+    background-color: rgb(247, 247, 247)
+}
+
+#not-product{
+	font-family: verdiana;
+	font-weight: bold;
+	font-size: 32px;
+	margin: 22px;
+	color: #FA9600;
+}
+
+a {
+    color: black
+}
+
+a:hover {
+    color: black;
+    text-decoration: none
+}

@@ -70,4 +70,12 @@ public class Carrello {
 		return totale;
 	}
 	
+	public synchronized int getQtaProducts() {
+		int qta = 0;
+		for(int i = 0; i < products.size(); i++) {
+			ProductBean p = products.get(i);
+			qta += p.getQtaCarrello();
+		}
+		return qta;
+	}
 }
