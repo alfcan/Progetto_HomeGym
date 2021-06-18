@@ -5,7 +5,7 @@ function cambiaInstagram(){
 
 function ricambiaInstagram(){
 	var instagranm=document.getElementById("instagram");
-	instagram.src="foto/instagram.jpg";
+	instagram.src="foto/instagram.png";
 }
 
 function cambiaFacebook(){
@@ -15,5 +15,5 @@ function cambiaFacebook(){
 
 function ricambiaFacebook(){
 	var facebook=document.getElementById("facebook");
-	facebook.src="foto/facebook.jpg";
+	facebook.src="foto/facebook.png";
 }

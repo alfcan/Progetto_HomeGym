@@ -114,11 +114,11 @@
           <div>
 
             <!-- Facebook -->
-              <a href="" id="img" onMouseOver="cambiaFacebook()" onMouseOut="ricambiaFacebook()"><img id="facebook" src="foto/facebook.jpg" class="fb-ic">
+              <a href="" id="img" onMouseOver="cambiaFacebook()" onMouseOut="ricambiaFacebook()"><img id="facebook" src="foto/facebook.png" class="fb-ic">
               <i class="fab fa-facebook-f white-text mr-4"> </i>
             </a>
             <!--Instagram-->
-                <a href="" id="img" onMouseOver="cambiaInstagram()" onMouseOut="ricambiaInstagram()"><img id="instagram" src="foto/instagram.jpg"  class="fb-ic" >
+                <a href="" id="img" onMouseOver="cambiaInstagram()" onMouseOut="ricambiaInstagram()"><img id="instagram" src="foto/instagram.png" class="fb-ic" >
           <i class="fab fa-instagram white-text"> </i>
         </a>
         <!-- Grid column -->

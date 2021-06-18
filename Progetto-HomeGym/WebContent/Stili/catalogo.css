@@ -1,0 +1,40 @@
+body{margin-top:20px;
+}
+
+.product {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.product .caption {
+  margin-top: 15px;
+}
+
+.product .caption h6 {
+  color: #455a64;
+}
+
+.product.tumbnail {
+  box-shadow: 0 5px 25px 0 transparent;
+  transition: 0.3s linear;
+  padding-top: 0;
+}
+
+.product.tumbnail img:hover {
+  box-shadow: 0 5px 25px 0 #FA9600;
+}
+
+
+
+
+.price {
+  display: inline-block;
+  font-size: 15px;
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #2b2f3e;
+}
+

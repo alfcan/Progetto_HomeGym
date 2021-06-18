@@ -70,20 +70,7 @@
    
       </ul>
   </div>
-  <div class="w-100 d-flex flex-nowrap">
-      <div class="w-100">
-          <button id="tastino2" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar8">
-              <span class="navbar-toggler-icon"><img src="foto/tshirt.png" alt=""></span>
-          </button>
-      </div>
-      <div class="d-flex w-100 justify-content-end order-3">
-          <form class="d-flex flex-nowrap align-items-center" method="post" action="AltreRicerche">
-              <input type="hidden" name="action" value="SearchNome">
-              <input class="form-control border-right-0 mr-n1" name="daCercare" type="search" size="50" placeholder="Cerca" aria-label="Search">
-              <button id="cerca" class="btn btn-outline-secondary" type="submit"><i class="fa fa-search">Search</i></button>
-            </form>
-      </div>
-  </div>
+  
 </nav>
 
 </body>
