@@ -4,13 +4,13 @@
 }
 
 .btn-mio{              /*bottone login*/
-    background-color: #3F3F3F;;
+    background-color: #3F3F3F;
     border-color: white;
 }
 
 .btn-mio:hover{
     background-color: #FA9600;
-    border-color:#FA9600 ;
+    border-color:#FA9600;
 }
 
 #linkReg{            /*LINK A REGISTRAZIONE*/

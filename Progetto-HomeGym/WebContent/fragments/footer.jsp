@@ -87,7 +87,7 @@
             <a class="linkfoot" href="/Progetto-HomeGym/pages/registerPersonaFisica.jsp">Registrati</a>
           </p>
           <p>
-            <a class="linkfoot" href="/Progetto-HomeGym/pages/registerAzienda.jsp">Registrazione azienda</a>
+            <a class="linkfoot" href="/Progetto-HomeGym/pages/registerAzienda.jsp">Registra la tua azienda</a>
           </p>
 
         </div>

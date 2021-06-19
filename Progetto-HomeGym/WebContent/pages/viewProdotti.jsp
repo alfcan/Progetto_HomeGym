@@ -31,7 +31,7 @@
 				<div class="product tumbnail thumbnail-3"><a href="ProductControl?action=ViewProdotto&codice=<%=product.getCodice()%>"><img src="<%=request.getContextPath() + "/" + product.getUrlImmagine()%>"></a>
 			    	<div class="caption">
 				       	<h6><%=product.getNome()%></h6>
-				        <span class="price"><p>&euro;<%=product.getPrezzo()%></p></span>
+				        <span class="price"><p><%=product.getPrezzo()%>&euro;</p></span>
 				        <% if(product.getQtaMagazzino() == 0) {%>
 							<p class="float-right">Non Disponibile</p>
 						<%}else { %>
