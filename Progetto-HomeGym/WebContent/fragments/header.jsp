@@ -66,10 +66,15 @@
           <li class="nav-item">
             <a id="collegamento3" class="nav-link" href="<%=request.getContextPath()%>/ProductControl?action=ViewProdotti&cat=4">ACCESSORI</a>
           </li>
-          
-   
       </ul>
   </div>
+  
+  <div class="w-100 d-flex flex-nowrap">
+      <div class="w-100">
+          <button id="tastino2" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar8">
+              <span class="navbar-toggler-icon"><img src="foto/linee.png" alt=""></span>
+          </button>
+      </div>
   
 </nav>
 
