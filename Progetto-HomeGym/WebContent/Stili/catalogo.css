@@ -6,8 +6,8 @@
 }
 
 .product img{
-	width: 290px;
-	height: 250px;
+	width: 15em;
+	height: 10em;
 }
 
 .product .caption {
@@ -120,10 +120,9 @@
 }
 
 @media (max-width: 991px) {
-  .single-product .caption .share span.small {
-    display: block;
-    margin-bottom: 15px;
-  }
+	.single-product .caption .share span.small {
+  		margin-top: 0px;
+	} 
 }
 
 @media (max-width: 767px) {

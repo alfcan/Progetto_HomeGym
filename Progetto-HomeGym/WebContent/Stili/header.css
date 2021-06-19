@@ -64,17 +64,6 @@
     background-color: white;
 }
 
-#cerca {        /*bottone search*/
-    color: white;
-    border-color: white;
-    margin-left: 3%;
-}
-#cerca:hover{       /*bottone search quando viene passato sopra col mouse*/
-    color:black;
-    background-color:rgb(233, 229, 229);
-    font-weight: bold;
-}
-
 #tastino1{   /*tastino responsive prima barra*/
    background-color:white;
     border-color:  rgb(0, 0, 0);
@@ -124,9 +113,15 @@
     margin-right: 0px;
     margin-bottom: 3%;
     }
+
+	#logo{                       /*logo*/
+    	margin-left: 5%;
+	}
 }
 
 
-@media (max-width: 1199.98px) {
-    
+@media (max-width: 325px) {
+    #logo{                       /*logo*/
+    	display:none;
+	}
 }

@@ -10,11 +10,11 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" href=<%=request.getContextPath() + "/Stili/footer.css" %>>
-		<link rel="stylesheet" href=<%=request.getContextPath() + "/Stili/header.css" %>>
-		<link rel="stylesheet" href=<%=request.getContextPath() + "/css/bootstrap.min.css" %>>
+		<link rel="stylesheet" href="<%=request.getContextPath() + "/Stili/footer.css"%>">
+		<link rel="stylesheet" href="<%=request.getContextPath() + "/Stili/header.css"%>">
+		<link rel="stylesheet" href="<%=request.getContextPath() + "/css/bootstrap.min.css"%>">
 		<script src="<%=request.getContextPath() + "/jsMiei/footer.js"%>"></script>
-		<link rel="stylesheet" href=<%=request.getContextPath() + "/Stili/registrazione.css" %>>
+		<link rel="stylesheet" href="<%=request.getContextPath() + "/Stili/registrazione.css"%>">
 		<meta charset="ISO-8859-1">
 		<%if(utente.getTipo().equalsIgnoreCase("admin")) {%>
 			<title>HomeGym - Amministratore</title>
@@ -82,6 +82,8 @@
 					<h3>Non hai effettuato ordini</h3>
 				<%} %>
 			<%} %>
+			</div>
+			</div>
 			</div>
 			</div>
 			</div>

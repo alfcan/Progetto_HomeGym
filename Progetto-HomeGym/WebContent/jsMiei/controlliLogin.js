@@ -21,12 +21,12 @@ function checkLogin(form){
 		return(false);
 	}
 	
-	$.post("../Login",$(form).serialize(),function(msg){
+	$.post("/Progetto-HomeGym/Login",$(form).serialize(),function(msg){
 		if(msg === "0"){
 			$("#error").text("Login non riuscito").css({"color":"red"});
 			document.getElementById("email").focus();
 		} else {
-			window.location = 'areaUtente.jsp';
+			window.location = '/Progetto-HomeGym/pages/areaUtente.jsp';
 		}
 	});
 		
