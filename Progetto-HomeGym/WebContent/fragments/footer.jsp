@@ -59,16 +59,16 @@
           <h6 class="text-uppercase font-weight-bold" id="testoarancio">AIUTO</h6>
           <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
           <p>
-            <a class="linkfoot" href="terminiecondizioni.html">Termini & Condizioni</a>
+            <a class="linkfoot" href="/Progetto-HomeGym/terminiecondizioni.html">Termini & Condizioni</a>
           </p>
           <p>
-            <a class="linkfoot" href="policy.html">Privacy Policy</a>
+            <a class="linkfoot" href="/Progetto-HomeGym/policy.html">Privacy Policy</a>
           </p>
           <p>
-            <a class="linkfoot" href="recesso.html">Diritto di Recesso</a>
+            <a class="linkfoot" href="/Progetto-HomeGym/recesso.html">Diritto di Recesso</a>
           </p>
           <p>
-            <a class="linkfoot" href="faq.html">FAQ</a>
+            <a class="linkfoot" href="/Progetto-HomeGym/faq.html">FAQ</a>
           </p>
 
         </div>
@@ -81,12 +81,14 @@
           <h6 class="text-uppercase font-weight-bold" id="testoarancio">LINK UTILI</h6>
           <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
           <p>
-            <a class="linkfoot" href="../areaUtente.jsp">Area Personale</a>
+            <a class="linkfoot" href="/Progetto-HomeGym/pages/areaUtente.jsp">Area Personale</a>
           </p>
           <p>
-            <a class="linkfoot" href="../registerAzienda.jsp">Registrati</a>
+            <a class="linkfoot" href="/Progetto-HomeGym/pages/registerPersonaFisica.jsp">Registrati</a>
           </p>
-          
+          <p>
+            <a class="linkfoot" href="/Progetto-HomeGym/pages/registerAzienda.jsp">Registrazione azienda</a>
+          </p>
 
         </div>
         <!-- Grid column -->
