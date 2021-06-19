@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="it.unisa.model.beans.*" %>
-<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.ArrayList, java.text.SimpleDateFormat" %>
+
+<%SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");%>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -60,11 +63,13 @@
 				</thead>
 			</tr>
 				<tbody>
-					<%for (OrdineBean o : ordini) {%>
+					<%for (OrdineBean o : ordini) {
+						String data = sdf.format(o.getData());
+					%>
 					<tr>
 						<td><%=o.getID()%></td>
 						<td><%=o.getStato()%></td>
-						<td><%=o.getData()%></td>
+						<td><%=data%></td>
 						<td><%=o.getUtente()%></td>		
 						<form method="post" action="/Progetto-HomeGym/AdminControl">
 	                    <input type="hidden" name="idOrdine" value="<%=o.getID()%>">

@@ -26,7 +26,7 @@
 		<%@ include file="../fragments/header.jsp" %>
 		
 		
-		<img src="<%=prodotto.getUrlImmagine()%>" width="500" height="600" style="float:left; margin:0px 20px 20px 0px;">	
+		<img class="img-product" src="<%=prodotto.getUrlImmagine()%>">	
 		<h1 style="padding-top:30px;"><%=prodotto.getNome()%></h1>
 		<p style="padding-top:20px;"><%=prodotto.getDescrizione()%></p>
 		<h1 id="grassetto"> &euro;<%=prodotto.getPrezzo()%></h1>

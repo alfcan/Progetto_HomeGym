@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.ArrayList, java.text.SimpleDateFormat" %>
 <%@ page import="it.unisa.model.DAOS.*, it.unisa.model.beans.*" %>
 
 <%
 	ArrayList<ProductBean> products = (ArrayList<ProductBean>) request.getAttribute("dettagliOrdine");
 	UtenteBean utente = (UtenteBean) session.getAttribute("Utente");
+	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 %>
 <!DOCTYPE html>
 <html>
@@ -57,19 +58,19 @@
 				<th>ID Ordine</th>
 				<th>Stato</th>
 				<th>Data</th>
-				<th>Indirizzo Spedizione</th>
 				<th>Totale</th>
 			</tr>
-			<%for(OrdineBean ordine : ordini){ %>
+			<%for(OrdineBean ordine : ordini){ 
+				String data = sdf.format(ordine.getData());
+			%>
 				<tr>
-					<th><%=ordine.getID()%></th>
-					<th><%=ordine.getStato()%></th>
-					<th><%=ordine.getData()%></th>
-					<th><%=ordine.getIndirizzoSpedizione()%></th>
-					<th><%=ordine.getTotale()%></th>
-					<th>
+					<td><%=ordine.getID()%></td>
+					<td><%=ordine.getStato()%></td>
+					<td><%=data%></td>
+					<td><%=ordine.getTotale()%></td>
+					<td>
 						<a href="OrdineControl?action=dettagliOrdine&id=<%=ordine.getID()%>" class="btn btn-danger btn-lg float-right btn-mio">Dettagli</a>
-					</th>
+					</td>
 				<tr>		
 			<%	}
 			%>

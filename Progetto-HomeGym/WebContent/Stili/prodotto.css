@@ -1,9 +1,31 @@
+.img-product{
+	width: 35em;
+	height: 30em;
+	float: left;
+	margin: 0px 20px 20px 0px;
+}
+
+@media (max-width: 635px){
+	.img-product{
+		width: 25em;
+		height: 20em;
+		float: left; 
+		margin: 0px 20px 20px 0px;
+	}	
+}
+
+@media (max-width: 410px){
+	.img-product{
+		width: 20em;
+		height: 15em;
+		float: left; 
+		margin: 0px 20px 20px 0px;
+	}	
+}
 
 .btn-mio{              
     background-color: #3F3F3F;;
-    border-color: white;
-    
-    
+    border-color: white;    
 }
 
 .btn-mio:hover{

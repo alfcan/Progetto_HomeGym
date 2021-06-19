@@ -35,3 +35,12 @@
 h6#testo{
 	font-weight:bold;
 }
+
+table{
+	border-collapse: separate;
+	border-spacing: 15px;
+}
+
+table tr,th{
+	text-align:center;
+}
