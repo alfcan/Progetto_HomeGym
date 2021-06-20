@@ -23,7 +23,7 @@ function checkLogin(form){
 	
 	$.post("/Progetto-HomeGym/Login",$(form).serialize(),function(msg){
 		if(msg === "0"){
-			$("#error").text("Login non riuscito").css({"color":"red"});
+			$("#error").text("LOGIN NON RIUSCIUTO: email o password errate").css({"color":"red"});
 			document.getElementById("email").focus();
 		} else {
 			window.location = '/Progetto-HomeGym/pages/areaUtente.jsp';

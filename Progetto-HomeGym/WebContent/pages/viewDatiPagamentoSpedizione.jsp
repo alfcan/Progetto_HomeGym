@@ -18,7 +18,8 @@
 		<link rel="stylesheet" href="<%=request.getContextPath() + "/Stili/registrazione.css"%>">
 		<link rel="stylesheet" href="<%=request.getContextPath() + "/Stili/header.css"%>">
 		<link rel="stylesheet" href="<%=request.getContextPath() + "/Stili/footer.css"%>">
-		<script src="Progetto-HomeGym/jsMiei/footer.js"></script> 
+		<script src="Progetto-HomeGym/jsMiei/footer.js"></script>
+		<script src="Progetto-HomeGym/jsMiei/controlliDatiPagamento.js">></script> 
 	</head>
 	<body>
 		<%@ include file="../fragments/header.jsp" %>
@@ -42,18 +43,21 @@
                             </div>
                             <div class="card-body">
                          
-				<form method="post" action="/Progetto-HomeGym/UtenteControl">
+				<form method="post" action="/Progetto-HomeGym/UtenteControl" onsubmit="return checkDatiPag(this)">
 				
 				<input type="hidden" name="action" value="addDatiPagamento">
 				
 			 	<label class="grassetto" for="carta"><img src="foto/partitaiva.png">&nbspNumero Carta</label>
 	            <input type="text" class="form-control form-control-lg rounded-0 BORDO" name="carta" id="carta" placeholder="Numero carta"><br>
+	            <p id="errorNumCarta"></p>
 	            
 	            <label class="grassetto" for="cvv"><img src="foto/partitaiva.png">&nbspCvv</label>
 	            <input type="text" class="form-control form-control-lg rounded-0 BORDO" name="cvv" id="cvv" placeholder="Cvv"><br>
+	            <p id="errorCVV"></p>
 	            
 	            <label class="grassetto"for="data"><img src="foto/calendario.png">&nbspData scadenza</label>
 	            <input type="date" class="form-control form-control-lg rounded-0 BORDO" name="data" id="data" placeholder="Data scadenza"><br>
+	            <p id="errorData"></p>
 	            
 	            <input type="submit" class="btn btn-danger btn-lg float-right btn-mio" value="Invia">
 			</form>
