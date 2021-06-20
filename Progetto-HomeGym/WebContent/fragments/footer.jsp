@@ -116,11 +116,11 @@
           <div>
 
             <!-- Facebook -->
-              <a href="" id="img" onMouseOver="cambiaFacebook()" onMouseOut="ricambiaFacebook()"><img id="facebook" src="foto/facebook.png" class="fb-ic">
+              <a href="https://www.facebook.com/HomeGym-106016535062969" target="_blank"id="img" onMouseOver="cambiaFacebook()" onMouseOut="ricambiaFacebook()"><img id="facebook" src="foto/facebook.png" class="fb-ic">
               <i class="fab fa-facebook-f white-text mr-4"> </i>
             </a>
             <!--Instagram-->
-                <a href="" id="img" onMouseOver="cambiaInstagram()" onMouseOut="ricambiaInstagram()"><img id="instagram" src="foto/instagram.png" class="fb-ic" >
+                <a href="https://www.instagram.com/___homegym__/" target="_blank" id="img" onMouseOver="cambiaInstagram()" onMouseOut="ricambiaInstagram()"><img id="instagram" src="foto/instagram.png" class="fb-ic" >
           <i class="fab fa-instagram white-text"> </i>
         </a>
         <!-- Grid column -->
