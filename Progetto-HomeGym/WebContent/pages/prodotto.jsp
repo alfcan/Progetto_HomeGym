@@ -29,7 +29,7 @@
 		<img class="img-product" src="<%=prodotto.getUrlImmagine()%>">	
 		<h1 style="padding-top:30px;"><%=prodotto.getNome()%></h1>
 		<p style="padding-top:20px;"><%=prodotto.getDescrizione()%></p>
-		<h1 id="grassetto"> &euro;<%=prodotto.getPrezzo()%></h1>
+		<h1 id="grassetto"><%=prodotto.getPrezzo()%>&euro;</h1>
 		
 		<%if(prodotto.getQtaMagazzino() > 0) {%>
 			<a href="ProductControl?action=AddToCarrello&codice=<%=prodotto.getCodice()%>" class="btn btn-danger btn-lg float-right btn-mio">Aggiungi al carrello</a>

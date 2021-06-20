@@ -25,6 +25,7 @@
 		<%@ include file="../fragments/header.jsp" %>
 		
 		<h1 style="text-align: center;color: #FA9600;font-family:Verdana;">I tuoi Dati di Pagamento & Spedizione</h1>
+		
 		<div class="container py-5">
         <div class="row">
             <div class="col-md-12">
@@ -37,25 +38,25 @@
 		
 		<%if(datiPagamento.getNumeroCarta().equals("") || datiPagamento == null){ %>
 		
-                        <div class="card rounded-0 CDtot" id="contenitoreTotale">
-                            <div class="card-header carta1">
-                                <h3 class="mb-0">Inserisci dati pagamento</h3>
-                            </div>
-                            <div class="card-body">
+            <div class="card rounded-0 CDtot" id="contenitoreTotale">
+            <div class="card-header carta1">
+                  <h3 class="mb-0">Inserisci dati pagamento</h3>
+            </div>
+            <div class="card-body">
                          
 				<form method="post" action="/Progetto-HomeGym/UtenteControl" onsubmit="return checkDatiPag(this)">
 				
 				<input type="hidden" name="action" value="addDatiPagamento">
 				
-			 	<label class="grassetto" for="carta"><img src="foto/partitaiva.png">&nbspNumero Carta</label>
+			 	<label class="grassetto" for="carta"><img src="foto/partitaiva.png">Numero Carta</label>
 	            <input type="text" class="form-control form-control-lg rounded-0 BORDO" name="carta" id="carta" placeholder="Numero carta"><br>
 	            <p id="errorNumCarta"></p>
 	            
-	            <label class="grassetto" for="cvv"><img src="foto/partitaiva.png">&nbspCvv</label>
+	            <label class="grassetto" for="cvv"><img src="foto/partitaiva.png">Cvv</label>
 	            <input type="text" class="form-control form-control-lg rounded-0 BORDO" name="cvv" id="cvv" placeholder="Cvv"><br>
 	            <p id="errorCVV"></p>
 	            
-	            <label class="grassetto"for="data"><img src="foto/calendario.png">&nbspData scadenza</label>
+	            <label class="grassetto"for="data"><img src="foto/calendario.png">Data scadenza</label>
 	            <input type="date" class="form-control form-control-lg rounded-0 BORDO" name="data" id="data" placeholder="Data scadenza"><br>
 	            <p id="errorData"></p>
 	            
@@ -64,11 +65,11 @@
 			</div>
 			</div>
 		<%} else {%>
-		<div class="card rounded-0 CDtot" id="contenitoreTotale">
-         <div class="card-header carta1">
-           <h3 class="mb-0">Dati Pagamento</h3>
-          </div>
-           <div class="card-body">
+	<div class="card rounded-0 CDtot" id="contenitoreTotale">
+         	<div class="card-header carta1">
+           	<h3 class="mb-0">Dati Pagamento</h3>
+          	</div>
+        <div class="card-body">
              
 			<p>
 				Numero Carta: <%=datiPagamento.getNumeroCarta()%>
@@ -78,8 +79,8 @@
 				<input type="hidden" name="carta" value=<%=datiPagamento.getNumeroCarta()%>>
 				<input type="submit" class="btn btn-danger btn-lg float-right btn-mio" value="Rimuovi">
 			</form>
-			</div>
-			</div>
+		</div>
+		</div>
 			<br>
 		<%} %>
 		
@@ -105,53 +106,44 @@
 					</tr>
 				</tbody>
 				<%}%>
-			</table>		
+			</table>
+			</div>
+			</div>		
 		<%}%>
 		<br>
 		
 		<form method="post" action="/Progetto-HomeGym/UtenteControl">
 			<div class="card rounded-0 CDtot" id="contenitoreTotale">
-             <div class="card-header carta1">
-               <h3 class="mb-0">Inserisci dati spedizione</h3>
-             </div><br>
-               <div class="card-body">
-               <p id="error">
-		       </p> 
-            
+             	<div class="card-header carta1">
+               		<h3 class="mb-0">Inserisci dati spedizione</h3>
+             	</div><br>
+             <div class="card-body">
+               
 			<input type="hidden" name="action" value="addIndirizzoSpedizione">
 			
-		 	<label class="grassetto" for="via"><img src="foto/luogo.png">&nbspVia</label>
+		 	<label class="grassetto" for="via"><img src="foto/luogo.png">Via</label>
             <input type="text" class="form-control form-control-lg rounded-0 BORDO" name="via" id="via" placeholder="Via"><br>
             
-            <label class="grassetto" for="citta"><img src="foto/luogo.png">&nbspCittà</label>
+            <label class="grassetto" for="citta"><img src="foto/luogo.png">Città</label>
             <input type="text" class="form-control form-control-lg rounded-0 BORDO" name="citta" id="citta" placeholder="Città"><br>
             
-            <label class="grassetto" for="cap"><img src="foto/luogo.png">&nbspCap</label>
+            <label class="grassetto" for="cap"><img src="foto/luogo.png">Cap</label>
             <input type="text" class="form-control form-control-lg rounded-0 BORDO" name="cap" id="cap" placeholder="Cap"><br>
             
             <input type="submit" class="btn btn-danger btn-lg float-right btn-mio" value="Invia">
-		</form>	
+		
 		</div>
 		</div>	
-	
+		</form>	
+	  </div>
+                </div>
+            </div>
+        </div>
+    </div>
 	</body>
 	
-							</div>
-                            
-                        </div>
-                        
-    
-                    </div>
-    
-    
-                </div>
-            
-    
-            </div>
-
-        </div>
-
-    </div>
+							
+                  
 	
 	<%@ include file="../fragments/footer.jsp" %>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

@@ -54,7 +54,7 @@
 				<tr>
 					<td><img src="<%=product.getUrlImmagine()%>" width="80" height="80"></td>
 					<td><%=product.getNome()%></td>
-					<td><%=product.getPrezzo()%></td>
+					<td><%=product.getPrezzo()%>&euro;</td>
 					<td><%=product.getIva()%></td>
 					<td><%=product.getQtaCarrello()%></td>
 				</tr>

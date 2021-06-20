@@ -46,7 +46,7 @@
 					<tr>
 						<td><%=p.getCodice()%></td>
 						<td><%=p.getNome()%></td>
-						<td><%=p.getPrezzo()%></td>
+						<td><%=p.getPrezzo()%>&euro;</td>
 						<td><%=p.getIva()%></td>
 						
 						 

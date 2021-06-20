@@ -67,7 +67,7 @@
 					<td><%=ordine.getID()%></td>
 					<td><%=ordine.getStato()%></td>
 					<td><%=data%></td>
-					<td><%=ordine.getTotale()%></td>
+					<td><%=ordine.getTotale()%>&euro;</td>
 					<td>
 						<a href="OrdineControl?action=dettagliOrdine&id=<%=ordine.getID()%>" class="btn btn-danger btn-lg float-right btn-mio">Dettagli</a>
 					</td>
