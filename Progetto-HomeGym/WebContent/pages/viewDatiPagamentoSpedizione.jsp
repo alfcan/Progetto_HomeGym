@@ -18,8 +18,8 @@
 		<link rel="stylesheet" href="<%=request.getContextPath() + "/Stili/registrazione.css"%>">
 		<link rel="stylesheet" href="<%=request.getContextPath() + "/Stili/header.css"%>">
 		<link rel="stylesheet" href="<%=request.getContextPath() + "/Stili/footer.css"%>">
-		<script src="Progetto-HomeGym/jsMiei/footer.js"></script>
-		<script src="Progetto-HomeGym/jsMiei/controlliDatiPagamento.js">></script> 
+		<script src="<%=request.getContextPath() + "/jsMiei/footer.js"%>"></script>
+		<script src="<%=request.getContextPath() + "/jsMiei/controlliDatiPagamento.js"%>"></script> 
 	</head>
 	<body>
 		<%@ include file="../fragments/header.jsp" %>
@@ -49,15 +49,15 @@
 				<input type="hidden" name="action" value="addDatiPagamento">
 				
 			 	<label class="grassetto" for="carta"><img src="foto/partitaiva.png">Numero Carta</label>
-	            <input type="text" class="form-control form-control-lg rounded-0 BORDO" name="carta" id="carta" placeholder="Numero carta"><br>
+	            <input type="text" class="form-control form-control-lg rounded-0 BORDO" name="carta" id="carta" placeholder="Numero carta" onclick="startNumCarta()" onkeyup="startNumCarta()"><br>
 	            <p id="errorNumCarta"></p>
 	            
 	            <label class="grassetto" for="cvv"><img src="foto/partitaiva.png">Cvv</label>
-	            <input type="text" class="form-control form-control-lg rounded-0 BORDO" name="cvv" id="cvv" placeholder="Cvv"><br>
+	            <input type="text" class="form-control form-control-lg rounded-0 BORDO" name="cvv" id="cvv" placeholder="Cvv" onclick="startCVV()" onkeyup="startCVV()"><br>
 	            <p id="errorCVV"></p>
 	            
 	            <label class="grassetto"for="data"><img src="foto/calendario.png">Data scadenza</label>
-	            <input type="date" class="form-control form-control-lg rounded-0 BORDO" name="data" id="data" placeholder="Data scadenza"><br>
+	            <input type="date" class="form-control form-control-lg rounded-0 BORDO" name="data" id="data" placeholder="Data scadenza" onclick="startData()" onkeyup="startData()"><br>
 	            <p id="errorData"></p>
 	            
 	            <input type="submit" class="btn btn-danger btn-lg float-right btn-mio" value="Invia">

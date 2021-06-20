@@ -35,13 +35,25 @@ function checkDatiPag(form){
 		return(false);
 	}
 	
+	var dataOggi = new Date();
+	var dataScadenza = new Date($("#data").val());
+	if(dataScadenza < dataOggi){
+		$("#errorData").text('Non hai inserito una data di scadenza valida').css({"color":"red"});
+		document.getElementById("data").focus();
+		return(false);
+	}
+	
 	return (true);
 }
 
-function startnumCarta(){
+function startNumCarta(){
 	$("#errorNumCarta").text('');
 }
 
 function startCVV(){
 	$("#errorCVV").text('');
+}
+
+function startData(){
+	$("#errorData").text('');
 }
