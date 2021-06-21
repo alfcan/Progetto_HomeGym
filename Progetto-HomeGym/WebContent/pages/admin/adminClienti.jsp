@@ -33,12 +33,12 @@
 		if(utenti != null){
 		%>
 		<table>
-			<tr>
-				<thead>	
+			<thead>	
+				<tr>
 					<th>Email</th>
 					<th>Tipo</th>
-				</thead>
-			</tr>
+				</tr>
+			</thead>
 				<tbody>
 					<%for (UtenteBean u : utenti) {%>
 					<tr>
@@ -47,12 +47,12 @@
 						<form method="post" action="/Progetto-HomeGym/AdminControl">
 		                    <input type="hidden" name="utente" value="<%=u.getEmail()%>">
 		                    <input type="hidden" name="action" value="ordiniUtente">
-		                    <td><button type="submit" class="btn btn-danger btn-lg float-right btn-mio" id="btnLogin">Ordini</button></td>
+		                    <td><button type="submit" class="btn btn-danger float-right btn-mio" id="btnLogin">Ordini</button></td>
 	                    </form>
 		                <form method="post" action="/Progetto-HomeGym/AdminControl">
 		                    <input type="hidden" name="utente" value="<%=u.getEmail()%>">
 		                    <input type="hidden" name="action" value="feedbackUtente">
-		                    <td><button type="submit" class="btn btn-danger btn-lg float-right btn-mio" id="btnLogin">Feedback</button></td>
+		                    <td><button type="submit" class="btn btn-danger float-right btn-mio" id="btnLogin">Feedback</button></td>
 	                    </form>
                     </tr>
                     <%} %>
