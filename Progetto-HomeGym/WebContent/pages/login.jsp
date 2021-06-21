@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<link rel="icon" href="foto/logofavicon.png" sizes="9x9">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
     	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<link rel="stylesheet" href="<%=request.getContextPath() + "/css/bootstrap.min.css"%>">

@@ -15,6 +15,7 @@
 	<head>
 		<meta charset="ISO-8859-1">
 		<title>HomeGym - Carrello</title>
+		<link rel="icon" href="foto/logofavicon.png" sizes="9x9">
 		<link rel="stylesheet" href="<%=request.getContextPath() + "/css/bootstrap.min.css"%>">
 		<link rel="stylesheet" href="<%=request.getContextPath() + "/Stili/registrazione.css"%>">
 		<link rel="stylesheet" href="<%=request.getContextPath() + "/Stili/carello.css"%>">

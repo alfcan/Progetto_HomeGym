@@ -12,6 +12,7 @@
 <html>
 	<head>
 		<meta charset="ISO-8859-1">
+		<link rel="icon" href="foto/logofavicon.png" sizes="9x9">
 		<link rel="stylesheet" href="<%=request.getContextPath() + "/Stili/footer.css"%>">
 		<link rel="stylesheet" href="<%=request.getContextPath() + "/Stili/header.css"%>">
 		<link rel="stylesheet" href="<%=request.getContextPath() + "/css/bootstrap.min.css"%>">
