@@ -104,7 +104,7 @@
           <i class="fas fa-home mr-3"></i> <a class="linkfoot" href="https://www.google.it/maps/place/Via+Roma,+Salerno+SA/@40.6783183,14.756089,17z/data=!3m1!4b1!4m5!3m4!1s0x133bc22609d11f13:0x7a65ed64b91a7408!8m2!3d40.6783183!4d14.758283">Salerno,Via Roma,156</a></p>
         <p>
           <img src="foto/email.png">
-          <i class="fas fa-envelope mr-3"></i><a class="linkfoot" href="https://accounts.google.com/signin/v2/sl/pwd?hl=it&service=mail&flowName=GlifWebSignIn&flowEntry=ServiceLogin">homegym@gmail.com</a> </p>
+          <i class="fas fa-envelope mr-3"></i><a class="linkfoot" href="mailto:admin@homegym.it">Scrivi una mail</a> </p>
         <p>
           <img src="foto/phone.png">
           <i class="fas fa-phone mr-3"></i> +39 328 77 21 376 </p>
