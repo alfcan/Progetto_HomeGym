@@ -81,30 +81,6 @@ public class UtenteControl extends HttpServlet {
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/operazione.jsp");
 				dispatcher.forward(request, response);
 			}
-
-			if(action.equals("rimuoviIndirizzoSpedizione")) {
-				int id = Integer.parseInt(request.getParameter("idIndirizzo"));
-				try {
-					indirizzoDAO.doDelete(id);
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-				request.setAttribute("operazione", "La rimozione dell'indirizzo di spedizione è avvenuta correttamente");
-				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/operazione.jsp");
-				dispatcher.forward(request, response);
-			}
-			
-			if(action.equals("rimuoviDatiPagamento")) {
-				String numeroCarta=request.getParameter("carta");
-				try {
-					datiDAO.doDelete(numeroCarta);
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-				request.setAttribute("operazione", "La rimozione dei Dati di Pagamento è avvenuta correttamente");
-				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pages/operazione.jsp");
-				dispatcher.forward(request, response);
-			}
 			
 			if(action.equals("addDatiPagamento")) {
 				String numeroCarta=request.getParameter("carta");
