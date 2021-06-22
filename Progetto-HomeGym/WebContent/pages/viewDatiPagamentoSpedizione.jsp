@@ -75,11 +75,11 @@
 			<p>
 				Numero Carta: <%=datiPagamento.getNumeroCarta()%>
 			</p>
-			<form method="post" action="/Progetto-HomeGym/UtenteControl">
+			<!--<form method="post" action="/Progetto-HomeGym/UtenteControl">
 				<input type="hidden" name="action" value="rimuoviDatiPagamento">
 				<input type="hidden" name="carta" value=<%=datiPagamento.getNumeroCarta()%>>
 				<input type="submit" class="btn btn-danger btn-lg float-right btn-mio" value="Rimuovi">
-			</form>
+			</form> -->
 		</div>
 		</div>
 			<br>
@@ -93,7 +93,7 @@
            <div class="card-body">
             <p id="error">
 		    </p> 			
-			<table>
+			<table style="margin: 0 auto 0 auto;">
 				<thead>
 					<tr>
 						<th>Indirizzo</th>
@@ -103,7 +103,7 @@
 				<tbody>
 					<tr>
 						<td><%=indirizzo.getVia() + " "+ indirizzo.getCitta() + " "+ indirizzo.getCap()%></td>
-						<td><a href="/Progetto-HomeGym/UtenteControl?action=rimuoviIndirizzoSpedizione&idIndirizzo=<%=indirizzo.getID()%>" class="btn btn-danger btn-lg float-right btn-mio">Rimuovi</a></td>
+						<!--<td><a href="/Progetto-HomeGym/UtenteControl?action=rimuoviIndirizzoSpedizione&idIndirizzo=<%=indirizzo.getID()%>" class="btn btn-danger btn-lg float-right btn-mio">Rimuovi</a></td> -->
 					</tr>
 				</tbody>
 				<%}%>

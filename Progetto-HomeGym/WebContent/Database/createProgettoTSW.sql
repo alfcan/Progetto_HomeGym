@@ -13,7 +13,7 @@ password varchar(30) not null,
 dati_pagamento char(16),
 tipo varchar(30) not null,
 foreign key(dati_pagamento) references dati_pagamento(numero_carta)
-ON UPDATE NO ACTION ON DELETE CASCADE
+ON UPDATE CASCADE ON DELETE NO ACTION
 );
 
 create table azienda(
